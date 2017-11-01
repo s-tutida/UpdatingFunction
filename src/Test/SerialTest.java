@@ -33,19 +33,22 @@ public class SerialTest {
 	    	    
 	    	    		// Play song '0':
 	    	    		write(out, 141, 0);
-	    	   
+	    	    		
 	        }
+	    }
 
-	    }
+	}
 	    
 	    
-	    private void write(OutputStream out, int... data) throws IOException {
-	        // Sigh, unsigned Java:
-	        byte[] output = new byte[data.length];
-	        for(int i = 0; i < data.length; i++) {
-	            output[i] = (byte)(data[i]&0xFF);
-	        }
-	        out.write(output); 
+    private void write(OutputStream out, int... data) throws IOException {
+	    
+    		// Sigh, unsigned Java:
+	    byte[] output = new byte[data.length];
+	    
+	    for(int i = 0; i < data.length; i++) {
+	    		output[i] = (byte)(data[i]&0xFF);
 	    }
+	    out.write(output); 
+    }
 
 }
