@@ -81,7 +81,7 @@ public class SerialTest {
         public void run() {
             try {
  
-                String line = "";
+                String line = null;
      			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     			    while ((line = br.readLine()) != null){    			    	
                 	
