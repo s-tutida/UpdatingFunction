@@ -10,6 +10,9 @@ import java.io.OutputStream;
  
 public class SerialTest {
  
+	InputStream in = null;
+	OutputStream out = null;
+	
     void connect(String portName) throws Exception {
         CommPortIdentifier portIdentifier = CommPortIdentifier
                 .getPortIdentifier(portName);
@@ -25,8 +28,8 @@ public class SerialTest {
                 serialPort.setSerialPortParams(9600, SerialPort.DATABITS_8,
                         SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
  
-                InputStream in = serialPort.getInputStream();
-                OutputStream out = serialPort.getOutputStream();
+                in = serialPort.getInputStream();
+                out = serialPort.getOutputStream();
  
                 (new Thread(new SerialReader(in))).start();
                 (new Thread(new SerialWriter(out))).start();
@@ -54,7 +57,7 @@ public class SerialTest {
                 	    //TODO Read byteに変更する.
 	            	    //debug
 	            	    System.out.println("DEBUG : SerialReader " + len);	
-//                    System.out.print(len);
+	            	    System.out.println("DEBUG : Byte " + (byte)(len&0xFF));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -77,6 +80,7 @@ public class SerialTest {
                 while ((c = System.in.read()) > -1) {
                 	    //debug
                 	    System.out.println("DEBUG : SerialWriter " + c);	
+                    System.out.println("DEBUG : Byte " + (byte)(c&0xFF));
                 	
 //                	    if(c==1) {
                 	    		// Write imperial march as song '0':
