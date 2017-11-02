@@ -57,6 +57,7 @@ public class SerialTest {
                 	    //TODO Read byteに変更する.
 	            	    //debug
 	            	    System.out.println("DEBUG : SerialReader " + len);	
+                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(len));	
 	            	    System.out.println("DEBUG : Byte " + (byte)(len&0xFF));
                 }
             } catch (IOException e) {
@@ -80,6 +81,7 @@ public class SerialTest {
                 while ((c = System.in.read()) > -1) {
                 	    //debug
                 	    System.out.println("DEBUG : SerialWriter " + c);	
+                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(c));	
                     System.out.println("DEBUG : Byte " + (byte)(c&0xFF));
                 	
 //                	    if(c==1) {
