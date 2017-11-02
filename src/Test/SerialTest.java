@@ -51,6 +51,7 @@ public class SerialTest {
             int len = -1;
             try {
                 while ((len = this.in.read(buffer)) > -1) {
+                	    //TODO Read byteに変更する.
                     System.out.print(new String(buffer, 0, len));
                 }
             } catch (IOException e) {
@@ -67,6 +68,7 @@ public class SerialTest {
             this.out = out;
         }
  
+        //TODO 入力により, 用意する
         public void run() {
             try {
                 int c = 0;
