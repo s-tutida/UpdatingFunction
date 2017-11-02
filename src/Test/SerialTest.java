@@ -55,10 +55,11 @@ public class SerialTest {
             try {
                 while ((len = this.in.read(buffer)) > -1) {
                 	    //TODO Read byteに変更する.
+                	    int inputValue = Integer.parseInt(new String(buffer));
 	            	    //debug
-	            	    System.out.println("DEBUG : SerialReader " + len);	
-                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(len));	
-	            	    System.out.println("DEBUG : Byte " + (byte)(len&0xFF));
+//	            	    System.out.println("DEBUG : SerialReader " + len);	
+//                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(len));	
+	            	    System.out.println("DEBUG : Byte " + (byte)(inputValue&0xFF));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -79,10 +80,11 @@ public class SerialTest {
             try {
                 int c = 0;
                 while ((c = System.in.read()) > -1) {
+                	
                 	    //debug
-                	    System.out.println("DEBUG : SerialWriter " + c);	
-                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(c));	
-                    System.out.println("DEBUG : Byte " + (byte)(c&0xFF));
+//                	    System.out.println("DEBUG : SerialWriter " + c);	
+                	    System.out.println("DEBUG : SerialWriter " + String.valueOf((char)c));	
+//                    System.out.println("DEBUG : Byte " + (byte)(c&0xFF));
                 	
 //                	    if(c==1) {
                 	    		// Write imperial march as song '0':
