@@ -78,11 +78,11 @@ public class SerialTest {
                 	    //debug
                 	    System.out.println("DEBUG : SerialWriter " + c);	
                 	
-                	    if(c==1) {
+//                	    if(c==1) {
                 	    		// Write imperial march as song '0':
                 	    		write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
                     		write(out, 141, 0);
-                	    }
+//                	    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
