@@ -3,9 +3,11 @@ package Test;
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
- 
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
  
 public class SerialTest {
@@ -78,19 +80,25 @@ public class SerialTest {
         //TODO 入力により, 用意する
         public void run() {
             try {
-                int c = 0;
-                while ((c = System.in.read()) > -1) {
+ 
+                String line = "";
+     			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    			    while ((line = br.readLine()) != null){    			    	
                 	
                 	    //debug
 //                	    System.out.println("DEBUG : SerialWriter " + c);	
-                	    System.out.println("DEBUG : SerialWriter " + String.valueOf((char)c));	
+                	    System.out.println("DEBUG : SerialWriter " + line);	
+                	    int inputValue = Integer.parseInt(new String(line));
+                	    
+                	    
 //                    System.out.println("DEBUG : Byte " + (byte)(c&0xFF));
                 	
 //                	    if(c==1) {
                 	    		// Write imperial march as song '0':
-                	    		write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
-                    		write(out, 141, 0);
+//                	    		write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
+//                    		write(out, 141, 0);
 //                	    }
+                	    out.write((byte)(inputValue&0xFF));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
