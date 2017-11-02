@@ -52,7 +52,9 @@ public class SerialTest {
             try {
                 while ((len = this.in.read(buffer)) > -1) {
                 	    //TODO Read byteに変更する.
-                    System.out.print(new String(buffer, 0, len));
+	            	    //debug
+	            	    System.out.println("DEBUG : SerialReader " + len);	
+//                    System.out.print(len);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -73,14 +75,32 @@ public class SerialTest {
             try {
                 int c = 0;
                 while ((c = System.in.read()) > -1) {
-                    this.out.write(c);
+                	    //debug
+                	    System.out.println("DEBUG : SerialWriter " + c);	
+                	
+                	    if(c==1) {
+                	    		// Write imperial march as song '0':
+                	    		write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
+                    		write(out, 141, 0);
+                	    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
  
+
+    private static void write(OutputStream out, int... data) throws IOException {
+        // Sigh, unsigned Java:
+        byte[] output = new byte[data.length];
+        for(int i = 0; i < data.length; i++) {
+            output[i] = (byte)(data[i]&0xFF);
+        }
+        out.write(output); 
+    }
+    
     public static void main(String[] args) {
         try {
             (new SerialTest()).connect("/dev/ttyUSB0");
