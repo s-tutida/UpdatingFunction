@@ -27,7 +27,7 @@ public class SerialTest {
  
             if (commPort instanceof SerialPort) {
                 SerialPort serialPort = (SerialPort) commPort;
-                serialPort.setSerialPortParams(9600, SerialPort.DATABITS_8,
+                serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8,
                         SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
  
                 in = serialPort.getInputStream();
@@ -57,11 +57,11 @@ public class SerialTest {
             try {
                 while ((len = this.in.read(buffer)) > -1) {
                 	    //TODO Read byteに変更する.
-                	    int inputValue = Integer.parseInt(new String(buffer));
+//                	    int inputValue = Integer.parseInt(new String(buffer));
 	            	    //debug
 //	            	    System.out.println("DEBUG : SerialReader " + len);	
-//                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(len));	
-	            	    System.out.println("DEBUG : Byte " + (byte)(inputValue&0xFF));
+////                	    System.out.println("DEBUG : SerialWriter " + String.valueOf(len));	
+//	            	    System.out.println("DEBUG : Byte " + (byte)(inputValue&0xFF));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
