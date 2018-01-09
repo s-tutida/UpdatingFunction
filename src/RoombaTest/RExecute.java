@@ -1,20 +1,27 @@
-package Test;
-
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.SerialPort;
+package RoombaTest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
- 
-public class SerialTest {
- 
+
+import Tsuchida.ComponentManager;
+import Tsuchida.Execute;
+import gnu.io.CommPort;
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+
+public class RExecute extends Execute{
+
 	InputStream in = null;
 	OutputStream out = null;
 	
+	public RExecute(ComponentManager cm, String name) {
+		super(cm, name);
+		// TODO Auto-generated constructor stub
+	}
+
     void connect(String portName) throws Exception {
         CommPortIdentifier portIdentifier = CommPortIdentifier
                 .getPortIdentifier(portName);
@@ -106,8 +113,6 @@ public class SerialTest {
         }
     }
 
- 
-
     private static void write(OutputStream out, int... data) throws IOException {
         // Sigh, unsigned Java:
         byte[] output = new byte[data.length];
@@ -117,11 +122,21 @@ public class SerialTest {
         out.write(output); 
     }
     
-    public static void main(String[] args) {
+	@Override
+	public Object execute(Object o) {
         try {
-            (new SerialTest()).connect("/dev/ttyUSB0");
+            connect("/dev/ttyUSB0");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+        
+		return null;
+	}
+
+	@Override
+	public void setData(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

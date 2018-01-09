@@ -10,7 +10,7 @@ public class PictureManager extends ComponentManager {
 	public static void main(String[] args) throws IOException{
 		
 		PictureManager pm = new PictureManager();
-		Configuration conf = new Configuration("component.properties");
+		Configuration conf = new Configuration("test.properties");
 		
 		pm.addMonitor(new TestMonitor(pm, "Monitor"))
 		   .addAnalysis(new TestAnalysis(pm, "Analysis", conf))
