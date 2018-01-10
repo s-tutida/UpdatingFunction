@@ -163,23 +163,22 @@ public class SerialTest {
 	            output[i] = (byte)(data[i]);
 //	            output[i] = (byte)(data[i]&0xFF);
 	        }
-	        System.out.println("Output in write method (Option int array) : First command " +  output[0]);
+	        System.out.println("Output in write method (Option int array) : First command :" +  output[0]);
 	        out.write(output);
 	    }
 	    
 	    private static void write(OutputStream out, byte... data) throws IOException {
-	        // Sigh, unsigned Java:
 	        byte[] output = new byte[data.length];
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = data[i];
 	        }
-	        System.out.println("Output in write method (Option byte array) : First command" +  output[0]);
+	        System.out.println("Output in write method (Option byte array) : First command :" +  output[0]);
 	        out.write(output);
 	    }
 
 		public static void main(String arg[]) throws Exception{
 			    SerialTest rs = new SerialTest();
-	            rs.connect("/dev/ttyUSB2");
+	            rs.connect(arg[0]);
 		}
 
 		public SerialTest(){
