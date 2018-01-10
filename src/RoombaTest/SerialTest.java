@@ -95,11 +95,12 @@ public class SerialTest {
 			                	    	case 3:	 out.write(motor(64,-64));//right
 			                	    	case 4:	 out.write(motor(-64,64));//left
 			                	    	case 5:	 out.write(motor(-64,-64));//back
-			                	    	case 6:  write(out, 128, 135);
-			                	    	case 7:  write(out, 128, 137, 146, 6, 64, -64, -6);
+			                	    	case 6:  write(out, 128, 132, 137, 6, 64, 6, 64);
+			                	    	case 7:  write(out, 128, 132, 137, 6, 64, -6, -64);
 			                	    	default:	 out.write(motor(0,0));//stop
 		                	    
 		                	    }
+		                	    
 	            	    }
 	            } catch (IOException e) {
 	                e.printStackTrace();
@@ -113,10 +114,10 @@ public class SerialTest {
 	    				(byte)(128&0xFF),//start
 	    				(byte)(132&0xFF),//FULL
 	    				(byte)(137&0xFF),//Drive PWM
-	    				(byte)((r>>8)&0xFF),
-	    				(byte)(r&0xFF),
-	    				(byte)((l>>8)&0xFF),
-	    				(byte)(l&0xFF)
+	    				(byte)((l&0x0000FF00)>>8),
+	    				(byte)(l&0x000000FF),
+	    				(byte)((r&0x0000FF00)>>8),
+	    				(byte)(r&0x000000FF)
 	    		};
 	    		
 	    		return buffer;
