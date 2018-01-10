@@ -81,24 +81,43 @@ public class SerialTest {
 
 	                String line = null;
 	     			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));//標準入力から受け付ける
-	    			while ((line = br.readLine()) != null){
-
-	                	    //debug
-	                	    System.out.println("DEBUG : SerialWriter " + line);
-	                	    int inputValue = Integer.parseInt(new String(line));
-	                	    System.out.println("DEBUG : SerialWriter Byte " + (byte)(inputValue&0xFF));
-
-//	                	    if(c==1) {
-	                	    		// Write imperial march as song '0':
-//	                	    		write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
-//	                    		write(out, 141, 0);
-//	                	    }
-//	                	    out.write((byte)(inputValue&0xFF));
-	                }
+	     			
+		    			while ((line = br.readLine()) != null){
+	
+		                	    //debug
+		                	    int inputValue = Integer.parseInt(new String(line));
+		                	    System.out.println("DEBUG : SerialWriter input value is" + line);
+		                	    
+		                	    switch(inputValue) {
+			                	    	case 1: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
+			                	    	        write(out, 141, 0);
+			                	    	case 2:	 out.write(motor(64,64));//forward
+			                	    	case 3:	 out.write(motor(64,-64));//right
+			                	    	case 4:	 out.write(motor(-64,64));//left
+			                	    	case 5:	 out.write(motor(-64,-64));//back
+			                	    	default:	 out.write(motor(0,0));//stop
+		                	    
+		                	    }
+	            	    }
 	            } catch (IOException e) {
 	                e.printStackTrace();
 	            }
 	        }
+	    }
+	   
+	    
+	    static byte[] motor(int l, int r) {
+	    		byte buffer[] = {
+	    				(byte)(128),//start
+	    				(byte)(132),//FULL
+	    				(byte)(146),//Drive PWM
+	    				(byte)(r>>8),
+	    				(byte)(r),
+	    				(byte)(l>>8),
+	    				(byte)(l)
+	    		};
+	    		
+	    		return buffer;
 	    }
 
 	    private static void write(OutputStream out, int... data) throws IOException {
