@@ -56,6 +56,7 @@ public class ObjectDetector {
 		if(max > 1000) {
 			answer = -1;
 		}
+		System.out.println("DEBUG : Direct after "+ answer);
 		return String.valueOf(answer);
 	}
 
