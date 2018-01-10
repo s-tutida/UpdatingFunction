@@ -14,6 +14,7 @@ public class RExecute extends Execute{
 	
 	@Override
 	public Object execute(Object o) {
+		
         try {
         	    sc = new SerialCommunication();
             sc.connect("/dev/ttyUSB0");
@@ -26,8 +27,9 @@ public class RExecute extends Execute{
 
 	@Override
 	public void setData(Object o) {
-		String commands[] = (String[]) o;
-		
+		String str = String.valueOf(o);
+		String[] commands = str.split(",", 0);
+	
 		if(sc != null) {
 			for(String command: commands){
 				sc.send_command(Integer.parseInt(command));
