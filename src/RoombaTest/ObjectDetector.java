@@ -1,4 +1,5 @@
-package TestImage;
+package RoombaTest;
+
 
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
@@ -7,14 +8,12 @@ import org.opencv.core.Size;
 public class ObjectDetector {
 
 	public ObjectDetector(){
-
 	}
 
 
-	public Mat detect_object(Mat img){
+	public int[] detect_object(Mat img){
 
 		Mat A = img;
-		Mat C = A.clone();
 		Size sizeA = A.size();
 		int count1=0,count2=0,count3=0,count4=0;
 		for (int i = 0; i < sizeA.height; i++){
@@ -51,29 +50,8 @@ public class ObjectDetector {
 			answer = 4;
 			max = count4;
 		}
-
-		System.out.println(answer + ","  +max);
-
-		//debug用　実際のAnalyzeはanswerと数値を返せばよい.
-		for (int i = 0; i < sizeA.height; i++){
-		    for (int j = 0; j < sizeA.width; j++) {
-
-		    	if(answer == 1 && (i <  (sizeA.height)/2 && j <  (sizeA.width)/2)){
-		    		C.put(i, j, 255.0);
-		    	}else if(answer == 2 && (i <  (sizeA.height)/2 && j >=  (sizeA.width)/2)){
-		    		C.put(i, j, 255.0);
-		    	}else if(answer == 3 && (i >=  (sizeA.height)/2 && j >=  (sizeA.width)/2)){
-		    		C.put(i, j, 255.0);
-		    	}else if(answer == 4 && (i >=  (sizeA.height)/2 && j <  (sizeA.width)/2)){
-		    		C.put(i, j, 255.0);
-		    	}else{
-		    		C.put(i, j, 0);
-		    	}
-
-		    }
-		}
-
-		return C;
+		int nums[] = {answer, max};
+		return nums;
 	}
 
 }

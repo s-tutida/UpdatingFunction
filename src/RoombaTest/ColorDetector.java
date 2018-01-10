@@ -1,4 +1,4 @@
-package TestImage;
+package RoombaTest;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -21,10 +21,9 @@ public class ColorDetector {
 	    Imgproc.Canny(im2,im2,400,500,5,true);//Edge検出
 		Core.inRange(hsv, new Scalar(0, 100, 30), new Scalar(5, 255, 255), im2);//指定した画素値の範囲内にある領域をマスク画像で取得する. ノイズ除去後の画像を保存する.
 	    Imgproc.Canny(im2,im2,400,800,5,true);//Edge検出
-//		Highgui.imwrite("test2.jpg", im2);//debug用 画像ファイルとして出力する.
+		Highgui.imwrite("output.jpg", im2);//debug用 画像ファイルとして出力する.
 
 		return im2;
 	}
 
 }
-

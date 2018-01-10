@@ -10,7 +10,7 @@ public class Roomba extends ComponentManager{
 		Roomba rm = new Roomba();
 		
 		rm.addMonitor(new TestMonitor(rm, "Monitor"))
-		   .addAnalysis(new RAnalyze(rm, "Analysis"))
+		   .addAnalysis(new RAnalyze(rm, "Analyze"))
 		   .addPlan(new RPlan(rm, "Plan"))
 		   .addExecute(new RExecute(rm, "Eexecute"))
            .build()

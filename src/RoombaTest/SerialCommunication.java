@@ -1,20 +1,14 @@
 package RoombaTest;
 
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-
-
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 
-public class SerialTest {
+public class SerialCommunication {
 
-		InputStream in = null;
 		OutputStream out = null;
 		SerialPort sp = null;
 
@@ -31,137 +25,58 @@ public class SerialTest {
 	                SerialPort serialPort = (SerialPort) commPort;
 	                serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8,SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 	                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-
-	                in = serialPort.getInputStream();
+	                
 	                out = serialPort.getOutputStream();
 	                sp = serialPort;
-
-	                (new Thread(new SerialReader(in))).start();//インプット用のスレッド
-	                (new Thread(new SerialWriter(out))).start();//アウトプット用のスレッド
 
 	            } else {
 	                System.out.println("Error: Only serial ports are handled by this example.");
 	            }
 	        }
 	    }
-
-	    //シリアルポートからのインプットを扱うスレッド
-	    public static class SerialReader implements Runnable {
-
-	        InputStream in;
-
-	        public SerialReader(InputStream in) {
-	            this.in = in;
-	        }
-
-	        public void run() {
-	            byte[] buffer = new byte[1024];
-	            int len = -1;
-	            try {
-	                while ((len = this.in.read(buffer)) > -1) {
-	                	    //TODO Read byteに変更する.
-	                	    int inputValue = Integer.parseInt(new String(buffer));
-		            	    System.out.println("DEBUG : SerialReader Len" + len);
-		            	    System.out.println("DEBUG : SerialReader InputValue" + (byte)(inputValue&0xFF));
-	                }
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-
-	    //シリアルポートからのアウトプットを扱うスレッド
-	    public static class SerialWriter implements Runnable {
-
-	        OutputStream out;
-
-	        public SerialWriter(OutputStream out) {
-	            this.out = out;
-	        }
-
-	        //TODO 入力により, 用意する
-	        public void run() {
-	            try {
-
-	                String line = null;
-	     			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));//標準入力から受け付ける
-	     			
-		    			while ((line = br.readLine()) != null){
-	
-		                	    //debug
-		                	    int inputValue = Integer.parseInt(new String(line));
-		                	    System.out.println("DEBUG : SerialWriter input cmd is " + inputValue);
-		                	    
-		                	    switch(inputValue) {
-		                	    		case 0: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
-		                	    				write(out, 141, 0);
-			                	    	        break;
-			                	    	case 1: startup(out);
-			                	    	        break;
-			                	    	case 2:	stop(out);
-			                	    			 break;
-			                	    	case 3 : safeMode(out);
-			                	    			 break;
-			                	    	case 4 : fullMode(out);
-			                	    		     break;
-			                	    	case 5 : clean(out);
-			                	    	         break;
-			                	    	case 6 : drive(out, 300, 1000);//forward
-			                	    	         break;
-			                	    	case 61: drive(out, -300, -1000);//backforward
-	                	    	         		 break;
-			                	    	case 62: drive(out, -300, -1);//clockwise
-           	    	         		 		break;
-			                	    	case 63: drive(out, -300, 1);//counter-clockwise
-           	    	         		 		break;
-			                	    	case 7 : driveDirect(out, 300, 300);
-			                	    	         break;
-			                	    	case 8 : break;
-			                	    	default : break;
-			                	    	
-//			                	    	case 3:	 out.write(motor(64,-64));//right
-//	                	    			         break;
-//			                	    	case 4:	 out.write(motor(-64,64));//left
-//			                	    	         break;
-//			                	    	case 5:	 out.write(motor(-64,-64));//back
-//			                	    	         break;
-//			                	    	case 6:  write(out, 128, 132, 137, 255, 56, 1, 244);
-//			                	    	         break;
-//			                	    	case 7:  write(out, 128, 132, 137, 6, 64, -6, -64);
-//			                	    	         break;
-//			                	    	case 8:  write(out, 135);
-//			                	    	default:	 out.write(motor(0,0));//stop
-		                	    
-		                	    }
-		                	    
-	            	    }
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-	   
 	    
-	    static byte[] motor(int l, int r) {
-	    		byte buffer[] = {
-	    				(byte)(128&0xFF),//start
-	    				(byte)(132&0xFF),//FULL
-	    				(byte)(137&0xFF),//Drive PWM
-	    				(byte)((l&0x0000FF00)>>8),
-	    				(byte)(l&0x000000FF),
-	    				(byte)((r&0x0000FF00)>>8),
-	    				(byte)(r&0x000000FF)
-	    		};
-	    		System.out.println("In motor method :" + buffer[0]+ ","+ buffer[1]+ ","+ buffer[2]+ ","+ buffer[3]+ ","+ buffer[4]+ ","+ buffer[5]+ ","+ buffer[6]); 
-	    		return buffer;
-	    }
+        public void send_command(int inputValue) {
+            try {
+
+            	    //debug
+            	    System.out.println("DEBUG : SerialWriter input cmd is " + inputValue);
+            	    
+            	    switch(inputValue) {
+            	    		case 0: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
+            	    				write(out, 141, 0);
+                	    	        break;
+                	    	case 1: startup(out);
+                	    	        break;
+                	    	case 2:	stop(out);
+                	    			 break;
+                	    	case 3 : safeMode(out);
+                	    			 break;
+                	    	case 4 : fullMode(out);
+                	    		     break;
+                	    	case 5 : clean(out);
+                	    	         break;
+                	    	case 6 : drive(out, 300, 1000);//forward
+                	    	         break;
+                	    	case 7: drive(out, -300, -1);//clockwise
+    	         		 		break;
+                	    	case 8: drive(out, -300, 1);//counter-clockwise
+    	         		 		break;
+                	    	case 9 : break;//sleep
+                	    	default : break;
+		                	    	
+	                	    
+	            }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
 	    private static void write(OutputStream out, int... data) throws IOException {
 	        // Sigh, unsigned Java:
 	        byte[] output = new byte[data.length];
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = (byte)(data[i]);
-//	            output[i] = (byte)(data[i]&0xFF);
 	        }
 	        System.out.println("Output in write method (Option int array) : First command :" +  output[0]);
 	        out.write(output);
@@ -176,12 +91,7 @@ public class SerialTest {
 	        out.write(output);
 	    }
 
-		public static void main(String arg[]) throws Exception{
-			    SerialTest rs = new SerialTest();
-	            rs.connect(arg[0]);
-		}
-
-		public SerialTest(){
+		public SerialCommunication(){
 
 		}
 		
