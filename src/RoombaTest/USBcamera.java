@@ -10,7 +10,10 @@ import org.opencv.videoio.VideoCapture;
 
 public class USBcamera {
 
+	VideoCapture capture = null;
 	public USBcamera(){
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+		capture =new VideoCapture(1);
 	}
 
 	public VideoCapture run(){
