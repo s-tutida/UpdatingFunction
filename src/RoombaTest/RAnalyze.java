@@ -11,7 +11,6 @@ public class RAnalyze extends Analysis{
 
 	@Override
 	public Object analysis(Object o) {
-		
 		return o;
 	}
 
