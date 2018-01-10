@@ -33,32 +33,16 @@ public class RExecute extends Execute{
 				if(! (command==null || command.isEmpty())) {
 					System.out.println("DEBUG : Command to send is " + command);
 					sc.send_command(Integer.parseInt(command));
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}
-		
-//		try {
-//            serialPort.removeEventListener();
-//            serialPort.close();            
-//            sc.out.close();
-//        } catch (IOException ex) {
-//            // don't care
-//        }
-//        // Close the port.
-//        serialPort.close();
-//        
-//    		Runtime runtime = Runtime.getRuntime();
-//		Process p = null;
-//		
-//		try {
-//			p = runtime.exec((String) "rm -R /var/lock/LCK..ttyUSB0");
-//			p.waitFor();
-//			
-//	    } catch (InterruptedException e) {
-//			e.printStackTrace();
-//	    } catch (IOException e) {
-//			e.printStackTrace();
-//	    }
+	
     }
 
 }

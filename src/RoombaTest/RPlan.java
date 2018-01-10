@@ -18,16 +18,16 @@ public class RPlan extends Plan{
 			String commands= "1,0,4,5";
 			return commands;
 		}else if(mode == 1) {
-			String commands= "1,0,4,5";
+			String commands= "1,4,5,8,6";//左上, 反時計
 		    return commands;
 		}else if(mode == 2){
-			String commands= "1,0,4,5";
+			String commands= "1,4,5,7,6";//右上, 時計
 			return commands;
 		}else if(mode == 3) {
-			String commands= "1,0,4,5";
+			String commands= "1,4,5,7,6";//右下, 時計
 			return commands;
 		}else if(mode == 4) {
-			String commands= "1,0,4,5";
+			String commands= "1,4,5,8,6";//左下, 反時計
 			return commands;
 		}else{
             String commands= "0";
