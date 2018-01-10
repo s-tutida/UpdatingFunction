@@ -27,7 +27,7 @@ public class RExecute extends Execute{
         
 		String str = String.valueOf(o);
 		String[] commands = str.split(",", 0);
-	
+System.out.print(commands[0]);	
 		if(sc!=null){
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {

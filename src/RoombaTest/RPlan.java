@@ -29,9 +29,10 @@ public class RPlan extends Plan{
 		}else if(mode == 4) {
 			String commands= "1,0,4,5";
 			return commands;
+		}else{
+                        String commands= "0";
+	                return commands;
 		}
-		
-		return null;
 	}
 
 }
