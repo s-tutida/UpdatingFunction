@@ -55,11 +55,11 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 61 : drive(out, -30, 0);//forward_l
                 	    	         break;
-                	    	case 62 : drive(out, -300, 0);//forward_h
+                	    	case 62 : drive(out, -60, 0);//forward_h
        	    	         		 break;
                 	    	case 71: driveDirect(out, -10, 10);//clockwise_l
     	         		 		break;
-                   	case 72: driveDirect(out, -30, 30);//clockwise_h
+                   	case 72: driveDirect(out, -60, 30);//clockwise_h
 	         		 		break;
                    	case 81: driveDirect(out, 10, -10);//counter-clockwise_l
                    			break;
