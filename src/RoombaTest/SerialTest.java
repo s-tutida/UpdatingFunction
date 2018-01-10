@@ -95,6 +95,8 @@ public class SerialTest {
 			                	    	case 3:	 out.write(motor(64,-64));//right
 			                	    	case 4:	 out.write(motor(-64,64));//left
 			                	    	case 5:	 out.write(motor(-64,-64));//back
+			                	    	case 6:  write(out, 128, 135);
+			                	    	case 7:  write(out, 128, 137, 146, 6, 64, -64, -6);
 			                	    	default:	 out.write(motor(0,0));//stop
 		                	    
 		                	    }
@@ -110,7 +112,7 @@ public class SerialTest {
 	    		byte buffer[] = {
 	    				(byte)(128&0xFF),//start
 	    				(byte)(132&0xFF),//FULL
-	    				(byte)(146&0xFF),//Drive PWM
+	    				(byte)(137&0xFF),//Drive PWM
 	    				(byte)((r>>8)&0xFF),
 	    				(byte)(r&0xFF),
 	    				(byte)((l>>8)&0xFF),
