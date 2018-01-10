@@ -17,7 +17,7 @@ public class RPlan extends Plan{
 	    System.out.println("DEBUG : mode in RPlan instance is " + mode);
 		
 		if(mode == -1) {
-			String commands= "1,0,4,5";
+			String commands= "1,0,4,9,5";
 			return commands;
 		}else if(mode == 1) {
 			String commands= "4,81,62";//左上, 反時計
