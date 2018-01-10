@@ -3,6 +3,9 @@ package RoombaTest;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
 
 
 public class USBcamera {
