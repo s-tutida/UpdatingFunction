@@ -3,6 +3,7 @@ package RoombaTest;
 import Tsuchida.ComponentManager;
 import Tsuchida.Monitor;  
 import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
 
 public class RMonitor extends Monitor{
 
@@ -27,8 +28,8 @@ public class RMonitor extends Monitor{
 		System.out.println("DEBUG : Object parameter in prepareData "  + o);
 		
 		
-		o.read(webcam_image);
-		if( !((Mat)webcam_image.empty()) ) {
+		((VideoCapture)o).read(webcam_image);
+		if( !(webcam_image.empty()) ) {
 			
 			System.out.println("DEBUG : Enter if statement in prepareData");
 			//Detect target color in a pic
