@@ -59,7 +59,7 @@ public class SerialCommunication {
        	    	         		 break;
                 	    	case 71: driveDirect(out, -10, 10);//clockwise_l
     	         		 		break;
-                   	case 72: driveDirect(out, -60, 30);//clockwise_h
+                   	case 72: driveDirect(out, -30, 30);//clockwise_h
 	         		 		break;
                    	case 81: driveDirect(out, 10, -10);//counter-clockwise_l
                    			break;

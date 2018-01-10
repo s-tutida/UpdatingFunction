@@ -19,6 +19,7 @@ public class Roomba extends ComponentManager{
         
         
 		USBcamera uc = new USBcamera();
+		sc.send_command(1);//wake up
 		
 		rm.addMonitor(new RMonitor(rm, "Monitor", uc))
 		   .addAnalysis(new RAnalyze(rm, "Analyze"))
