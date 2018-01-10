@@ -133,7 +133,7 @@ public class SerialTest {
 
 		public static void main(String arg[]) throws Exception{
 			    SerialTest rs = new SerialTest();
-	            rs.connect("/dev/ttyUSB0");
+	            rs.connect("/dev/ttyUSB1");
 		}
 
 		public SerialTest(){
