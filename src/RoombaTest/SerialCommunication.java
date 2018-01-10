@@ -38,8 +38,6 @@ public class SerialCommunication {
         public void send_command(int inputValue) {
             try {
 
-            	    //debug
-            	    System.out.println("DEBUG : SerialWriter input cmd is " + inputValue);
             	    
             	    switch(inputValue) {
             	    		case 0: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);

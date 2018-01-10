@@ -31,7 +31,6 @@ public class RExecute extends Execute{
 		if(sc!=null){
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {
-					System.out.println("DEBUG : Command to send is " + command);
 					sc.send_command(Integer.parseInt(command));
 					try {
 						Thread.sleep(30);
