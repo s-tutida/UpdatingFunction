@@ -95,7 +95,7 @@ public class SerialTest {
 			                	    	case 3:	 out.write(motor(64,-64));//right
 			                	    	case 4:	 out.write(motor(-64,64));//left
 			                	    	case 5:	 out.write(motor(-64,-64));//back
-			                	    	case 6:  write(out, 128, 132, 137, 6, 64, 6, 64);
+			                	    	case 6:  write(out, 128, 132, 137, 255, 56, 1, 244);
 			                	    	case 7:  write(out, 128, 132, 137, 6, 64, -6, -64);
 			                	    	default:	 out.write(motor(0,0));//stop
 		                	    
@@ -119,7 +119,7 @@ public class SerialTest {
 	    				(byte)((r&0x0000FF00)>>8),
 	    				(byte)(r&0x000000FF)
 	    		};
-	    		
+	    		System.out.println("In motor method :" + buffer[0]+ ","+ buffer[1]+ ","+ buffer[2]+ ","+ buffer[3]+ ","+ buffer[4]+ ","+ buffer[5]+ ","+ buffer[6]); 
 	    		return buffer;
 	    }
 
