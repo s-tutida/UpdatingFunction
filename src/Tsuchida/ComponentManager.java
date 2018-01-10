@@ -195,7 +195,7 @@ public abstract class ComponentManager extends Thread{
 			String time = null;
 			
 			//TODO repear.
-			if(plan.conf.getValue("time") != null) time = plan.conf.getValue("time");
+//			if(plan.conf.getValue("time") != null) time = plan.conf.getValue("time");
 			
 			while(getLoopCondition()){
 				
