@@ -53,15 +53,17 @@ public class SerialCommunication {
                 	    		     break;
                 	    	case 5 : clean(out);
                 	    	         break;
-                	    	case 6 : drive(out, -300, -1000);//forward
+                	    	case 61 : drive(out, 30, 100);//forward_l
                 	    	         break;
-                	    	case 71: drive(out, -10, -10);//clockwise
+                	    	case 62 : drive(out, 300, 1000);//forward_h
+       	    	         		 break;
+                	    	case 71: driveDirect(out, -10, -10);//clockwise_l
     	         		 		break;
-                   	case 72: drive(out, -30, -30);//clockwise
+                   	case 72: driveDirect(out, -30, -30);//clockwise_h
 	         		 		break;
-                   	case 81: drive(out, 10, 10);//counter-clockwise
+                   	case 81: driveDirect(out, 10, 10);//counter-clockwise_l
                    			break;
-                   	case 82: drive(out, 30, 30);//counter-clockwise
+                   	case 82: driveDirect(out, 30, 30);//counter-clockwise_h
                    			break;	         		 		
                 	    	case 9 : break;//sleep
                 	    	default : break;
