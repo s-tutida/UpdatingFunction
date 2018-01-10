@@ -16,8 +16,11 @@ public class Roomba extends ComponentManager{
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+        
+        
+		USBcamera uc = new USBcamera();
 		
-		rm.addMonitor(new RMonitor(rm, "Monitor"))
+		rm.addMonitor(new RMonitor(rm, "Monitor", uc))
 		   .addAnalysis(new RAnalyze(rm, "Analyze"))
 		   .addPlan(new RPlan(rm, "Plan"))
 		   .addExecute(new RExecute(rm, "Eexecute",sc))

@@ -15,13 +15,6 @@ public class USBcamera {
 
 	public VideoCapture run(){
 
-		// Native Libraryのロード
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
-		//宣言
-		Mat webcam_image=new Mat();
-		VideoCapture capture =new VideoCapture(1);
-
 		if( capture.isOpened() ){
 			return capture;
 		}else {

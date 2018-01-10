@@ -7,16 +7,15 @@ import org.opencv.videoio.VideoCapture;
 
 public class RMonitor extends Monitor{
 
-	public RMonitor(ComponentManager cm, String name) {
+	USBcamera uc = null;
+	
+	public RMonitor(ComponentManager cm, String name, USBcamera in_uc) {
 		super(cm, name);
-		// TODO Auto-generated constructor stub
+		uc = in_uc;
 	}
 
 	@Override
 	public Object getData() {
-		
-		USBcamera uc = new USBcamera();
-	
 		return uc.run();
 	}
 
