@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import javax.sql.rowset.serial.SerialException;
 
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
@@ -169,7 +168,7 @@ public class SerialTest {
 
 		public static void main(String arg[]) throws Exception{
 			    SerialTest rs = new SerialTest();
-	            rs.connect("/dev/ttyUSB1");
+	            rs.connect("/dev/ttyUSB0");
 		}
 
 		public SerialTest(){
