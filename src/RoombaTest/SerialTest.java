@@ -106,8 +106,14 @@ public class SerialTest {
 			                	    		     break;
 			                	    	case 5 : clean(out);
 			                	    	         break;
-			                	    	case 6 : drive(out, 300, 1000);
+			                	    	case 6 : drive(out, 300, 1000);//forward
 			                	    	         break;
+			                	    	case 61: drive(out, -300, -1000);//backforward
+	                	    	         		 break;
+			                	    	case 62: drive(out, -300, -1);//clockwise
+           	    	         		 		break;
+			                	    	case 63: drive(out, -300, 1);//counter-clockwise
+           	    	         		 		break;
 			                	    	case 7 : driveDirect(out, 300, 300);
 			                	    	         break;
 			                	    	case 8 : break;
