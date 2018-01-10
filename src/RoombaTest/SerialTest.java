@@ -89,7 +89,7 @@ public class SerialTest {
 		                	    System.out.println("DEBUG : SerialWriter input cmd is " + inputValue);
 		                	    
 		                	    switch(inputValue) {
-			                	    	case 1: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
+			                	    	case 1: write(out, 128, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
 			                	    	        write(out, 141, 0);
 			                	    	        break;
 			                	    	case 2:	 out.write(motor(64,64));//forward
@@ -100,9 +100,9 @@ public class SerialTest {
 			                	    	         break;
 			                	    	case 5:	 out.write(motor(-64,-64));//back
 			                	    	         break;
-			                	    	case 6:  write(out, 128, 132, 137, 255, 56, 1, 244);
+			                	    	case 6:  write(out, 128, 131, 132, 137, 255, 56, 1, 244);
 			                	    	         break;
-			                	    	case 7:  write(out, 128, 132, 137, 6, 64, -6, -64);
+			                	    	case 7:  write(out, 128, 131, 132, 137, 6, 64, -6, -64);
 			                	    	         break;
 			                	    	default:	 out.write(motor(0,0));//stop
 		                	    
