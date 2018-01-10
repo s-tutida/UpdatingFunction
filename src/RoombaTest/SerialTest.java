@@ -86,7 +86,7 @@ public class SerialTest {
 	
 		                	    //debug
 		                	    int inputValue = Integer.parseInt(new String(line));
-		                	    System.out.println("DEBUG : SerialWriter input value is" + line);
+		                	    System.out.println("DEBUG : SerialWriter input cmd is " + inputValue);
 		                	    
 		                	    switch(inputValue) {
 			                	    	case 1: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
@@ -108,13 +108,13 @@ public class SerialTest {
 	    
 	    static byte[] motor(int l, int r) {
 	    		byte buffer[] = {
-	    				(byte)(128),//start
-	    				(byte)(132),//FULL
-	    				(byte)(146),//Drive PWM
-	    				(byte)(r>>8),
-	    				(byte)(r),
-	    				(byte)(l>>8),
-	    				(byte)(l)
+	    				(byte)(128&0xFF),//start
+	    				(byte)(132&0xFF),//FULL
+	    				(byte)(146&0xFF),//Drive PWM
+	    				(byte)((r>>8)&0xFF),
+	    				(byte)(r&0xFF),
+	    				(byte)((l>>8)&0xFF),
+	    				(byte)(l&0xFF)
 	    		};
 	    		
 	    		return buffer;
