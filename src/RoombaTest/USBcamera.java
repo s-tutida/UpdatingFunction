@@ -21,6 +21,8 @@ public class USBcamera {
 
 		if( capture.isOpened() ){
 			return capture;
+		}else {
+			System.out.println("Cannot open video Capture");
 		}
 
 		return null;
