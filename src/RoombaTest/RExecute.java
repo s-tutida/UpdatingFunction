@@ -32,8 +32,9 @@ public class RExecute extends Execute{
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {
 					sc.send_command(Integer.parseInt(command));
+				    System.out.println("DEBUG : this command is send " + mode);
 					try {
-						Thread.sleep(30);
+						Thread.sleep(300);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

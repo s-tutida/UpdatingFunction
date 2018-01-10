@@ -76,7 +76,7 @@ public class SerialCommunication {
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = (byte)(data[i]);
 	        }
-	        System.out.println("Output in write method (Option int array) : First command :" +  output[0]);
+//	        System.out.println("Output in write method (Option int array) : First command :" +  output[0]);
 	        out.write(output);
 	    }
 	    
@@ -85,7 +85,7 @@ public class SerialCommunication {
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = data[i];
 	        }
-	        System.out.println("Output in write method (Option byte array) : First command :" +  output[0]);
+//	        System.out.println("Output in write method (Option byte array) : First command :" +  output[0]);
 	        out.write(output);
 	    }
 
@@ -94,30 +94,30 @@ public class SerialCommunication {
 		}
 		
 	    public static void startup(OutputStream out) throws IOException {
-	        System.out.println("Sending 'startup' and 'safeMode' command to roomba.");
+//	        System.out.println("Sending 'startup' and 'safeMode' command to roomba.");
 	        int cmd[] = { OPC_START, OPC_SAFE };
 	        write(out, cmd);
 	    }
 
 	    public static void stop(OutputStream out) throws IOException {
-	        System.out.println("Sending 'stop' command to roomba.");
+//	        System.out.println("Sending 'stop' command to roomba.");
 	        write(out, OPC_STOP);
 	    }
 
 	    public static void safeMode(OutputStream out) throws IOException {
-	        System.out.println("Sending 'safe' command to roomba.");
+//	        System.out.println("Sending 'safe' command to roomba.");
 	        write(out, OPC_SAFE);
 	    }
 
 	    
 	    public static void fullMode(OutputStream out) throws IOException {
-	        System.out.println("Sending 'full' command to roomba.");
+//	        System.out.println("Sending 'full' command to roomba.");
 	        write(out, OPC_FULL);
 	    }
 
 
 	    public static void clean(OutputStream out) throws IOException {
-	        System.out.println("Sending 'clean' command to roomba.");
+//	        System.out.println("Sending 'clean' command to roomba.");
 	        write(out, OPC_CLEAN);
 	    }
 
@@ -129,7 +129,7 @@ public class SerialCommunication {
 	        if ((radius < -2000 || radius > 2000) && (radius != 32768 && radius != 32767))
 	            throw new IllegalArgumentException("Radius should be between -2000 and 2000 or 32767-32768");
 
-	        System.out.println("Sending 'drive' command (velocity:" + velocity + ", radius:" + radius + ") to roomba.");
+//	        System.out.println("Sending 'drive' command (velocity:" + velocity + ", radius:" + radius + ") to roomba.");
 	        byte[] cmd = { (byte)OPC_DRIVE, (byte)(velocity >>> 8), (byte)velocity,
 	                        (byte)(radius >>> 8), (byte)radius
 	        };
@@ -142,8 +142,8 @@ public class SerialCommunication {
 	        if (rightVelocity < -500 || rightVelocity > 500 || leftVelocity < -500 || leftVelocity > 500)
 	            throw new IllegalArgumentException("Velocity should be between -500 and 500");
 
-	        System.out.println("Sending 'driveDirect' command (velocity right: " + rightVelocity + ", " +
-	                "velocity left: " + leftVelocity + ") to roomba.");
+//	        System.out.println("Sending 'driveDirect' command (velocity right: " + rightVelocity + ", " +
+//	                "velocity left: " + leftVelocity + ") to roomba.");
 	        byte[] cmd = { (byte)OPC_DRIVE_WHEELS, (byte)(rightVelocity >>> 8), (byte)rightVelocity,
 	                        (byte)(leftVelocity >>> 8), (byte)leftVelocity
 	        };
@@ -156,7 +156,7 @@ public class SerialCommunication {
 	        if (rightPWM < -100 || rightPWM > 100 || leftPWM < -100 || leftPWM > 100)
 	            throw new IllegalArgumentException("PWM should be between -100% and 100%");
 
-	        System.out.println("Sending 'drivePWM' command (right PWM: " + rightPWM + "%, left PWM: " + leftPWM + "%) to roomba.");
+//	        System.out.println("Sending 'drivePWM' command (right PWM: " + rightPWM + "%, left PWM: " + leftPWM + "%) to roomba.");
 	        int relRightPWM = DRIVE_WHEEL_MAX_POWER * rightPWM / 100;
 	        int relLeftPWM = DRIVE_WHEEL_MAX_POWER * leftPWM / 100;
 	        byte[] cmd = { (byte)OPC_DRIVE_PWM, (byte)(relRightPWM >>> 8), (byte)relRightPWM,
@@ -167,8 +167,8 @@ public class SerialCommunication {
 
 	    public static void motors(OutputStream out, boolean sideBrush, boolean vacuum, boolean mainBrush,
 	                       boolean sideBrushClockwise, boolean mainBrushOutward) throws IOException {
-	        System.out.println("Sending 'motors' command (sideBrush: " + sideBrush + "(clockwise: " + sideBrushClockwise + "), " +
-	                "vacuum: " + vacuum + ", mainBrush: " + mainBrush + "(outward: " + mainBrushOutward + ")) to roomba.");
+//	        System.out.println("Sending 'motors' command (sideBrush: " + sideBrush + "(clockwise: " + sideBrushClockwise + "), " +
+//	                "vacuum: " + vacuum + ", mainBrush: " + mainBrush + "(outward: " + mainBrushOutward + ")) to roomba.");
 
 	        // Create motor byte
 	        byte motors = (byte)((sideBrush?MOTORS_SIDE_BRUSH_MASK:0) | (vacuum?MOTORS_VACUUM_MASK:0) |
@@ -186,8 +186,8 @@ public class SerialCommunication {
 	        if (vacuumPWM < 0 || vacuumPWM > 100)
 	            throw new IllegalArgumentException("Vacuum PWM should be between 0% and 100%");
 
-	        System.out.println("Sending 'motorsPWM' command (mainBrushPWM: " + mainBrushPWM + "%, sideBrushPWM: " + sideBrushPWM +
-	                "%, vacuumPWM: " + vacuumPWM + "%) to roomba.");
+//	        System.out.println("Sending 'motorsPWM' command (mainBrushPWM: " + mainBrushPWM + "%, sideBrushPWM: " + sideBrushPWM +
+//	                "%, vacuumPWM: " + vacuumPWM + "%) to roomba.");
 	        int relMainBrushPWM = MOTORS_MAX_POWER * mainBrushPWM / 100;
 	        int relSideBrushPWM = MOTORS_MAX_POWER * sideBrushPWM / 100;
 	        int relVacuumPWM    = MOTORS_MAX_POWER * vacuumPWM / 100;
