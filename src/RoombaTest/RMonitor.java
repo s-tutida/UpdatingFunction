@@ -23,6 +23,7 @@ public class RMonitor extends Monitor{
 		
 		if( !(Mat)o.empty() ) {
 			
+			System.out.println("Enter if statement in prepareData");
 			//Detect target color in a pic
 			ColorDetector dc = new ColorDetector();
 			Mat webcam_image2 = dc.detect_blue(webcam_image);
