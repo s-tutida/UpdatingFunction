@@ -12,24 +12,25 @@ public class RPlan extends Plan{
 	@Override
 	public Object plan(Object o) {
 		
-		int plan[] = (int[]) o;
-		int direct = plan[0];
+		String plan[] = (String[]) o;
+		int direct = Integer.parseInt(plan[0]);
+		int mode = Integer.parseInt(plan[1]);
 		
-		if(plan[1] == START_CLEAN) {
+		if(mode == START_CLEAN) {
 			int commands[] = {1,0,4,5};
 			return commands;
-		}else if(plan[1] == CONTINUE_SEARCH){
+		}else if(mode == CONTINUE_SEARCH){
 			if(direct == 1) {
-				int commands[] = {1,0,4,5};
+				String commands[] = {"1","0","4", "5"};
 				return commands;
 			}else if(direct == 2){
-				int commands[] = {1,4,8};
+				String commands[] = {"1" ,"0" ,"4","8"};
 				return commands;
 			}else if(direct == 3) {
-				int commands[] = {1,0,4,5};
+				String commands[] = {"1","0","4","5"};
 				return commands;
 			}else if(direct == 4) {
-				int commands[] = {1,0,4,5};
+				String commands[] = {"1","0","4","5"};
 				return commands;
 			}
 		}

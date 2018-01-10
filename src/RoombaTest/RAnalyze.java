@@ -12,17 +12,17 @@ public class RAnalyze extends Analysis{
 	@Override
 	public Object analysis(Object o) {
 		
-		int nums[] = (int[]) o;
-		int plan[] = null;
+		String nums[] = (String[]) o;
+		String plan[] = null;
 		
-		int direct = nums[0];
-		int distance = nums[1];
+		int direct = Integer.parseInt(nums[0]);
+		int distance = Integer.parseInt(nums[1]);
 		if(distance < REFERENCE_distance ) {
-			plan[0] = direct;
-			plan[1] = CONTINUE_SEARCH;
+			plan[0] = String.valueOf(direct);
+			plan[1] = String.valueOf(CONTINUE_SEARCH);
 		}else {
-			plan[0] = -1;
-			plan[1] = START_CLEAN;
+			plan[0] = String.valueOf(-1);
+			plan[1] = String.valueOf(START_CLEAN);
 		}
 		return plan;
 	}

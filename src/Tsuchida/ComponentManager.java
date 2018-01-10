@@ -228,7 +228,7 @@ public abstract class ComponentManager extends Thread{
 				
 				//TIMERの実装
 				try {
-					if(time != null) Thread.sleep(Long.parseLong(time, 10));//ミリ秒単位
+					if(time != null) Thread.sleep(Long.parseLong(time, 1000));//ミリ秒単位
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}

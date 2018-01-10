@@ -26,11 +26,11 @@ public class RExecute extends Execute{
 
 	@Override
 	public void setData(Object o) {
-		int commands[] = (int[]) o;
+		String commands[] = (String[]) o;
 		
 		if(sc != null) {
-			for(int command: commands){
-				sc.send_command(command);
+			for(String command: commands){
+				sc.send_command(Integer.parseInt(command));
 			}
 		}
 		
