@@ -17,7 +17,7 @@ public class Roomba extends ComponentManager{
 	        e.printStackTrace();
 	    }
 		
-		rm.addMonitor(new TestMonitor(rm, "Monitor"))
+		rm.addMonitor(new RMonitor(rm, "Monitor"))
 		   .addAnalysis(new RAnalyze(rm, "Analyze"))
 		   .addPlan(new RPlan(rm, "Plan"))
 		   .addExecute(new RExecute(rm, "Eexecute",sc))
