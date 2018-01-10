@@ -13,7 +13,7 @@ public class USBcamera {
 	public USBcamera(){
 	}
 
-	public Mat run(){
+	public VideoCapture run(){
 
 		// Native Libraryのロード
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
