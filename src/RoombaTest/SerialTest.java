@@ -93,6 +93,9 @@ public class SerialTest {
 		                	    System.out.println("DEBUG : SerialWriter input cmd is " + inputValue);
 		                	    
 		                	    switch(inputValue) {
+		                	    		case 0: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
+		                	    				write(out, 141, 0);
+			                	    	        break;
 			                	    	case 1: startup(out);
 			                	    	        break;
 			                	    	case 2:	stop(out);
