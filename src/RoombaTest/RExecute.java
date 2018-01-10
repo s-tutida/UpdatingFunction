@@ -52,6 +52,19 @@ public class RExecute extends Execute{
         }
         // Close the port.
         serialPort.close();
+        
+    		Runtime runtime = Runtime.getRuntime();
+		Process p = null;
+		
+		try {
+			p = runtime.exec((String) "rm -R /var/lock/LCK..ttyUSB0");
+			p.waitFor();
+			
+	    } catch (InterruptedException e) {
+			e.printStackTrace();
+	    } catch (IOException e) {
+			e.printStackTrace();
+	    }
     }
 
 }
