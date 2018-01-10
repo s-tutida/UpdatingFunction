@@ -12,8 +12,9 @@ public class RExecute extends Execute{
     SerialCommunication sc = null;
     SerialPort serialPort = null;
 	
-	public RExecute(ComponentManager cm, String name) {
+	public RExecute(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
+		sc = in_sc;
 	}
 	
 	@Override
@@ -23,13 +24,6 @@ public class RExecute extends Execute{
 
 	@Override
 	public void setData(Object o) {
-		
-        try {
-	    	    sc = new SerialCommunication();
-	        sc.connect("/dev/ttyUSB0");
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
         
 		String str = String.valueOf(o);
 		String[] commands = str.split(",", 0);
@@ -42,29 +36,28 @@ public class RExecute extends Execute{
 			}
 		}
 		
-		try {
-
-            serialPort.removeEventListener();
-            serialPort.close();            
-            sc.out.close();
-        } catch (IOException ex) {
-            // don't care
-        }
-        // Close the port.
-        serialPort.close();
-        
-    		Runtime runtime = Runtime.getRuntime();
-		Process p = null;
-		
-		try {
-			p = runtime.exec((String) "rm -R /var/lock/LCK..ttyUSB0");
-			p.waitFor();
-			
-	    } catch (InterruptedException e) {
-			e.printStackTrace();
-	    } catch (IOException e) {
-			e.printStackTrace();
-	    }
+//		try {
+//            serialPort.removeEventListener();
+//            serialPort.close();            
+//            sc.out.close();
+//        } catch (IOException ex) {
+//            // don't care
+//        }
+//        // Close the port.
+//        serialPort.close();
+//        
+//    		Runtime runtime = Runtime.getRuntime();
+//		Process p = null;
+//		
+//		try {
+//			p = runtime.exec((String) "rm -R /var/lock/LCK..ttyUSB0");
+//			p.waitFor();
+//			
+//	    } catch (InterruptedException e) {
+//			e.printStackTrace();
+//	    } catch (IOException e) {
+//			e.printStackTrace();
+//	    }
     }
 
 }
