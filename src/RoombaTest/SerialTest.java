@@ -91,12 +91,19 @@ public class SerialTest {
 		                	    switch(inputValue) {
 			                	    	case 1: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
 			                	    	        write(out, 141, 0);
+			                	    	        break;
 			                	    	case 2:	 out.write(motor(64,64));//forward
+			                	    			 break;
 			                	    	case 3:	 out.write(motor(64,-64));//right
+	                	    			         break;
 			                	    	case 4:	 out.write(motor(-64,64));//left
+			                	    	         break;
 			                	    	case 5:	 out.write(motor(-64,-64));//back
+			                	    	         break;
 			                	    	case 6:  write(out, 128, 132, 137, 255, 56, 1, 244);
+			                	    	         break;
 			                	    	case 7:  write(out, 128, 132, 137, 6, 64, -6, -64);
+			                	    	         break;
 			                	    	default:	 out.write(motor(0,0));//stop
 		                	    
 		                	    }
