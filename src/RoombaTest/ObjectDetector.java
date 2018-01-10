@@ -52,6 +52,7 @@ public class ObjectDetector {
 		}
 		
 		System.out.println("DEBUG : Distance "+ max);
+		System.out.println("DEBUG : Direct "+ answer);
 		if(max > 5000) {
 			answer = -1;
 		}
