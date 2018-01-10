@@ -54,7 +54,7 @@ public class ObjectDetector {
 		if(max > 5000) {
 			answer = -1;
 		}
-		System.out.println("Answer in ObjectDetector is " + answer);
+		System.out.println("DEBUG : Answer in ObjectDetector is " + answer);
 		return String.valueOf(answer);
 	}
 

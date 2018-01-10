@@ -15,15 +15,19 @@ public class RMonitor extends Monitor{
 	public Object getData() {
 		
 		USBcamera uc = new USBcamera();
+	
 		return uc.run();
 	}
 
 	@Override
 	public Object prepareData(Object o) {
 		
+		System.out.println("DEBUG : Above if statement in prepareData");
+		System.out.println("DEBUG : Object parameter in prepareData "  + o);
+		
 		if( !(Mat)o.empty() ) {
 			
-			System.out.println("Enter if statement in prepareData");
+			System.out.println("DEBUG : Enter if statement in prepareData");
 			//Detect target color in a pic
 			ColorDetector dc = new ColorDetector();
 			Mat webcam_image2 = dc.detect_blue(webcam_image);

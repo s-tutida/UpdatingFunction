@@ -27,11 +27,11 @@ public class RExecute extends Execute{
         
 		String str = String.valueOf(o);
 		String[] commands = str.split(",", 0);
-System.out.print(commands[0]);	
+        
 		if(sc!=null){
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {
-					System.out.println(command);
+					System.out.println("DEBUG : Command to send is " + command);
 					sc.send_command(Integer.parseInt(command));
 				}
 			}
