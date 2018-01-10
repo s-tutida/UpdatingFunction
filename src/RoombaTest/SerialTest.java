@@ -104,8 +104,10 @@ public class SerialTest {
 			                	    		     break;
 			                	    	case 5 : clean(out);
 			                	    	         break;
-			                	    	case 6 : break;
-			                	    	case 7 : break;
+			                	    	case 6 : drive(out, 300, 1000);
+			                	    	         break;
+			                	    	case 7 : driveDirect(out, 300, 300);
+			                	    	         break;
 			                	    	case 8 : break;
 			                	    	default : break;
 			                	    	
@@ -155,6 +157,15 @@ public class SerialTest {
 	        }
 	        out.write(output);
 	    }
+	    
+	    private static void write(OutputStream out, byte... data) throws IOException {
+	        // Sigh, unsigned Java:
+	        byte[] output = new byte[data.length];
+	        for(int i = 0; i < data.length; i++) {
+	            output[i] = data[i];
+	        }
+	        out.write(output);
+	    }
 
 		public static void main(String arg[]) throws Exception{
 			    SerialTest rs = new SerialTest();
@@ -194,142 +205,84 @@ public class SerialTest {
 	    }
 
 
-//	    /**
-//	     * This command controls Roomba’s drive wheels.
-//	     * @param velocity The average velocity of the drive wheels in millimeters per second (mm/s)
-//	     *                 A positive velocity makes the roomba drive forward, a negative velocity
-//	     *                 makes it drive backwards.
-//	     *                 min: -500mm/s max: 500mm/s
-//	     * @param radius The radius in millimeters at which Roomba will turn
-//	     *               The longer radii make Roomba drive straighter, while the shorter radii make Roomba turn more.
-//	     *               The radius is measured from the center of the turning circle to the center of Roomba.
-//	     *               <p>min: -2000mm max: 2000mm</p>
-//	     *               Special cases:
-//	     *               <ul>
-//	     *                  <li>Straight = 32767 or 32768</li>
-//	     *                  <li>Turn in place clockwise = -1</li>
-//	     *                  <li>Turn in place counter-clockwise = 1</li>
-//	     *               </ul>
-//	     * @throws IllegalArgumentException One of the arguments is out of bounds.
-//	     */
-//	    public void drive(OutputStream out, int velocity, int radius) throws IllegalArgumentException {
-//
-//	        // Validate argument values
-//	        if (velocity < -500 || velocity > 500)
-//	            throw new IllegalArgumentException("Velocity should be between -500 and 500");
-//	        if ((radius < -2000 || radius > 2000) && (radius != 32768 && radius != 32767))
-//	            throw new IllegalArgumentException("Radius should be between -2000 and 2000 or 32767-32768");
-//
-//	        System.out.println("Sending 'drive' command (velocity:" + velocity + ", radius:" + radius + ") to roomba.");
-//	        byte[] cmd = { (byte)OPC_DRIVE, (byte)(velocity >>> 8), (byte)velocity,
-//	                        (byte)(radius >>> 8), (byte)radius
-//	        };
-//	        write(out, cmd);
-//	    }
-//
-//	    /**
-//	     * This command lets you control the forward and backward motion of Roomba’s drive wheels independently.
-//	     * A positive velocity makes that wheel drive forward, while a negative velocity makes it drive backward.
-//	     * @param rightVelocity Right wheel velocity min: -500 mm/s, max: 500 mm/s
-//	     * @param leftVelocity Left wheel velocity min: -500 mm/s, max: 500 mm/s
-//	     * @throws IllegalArgumentException One of the arguments is out of bounds.
-//	     */
-//	    public void driveDirect(int rightVelocity, int leftVelocity) throws IllegalArgumentException {
-//
-//	        // Validate argument values
-//	        if (rightVelocity < -500 || rightVelocity > 500 || leftVelocity < -500 || leftVelocity > 500)
-//	            throw new IllegalArgumentException("Velocity should be between -500 and 500");
-//
-//	        System.out.println("Sending 'driveDirect' command (velocity right: " + rightVelocity + ", " +
-//	                "velocity left: " + leftVelocity + ") to roomba.");
-//	        byte[] cmd = { (byte)OPC_DRIVE_WHEELS, (byte)(rightVelocity >>> 8), (byte)rightVelocity,
-//	                        (byte)(leftVelocity >>> 8), (byte)leftVelocity
-//	        };
-//	        send(cmd);
-//	    }
-//
-//	    /**
-//	     * This command lets you control the raw forward and backward motion of Roomba’s drive wheels independently.
-//	     * A positive PWM makes that wheel drive forward, while a negative PWM makes it drive backward.
-//	     * The PWM values are percentages: 100% is full power forward, -100% is full power reverse.
-//	     * @param rightPWM Right wheel PWM (min: -100%, max: 100%)
-//	     * @param leftPWM Left wheel PWM (min: -100%, max: 100%)
-//	     * @throws IllegalArgumentException One of the arguments is out of bounds.
-//	     */
-//	    public void drivePWM(int rightPWM, int leftPWM) throws IllegalArgumentException {
-//
-//	        // Validate argument values
-//	        if (rightPWM < -100 || rightPWM > 100 || leftPWM < -100 || leftPWM > 100)
-//	            throw new IllegalArgumentException("PWM should be between -100% and 100%");
-//
-//	        System.out.println("Sending 'drivePWM' command (right PWM: " + rightPWM + "%, left PWM: " + leftPWM + "%) to roomba.");
-//	        int relRightPWM = DRIVE_WHEEL_MAX_POWER * rightPWM / 100;
-//	        int relLeftPWM = DRIVE_WHEEL_MAX_POWER * leftPWM / 100;
-//	        byte[] cmd = { (byte)OPC_DRIVE_PWM, (byte)(relRightPWM >>> 8), (byte)relRightPWM,
-//	                        (byte)(relLeftPWM >>> 8), (byte)relLeftPWM
-//	        };
-//	        send(cmd);
-//	    }
-//
-//	    /**
-//	     * This command lets you control the forward and backward motion of Roomba’s main brush, side brush,
-//	     * and vacuum independently. Motor velocity cannot be controlled with this command, all motors will run at
-//	     * maximum speed when enabled. The main brush and side brush can be run in either direction.
-//	     * The vacuum only runs forward.
-//	     * @param sideBrush Turns on side brush
-//	     * @param vacuum Turns on vacuum
-//	     * @param mainBrush Turns on main brush
-//	     * @param sideBrushClockwise if true the side brush will turn clockwise (default: counterclockwise)
-//	     * @param mainBrushOutward if true the side brush will turn outward (default: inward)
-//	     */
-//	    public void motors(boolean sideBrush, boolean vacuum, boolean mainBrush,
-//	                       boolean sideBrushClockwise, boolean mainBrushOutward) {
-//	        System.out.println("Sending 'motors' command (sideBrush: " + sideBrush + "(clockwise: " + sideBrushClockwise + "), " +
-//	                "vacuum: " + vacuum + ", mainBrush: " + mainBrush + "(outward: " + mainBrushOutward + ")) to roomba.");
-//
-//	        // Create motor byte
-//	        byte motors = (byte)((sideBrush?MOTORS_SIDE_BRUSH_MASK:0) | (vacuum?MOTORS_VACUUM_MASK:0) |
-//	                            (mainBrush?MOTORS_MAIN_BRUSH_MASK:0) | (sideBrushClockwise?MOTORS_SIDE_BRUSH_CW_MASK:0) |
-//	                            (mainBrushOutward?MOTORS_MAIN_BRUSH_OW_MASK:0));
-//	        byte[] cmd = { (byte)OPC_MOTORS, motors };
-//	        send(cmd);
-//	    }
-//
-//	    /**
-//	     * This command lets you control the speed of Roomba’s main brush, side brush, and vacuum independently.
-//	     * The main brush and side brush can be run in either direction. The vacuum only runs forward.
-//	     * Positive speeds turn the motor in its default (cleaning) direction. Default direction for the side brush is
-//	     * counterclockwise. Default direction for the main brush/flapper is inward.
-//	     * The PWM values are percentages: 100% is full power forward, -100% is full power reverse.
-//	     * @param mainBrushPWM Main brush PWM (min: -100%, max: 100%)
-//	     * @param sideBrushPWM Side brush PWM (min: -100%, max: 100%)
-//	     * @param vacuumPWM Vacuum PWM (min: 0%, max: 100%)
-//	     * @throws IllegalArgumentException One of the arguments is out of bounds.
-//	     */
-//	    public void motorsPWM(int mainBrushPWM, int sideBrushPWM, int vacuumPWM) throws IllegalArgumentException {
-//
-//	        // Validate argument values
-//	        if (mainBrushPWM < -100 || mainBrushPWM > 100 || sideBrushPWM < -100 || sideBrushPWM > 100)
-//	            throw new IllegalArgumentException("Main- and side- brush PWM should be between -100% and 100%");
-//	        if (vacuumPWM < 0 || vacuumPWM > 100)
-//	            throw new IllegalArgumentException("Vacuum PWM should be between 0% and 100%");
-//
-//	        System.out.println("Sending 'motorsPWM' command (mainBrushPWM: " + mainBrushPWM + "%, sideBrushPWM: " + sideBrushPWM +
-//	                "%, vacuumPWM: " + vacuumPWM + "%) to roomba.");
-//	        int relMainBrushPWM = MOTORS_MAX_POWER * mainBrushPWM / 100;
-//	        int relSideBrushPWM = MOTORS_MAX_POWER * sideBrushPWM / 100;
-//	        int relVacuumPWM    = MOTORS_MAX_POWER * vacuumPWM / 100;
-//	        byte[] cmd = { (byte)OPC_PWM_MOTORS, (byte)relMainBrushPWM, (byte)relSideBrushPWM, (byte)relVacuumPWM };
-//	        send(cmd);
-//	    }
-//
-//	    
+	    public static void drive(OutputStream out, int velocity, int radius) throws IllegalArgumentException, IOException {
+
+	        if (velocity < -500 || velocity > 500)
+	            throw new IllegalArgumentException("Velocity should be between -500 and 500");
+	        if ((radius < -2000 || radius > 2000) && (radius != 32768 && radius != 32767))
+	            throw new IllegalArgumentException("Radius should be between -2000 and 2000 or 32767-32768");
+
+	        System.out.println("Sending 'drive' command (velocity:" + velocity + ", radius:" + radius + ") to roomba.");
+	        byte[] cmd = { (byte)OPC_DRIVE, (byte)(velocity >>> 8), (byte)velocity,
+	                        (byte)(radius >>> 8), (byte)radius
+	        };
+	        write(out, cmd);
+	    }
+
+	    public static void driveDirect(OutputStream out, int rightVelocity, int leftVelocity) throws IllegalArgumentException, IOException {
+
+	        // Validate argument values
+	        if (rightVelocity < -500 || rightVelocity > 500 || leftVelocity < -500 || leftVelocity > 500)
+	            throw new IllegalArgumentException("Velocity should be between -500 and 500");
+
+	        System.out.println("Sending 'driveDirect' command (velocity right: " + rightVelocity + ", " +
+	                "velocity left: " + leftVelocity + ") to roomba.");
+	        byte[] cmd = { (byte)OPC_DRIVE_WHEELS, (byte)(rightVelocity >>> 8), (byte)rightVelocity,
+	                        (byte)(leftVelocity >>> 8), (byte)leftVelocity
+	        };
+	        write(out, cmd);
+	    }
+
+	    public static void drivePWM(OutputStream out, int rightPWM, int leftPWM) throws IllegalArgumentException, IOException {
+
+	        // Validate argument values
+	        if (rightPWM < -100 || rightPWM > 100 || leftPWM < -100 || leftPWM > 100)
+	            throw new IllegalArgumentException("PWM should be between -100% and 100%");
+
+	        System.out.println("Sending 'drivePWM' command (right PWM: " + rightPWM + "%, left PWM: " + leftPWM + "%) to roomba.");
+	        int relRightPWM = DRIVE_WHEEL_MAX_POWER * rightPWM / 100;
+	        int relLeftPWM = DRIVE_WHEEL_MAX_POWER * leftPWM / 100;
+	        byte[] cmd = { (byte)OPC_DRIVE_PWM, (byte)(relRightPWM >>> 8), (byte)relRightPWM,
+	                        (byte)(relLeftPWM >>> 8), (byte)relLeftPWM
+	        };
+	        write(out, cmd);
+	    }
+
+	    public static void motors(OutputStream out, boolean sideBrush, boolean vacuum, boolean mainBrush,
+	                       boolean sideBrushClockwise, boolean mainBrushOutward) throws IOException {
+	        System.out.println("Sending 'motors' command (sideBrush: " + sideBrush + "(clockwise: " + sideBrushClockwise + "), " +
+	                "vacuum: " + vacuum + ", mainBrush: " + mainBrush + "(outward: " + mainBrushOutward + ")) to roomba.");
+
+	        // Create motor byte
+	        byte motors = (byte)((sideBrush?MOTORS_SIDE_BRUSH_MASK:0) | (vacuum?MOTORS_VACUUM_MASK:0) |
+	                            (mainBrush?MOTORS_MAIN_BRUSH_MASK:0) | (sideBrushClockwise?MOTORS_SIDE_BRUSH_CW_MASK:0) |
+	                            (mainBrushOutward?MOTORS_MAIN_BRUSH_OW_MASK:0));
+	        byte[] cmd = { (byte)OPC_MOTORS, motors };
+	        write(out, cmd);
+	    }
+
+	    public static void motorsPWM(OutputStream out, int mainBrushPWM, int sideBrushPWM, int vacuumPWM) throws IllegalArgumentException, IOException {
+
+	        // Validate argument values
+	        if (mainBrushPWM < -100 || mainBrushPWM > 100 || sideBrushPWM < -100 || sideBrushPWM > 100)
+	            throw new IllegalArgumentException("Main- and side- brush PWM should be between -100% and 100%");
+	        if (vacuumPWM < 0 || vacuumPWM > 100)
+	            throw new IllegalArgumentException("Vacuum PWM should be between 0% and 100%");
+
+	        System.out.println("Sending 'motorsPWM' command (mainBrushPWM: " + mainBrushPWM + "%, sideBrushPWM: " + sideBrushPWM +
+	                "%, vacuumPWM: " + vacuumPWM + "%) to roomba.");
+	        int relMainBrushPWM = MOTORS_MAX_POWER * mainBrushPWM / 100;
+	        int relSideBrushPWM = MOTORS_MAX_POWER * sideBrushPWM / 100;
+	        int relVacuumPWM    = MOTORS_MAX_POWER * vacuumPWM / 100;
+	        byte[] cmd = { (byte)OPC_PWM_MOTORS, (byte)relMainBrushPWM, (byte)relSideBrushPWM, (byte)relVacuumPWM };
+	        write(out, cmd);
+	    }
+
+	    
 	    // roomba Open interface commands Opcodes
-	    private static final int OPC_RESET              =   7;
 	    private static final int OPC_START              = 128;
 	    private static final int OPC_SAFE               = 131;
 	    private static final int OPC_FULL               = 132;
-	    private static final int OPC_POWER              = 133;
 	    private static final int OPC_CLEAN              = 135;
 	    private static final int OPC_DRIVE              = 137;
 	    private static final int OPC_MOTORS             = 138;
