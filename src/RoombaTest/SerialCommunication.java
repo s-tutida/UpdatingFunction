@@ -55,7 +55,7 @@ public class SerialCommunication {
                 	    		     break;
                 	    	case 5 : clean(out);
                 	    	         break;
-                	    	case 6 : drive(out, 300, 1000);//forward
+                	    	case 6 : drive(out, -300, -1000);//forward
                 	    	         break;
                 	    	case 7: drive(out, -300, -1);//clockwise
     	         		 		break;
