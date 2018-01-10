@@ -32,7 +32,9 @@ public class RExecute extends Execute{
 	
 		if(sc != null) {
 			for(String command: commands){
+				if(command!=null) {
 				sc.send_command(Integer.parseInt(command));
+				}
 			}
 		}
 		
