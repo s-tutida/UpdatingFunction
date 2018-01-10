@@ -11,7 +11,7 @@ public class ObjectDetector {
 	}
 
 
-	public int[] detect_object(Mat img){
+	public String[] detect_object(Mat img){
 
 		Mat A = img;
 		Size sizeA = A.size();
@@ -50,7 +50,7 @@ public class ObjectDetector {
 			answer = 4;
 			max = count4;
 		}
-		int nums[] = {answer, max};
+		String nums[] = {String.valueOf(answer), String.valueOf(max)};
 		return nums;
 	}
 

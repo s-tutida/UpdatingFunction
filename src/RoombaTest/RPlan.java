@@ -12,7 +12,7 @@ public class RPlan extends Plan{
 	@Override
 	public Object plan(Object o) {
 		
-		String plan[] = (String[]) o;
+		String plan[] =  (String[]) o;
 		int direct = Integer.parseInt(plan[0]);
 		int mode = Integer.parseInt(plan[1]);
 		
