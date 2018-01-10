@@ -34,7 +34,7 @@ public class RMonitor extends Monitor{
 			System.out.println("DEBUG : Enter if statement in prepareData");
 			//Detect target color in a pic
 			ColorDetector dc = new ColorDetector();
-			Mat webcam_image2 = dc.detect_blue((Mat)o);
+			Mat webcam_image2 = dc.detect_blue(webcam_image);
 	
 			//Detect target corn
 			ObjectDetector od = new ObjectDetector();
