@@ -163,7 +163,7 @@ public class SerialTest {
 	            output[i] = (byte)(data[i]);
 //	            output[i] = (byte)(data[i]&0xFF);
 	        }
-	        System.out.println("Output in write method (Option int array) " +  output[0] +","+  output[1] +","+  output[2] +","+  output[3] +","+  output[4] +","+  output[5] +","+  output[6]);
+	        System.out.println("Output in write method (Option int array) : First command " +  output[0]);
 	        out.write(output);
 	    }
 	    
@@ -173,7 +173,7 @@ public class SerialTest {
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = data[i];
 	        }
-	        System.out.println("Output in write method (Option byte array) " +  output[0] +","+  output[1] +","+  output[2] +","+  output[3] +","+  output[4] +","+  output[5] +","+  output[6]);
+	        System.out.println("Output in write method (Option byte array) : First command" +  output[0]);
 	        out.write(output);
 	    }
 
