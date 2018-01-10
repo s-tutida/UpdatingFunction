@@ -55,10 +55,14 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 6 : drive(out, -300, -1000);//forward
                 	    	         break;
-                	    	case 7: drive(out, -300, -1);//clockwise
+                	    	case 71: drive(out, -10, -10);//clockwise
     	         		 		break;
-                	    	case 8: drive(out, -300, 1);//counter-clockwise
-    	         		 		break;
+                   	case 72: drive(out, -30, -30);//clockwise
+	         		 		break;
+                   	case 81: drive(out, 10, 10);//counter-clockwise
+                   			break;
+                   	case 82: drive(out, 30, 30);//counter-clockwise
+                   			break;	         		 		
                 	    	case 9 : break;//sleep
                 	    	default : break;
 		                	    	

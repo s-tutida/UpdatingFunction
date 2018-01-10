@@ -34,7 +34,7 @@ public class RExecute extends Execute{
 					sc.send_command(Integer.parseInt(command));
 				    System.out.println("DEBUG : this command is send " + Integer.parseInt(command));
 					try {
-						Thread.sleep(300);
+						Thread.sleep(700);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
