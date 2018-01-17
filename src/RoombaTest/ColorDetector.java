@@ -19,7 +19,6 @@ public class ColorDetector {
 		
 		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_RGBA2BGR);//From RGBA to BGR
 		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_BGR2HSV);//From BGR to HSV. HSVは色抽出に向いている
-	    Imgproc.Canny(hsv,hsv,400,500,5,true);//Edge検出
 		Core.inRange(hsv, new Scalar(0, 100, 30), new Scalar(5, 255, 255), im2);//指定した画素値の範囲内にある領域をマスク画像で取得する. ノイズ除去後の画像を保存する.
 
 		return im2;
