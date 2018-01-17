@@ -22,20 +22,16 @@ public class RMonitor extends Monitor{
 	@Override
 	public Object prepareData(Object o) {
 		
-		Mat webcam_image=new Mat();
-//		System.out.println("DEBUG : Above if statement in prepareData");
-//		System.out.println("DEBUG : Object parameter in prepareData "  + o);
-		
+		Mat webcam_image=new Mat();		
 		
 		((VideoCapture)o).read(webcam_image);
 		if( !(webcam_image.empty()) ) {
 			
-//			System.out.println("DEBUG : Enter if statement in prepareData");
-			//Detect target color in a pic
+			//Detect red color in a picture
 			ColorDetector dc = new ColorDetector();
 			Mat webcam_image2 = dc.detect_blue(webcam_image);
 	
-			//Detect target corn
+			//Detect target's place
 			ObjectDetector od = new ObjectDetector();
 			return  od.detect_object(webcam_image2);
 		}
