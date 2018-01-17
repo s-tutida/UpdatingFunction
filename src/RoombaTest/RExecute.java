@@ -32,12 +32,24 @@ public class RExecute extends Execute{
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {
 					sc.send_command(Integer.parseInt(command));
-				    System.out.println("DEBUG : this command is send " + Integer.parseInt(command));
-					try {
-						Thread.sleep(700);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+					
+					//MAPEの終了
+					if(Integer.parseInt(command)==5) {
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 					}
+					
+				    System.out.println("DEBUG : this command is send " + Integer.parseInt(command));
+						try {
+							Thread.sleep(700);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 				}
 			}
 		}

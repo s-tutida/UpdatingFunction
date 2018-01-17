@@ -69,7 +69,7 @@ public class ObjectDetector {
 		}
 		
 		int sum = count1 + count2 + count3 + count4 + count5;
-		if(max > 1000) {
+		if(max > 1500) {
 			answer = -1;//終了
 		}
 		return String.valueOf(answer);

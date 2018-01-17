@@ -52,7 +52,6 @@ public class SerialCommunication {
                 	    	case 4 : fullMode(out);
                 	    		     break;
                 	    	case 5 : clean(out);
-                	    	         wait(100000);
                 	    	         break;
                 	    	case 6 : drive(out, -50, 0);//forward_l
                 	    	         break;
@@ -71,10 +70,7 @@ public class SerialCommunication {
 	            }
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            }
         }
 
 
