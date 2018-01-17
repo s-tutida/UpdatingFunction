@@ -15,7 +15,7 @@ public class ColorDetector {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		Mat im = img;// 入力画像の取得
 		Mat hsv = new Mat();
-		Mat im2 = new Mat();
+		
 		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_RGBA2BGR);//From RGBA to BGR
 		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_BGR2HSV);//From BGR to HSV. HSVは色抽出に向いている
 	    Imgproc.Canny(im2,im2,400,500,5,true);//Edge検出
