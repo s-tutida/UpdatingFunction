@@ -56,13 +56,13 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 6 : drive(out, -50, 0);//forward_l
                 	    	         break;
-                	    	case 71: driveDirect(out, -20, 20);//clockwise_l
+                	    	case 71: driveDirect(out, -30, 30);//clockwise_l
     	         		 		break;
-                   	case 72: driveDirect(out, -10, 10);//clockwise_h
+                   	case 72: driveDirect(out, -20, 20);//clockwise_h
 	         		 		break;
-                   	case 74: driveDirect(out, 10, -10);//counter-clockwise_h
+                   	case 74: driveDirect(out, 20, -20);//counter-clockwise_h
                    			break;
-                   	case 75:driveDirect(out, 20, -20);//counter-clockwise_h
+                   	case 75:driveDirect(out, 30, -30);//counter-clockwise_h
                    		    break;
                 	    	case 8 : break;//sleep
                 	    	default : break;
