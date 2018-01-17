@@ -14,6 +14,7 @@ public class ColorDetector {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		Mat im = img;// 入力画像の取得
+		Mat im2 = img;// 入力画像の取得
 		Mat hsv = new Mat();
 		
 		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_RGBA2BGR);//From RGBA to BGR
