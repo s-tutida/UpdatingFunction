@@ -62,7 +62,7 @@ public class ObjectDetector {
 			answer = 2;
 		}else if (max==count3){
 			answer = 3;
-		}else if (max==count4){
+		}else{
 			answer = 4;
 		}
 		
