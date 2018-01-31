@@ -67,7 +67,7 @@ public class ObjectDetector {
 		}
 		
 		int sum = count1 + count2 + count3 + count4;
-		if(max > 2000) {
+		if(max > 2500) {
 			answer = -1;//終了
 		}
 		return String.valueOf(answer);
