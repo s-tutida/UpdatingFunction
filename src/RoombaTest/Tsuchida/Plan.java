@@ -6,13 +6,13 @@ import Tsuda.Port;
 public abstract class Plan extends Component{
 
 	//configurationを使用しない場合
-	public Plan(ComponentManager cm, String name) {
+	public Plan(System cm, String name) {
 		super(cm, name);
 		makePort();
 	}
 	
 	//configurationを使用する場合
-	public Plan(ComponentManager cm, String name, Configuration conf) {
+	public Plan(System cm, String name, Configuration conf) {
 		super(cm, name,conf);
 		makePort();
 	}

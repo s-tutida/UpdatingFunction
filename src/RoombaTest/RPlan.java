@@ -20,19 +20,16 @@ public class RPlan extends Plan{
 			String commands= "1,0,4,9,5";//Start cleaning
 			return commands;
 		}else if(mode == 1) {
-			String commands= "71,6";
+			String commands= "81,62";
 		    return commands;
 		}else if(mode == 2){
-			String commands= "72,6";
+			String commands= "71,62";
 			return commands;
 		}else if(mode == 3) {
-			String commands= "6";
+			String commands= "72,61";
 			return commands;
 		}else if(mode == 4) {
-			String commands= "74,6";
-			return commands;
-		}else if(mode == 5) {
-			String commands= "75,6";
+			String commands= "82,61";
 			return commands;
 		}else{
             String commands= "8";

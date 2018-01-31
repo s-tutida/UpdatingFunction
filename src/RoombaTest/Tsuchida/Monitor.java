@@ -6,13 +6,13 @@ import Tsuda.Port;
 public abstract class Monitor extends Component{
 
 	//configurationを使用しない場合
-	public Monitor(ComponentManager cm, String name) {
+	public Monitor(System cm, String name) {
 		super(cm, name);
 		makePort();//Monitorクラスのインスタンスが作成された時に、Portをつなぐ
 	}
 	
 	//configurationを使用する場合
-	public Monitor(ComponentManager cm, String name, Configuration conf) {
+	public Monitor(System cm, String name, Configuration conf) {
 		super(cm, name, conf);
 		makePort();
 	}

@@ -6,13 +6,13 @@ import Tsuda.Port;
 public abstract class Execute extends Component{
 
 	//configurationを使用しない場合
-	public Execute(ComponentManager cm, String name) {
+	public Execute(System cm, String name) {
 		super(cm, name);
 		makePort();
 	}
 	
 	//configurationを使用する場合
-	public Execute(ComponentManager cm, String name, Configuration conf) {
+	public Execute(System cm, String name, Configuration conf) {
 		super(cm, name, conf);
 		makePort();
 	}

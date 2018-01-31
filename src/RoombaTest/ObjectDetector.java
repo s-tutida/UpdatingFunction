@@ -20,35 +20,35 @@ public class ObjectDetector {
 		    for (int j = 0; j < sizeA.width; j++) {
 		    	double[] data = new double[3];
 		        data = A.get(i, j);
-//		        if(data[0]!= 0){
-//					if(i <  (sizeA.height)/2 && j <  (sizeA.width)/2){
-//						count1++;
-//					}else if(i <  (sizeA.height)/2 && j >=  (sizeA.width)/2){
-//						count2++;
-//					}else if(i >=  (sizeA.height)/2 && j >=  (sizeA.width)/2){
-//						count3++;
-//					}else if(i >=  (sizeA.height)/2 && j <  (sizeA.width)/2){
-//						count4++;
-//					}
-//		        }
 		        if(data[0]!= 0){
-					if(j <  (sizeA.width)*1/5){
+					if(i <  (sizeA.height)/2 && j <  (sizeA.width)/2){
 						count1++;
-					}else if(j >=  (sizeA.width)*1/5 && j <  (sizeA.width)*2/5){
+					}else if(i <  (sizeA.height)/2 && j >=  (sizeA.width)/2){
 						count2++;
-					}else if(j >=  (sizeA.width)*2/5 && j <  (sizeA.width)*3/5){
+					}else if(i >=  (sizeA.height)/2 && j >=  (sizeA.width)/2){
 						count3++;
-					}else if(j >=  (sizeA.width)*3/5 && j <  (sizeA.width)*4/5){
+					}else if(i >=  (sizeA.height)/2 && j <  (sizeA.width)/2){
 						count4++;
-					}else if(j >=  (sizeA.width)*4/5 && j <  (sizeA.width)*5/5){
-						count5++;
 					}
 		        }
+//		        if(data[0]!= 0){
+//					if(j <  (sizeA.width)*1/5){
+//						count1++;
+//					}else if(j >=  (sizeA.width)*1/5 && j <  (sizeA.width)*2/5){
+//						count2++;
+//					}else if(j >=  (sizeA.width)*2/5 && j <  (sizeA.width)*3/5){
+//						count3++;
+//					}else if(j >=  (sizeA.width)*3/5 && j <  (sizeA.width)*4/5){
+//						count4++;
+//					}else if(j >=  (sizeA.width)*4/5 && j <  (sizeA.width)*5/5){
+//						count5++;
+//					}
+//		        }
 		    }
 		}
 		
 		
-		int values[] = {count1, count2, count3, count4, count5};
+		int values[] = {count1, count2, count3, count4};
         int max = values[0];
  
         for (int index = 1; index < values.length; index ++) {
@@ -64,11 +64,9 @@ public class ObjectDetector {
 			answer = 3;
 		}else if (max==count4){
 			answer = 4;
-		}else if (max==count4){
-			answer = 5;
 		}
 		
-		int sum = count1 + count2 + count3 + count4 + count5;
+		int sum = count1 + count2 + count3 + count4;
 		if(max > 1500) {
 			answer = -1;//終了
 		}

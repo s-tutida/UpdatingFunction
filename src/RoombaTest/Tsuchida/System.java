@@ -1,4 +1,4 @@
-package Tsuchida;
+package RoombaTest.Tsuchida;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import Tsuda.Component;
 
-public abstract class ComponentManager extends Thread{
+public abstract class System extends Thread{
 	
 	public volatile List<Component> componentList = new ArrayList<Component>();//実行中のコンポーネントのリスト 
 	public volatile List<Component> componentSubList  = new ArrayList<Component>();;//サブのコンポーエントのリスト
@@ -37,56 +37,56 @@ public abstract class ComponentManager extends Thread{
 	private BufferedReader in = null;
 
 	//Monitorをextendsして作成されたコンポーネントを本クラスのメンバーに追加する
-	public ComponentManager addMonitor(Component c) {
+	public System addMonitor(Component c) {
 		monitor = c;
 		addComponent(c);
 		return this;
 	}
 	
 	//Analysisをextendsして作成されたコンポーネントを本クラスのメンバーに追加する
-	public ComponentManager addAnalysis(Component c) {
+	public System addAnalysis(Component c) {
 		analysis = c;
 		addComponent(c);
 		return this;
 	}
 	
 	//Planをextendsして作成されたコンポーネントを本クラスのメンバーに追加する
-	public ComponentManager addPlan(Component c) {
+	public System addPlan(Component c) {
 		plan = c;
 		addComponent(c);
 		return this;
 	}
 	
 	//Executeをextendsして作成されたクラスのコンポーネントを本クラスのメンバーに追加する
-	public ComponentManager addExecute(Component c) {
+	public System addExecute(Component c) {
 		execute = c;
 		addComponent(c);
 		return this;
 	}
 	
 	//Monitorをextendsして作成されたコンポーネントを本クラスのサブメンバーに追加する
-	public ComponentManager addSubMonitor(Component c) {
+	public System addSubMonitor(Component c) {
 		monitorSub = c;
 		addSubComponent(c);
 		return this;
 	}
 	
 	//Analysisをextendsして作成されたコンポーネントを本クラスのサブメンバーに追加する
-	public ComponentManager addSubAnalysis(Component c) {
+	public System addSubAnalysis(Component c) {
 		analysisSub = c;
 		addSubComponent(c);
 		return this;
 	}
 	
 	//Planをextendsして作成されたコンポーネントを本クラスのサブメンバーに追加する
-	public ComponentManager addSubPlan(Component c) {
+	public System addSubPlan(Component c) {
 		planSub = c;
 		addSubComponent(c);
 		return this;
 	}
 	
 	//Executeをextendsして作成されたクラスのコンポーネントを本クラスのサブメンバーに追加する
-	public ComponentManager addSubExecute(Component c) {
+	public System addSubExecute(Component c) {
 		executeSub = c;
 		addSubComponent(c);
 		return this;
@@ -103,7 +103,7 @@ public abstract class ComponentManager extends Thread{
 	}
 	
 	//M,A,P,Eの各コンポーネントが用意されたかをチェックする. Dataのフローを設定する.
-	public ComponentManager build() {
+	public System build() {
 		
 		//各componentが正しく設定されているかを確認します
         if (monitor == null || analysis == null || plan == null || execute == null) {
