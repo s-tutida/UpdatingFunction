@@ -13,8 +13,7 @@ public class Roomba extends ComponentManager{
         try {
 	    	    sc = new SerialCommunication();
 	        sc.connect("/dev/ttyUSB0");
-			sc.send_command(1);//initial setup for roomba
-			sc.send_command(4);//initial setup for roomba
+			
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
