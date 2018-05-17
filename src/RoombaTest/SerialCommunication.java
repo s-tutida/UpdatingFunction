@@ -63,14 +63,6 @@ public class SerialCommunication {
                    			break;
                    	case 82:driveDirect(out, 15, -15);//counter-clockwise_h
                    		    break;
-                    case 90:;//ジグザグ, 右回り (cleanmode)
-                    	        break;
-                    case 91:;//ジグザグ, 左回り (cleanmode)
-            	        			break;
-                    case 92:;//直進 小 (cleanmode)
-            	        			break;
-                    case 93:;//直進 大 (cleanmode)
-            	        			break;
                 	    	case 8 : break;//sleep
                 	    	default : break;
 		                	    	
@@ -212,7 +204,7 @@ public class SerialCommunication {
 	    private static final int OPC_START              = 128;
 	    private static final int OPC_SAFE               = 131;
 	    private static final int OPC_FULL               = 132;
-	    private static final int OPC_CLEAN              = 134;//修正
+	    private static final int OPC_CLEAN              = 134;
 	    private static final int OPC_DRIVE              = 137;
 	    private static final int OPC_MOTORS             = 138;
 	    private static final int OPC_PWM_MOTORS         = 144;
