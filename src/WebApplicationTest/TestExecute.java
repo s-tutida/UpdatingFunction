@@ -1,4 +1,4 @@
-package Test;
+package WebApplicationTest;
 
 import java.io.IOException;
 
@@ -14,11 +14,6 @@ public class TestExecute extends Execute{
 
 	@Override
 	public Object execute(Object o) {
-		return o;
-	}
-
-	@Override
-	public void setData(Object o) {
 
 		Runtime runtime = Runtime.getRuntime();
 		Process p = null;
@@ -32,5 +27,7 @@ public class TestExecute extends Execute{
 	    } catch (IOException e) {
 			e.printStackTrace();
 	    }
+		
+		return null;
 	}
 }

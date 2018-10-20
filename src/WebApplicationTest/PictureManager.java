@@ -1,4 +1,4 @@
-package Test;
+package WebApplicationTest;
 
 import java.io.IOException;
 

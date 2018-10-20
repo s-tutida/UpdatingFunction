@@ -1,4 +1,4 @@
-package Test;
+package WebApplicationTest;
 
 import Tsuchida.Analyze;
 import Tsuchida.ComponentManager;
