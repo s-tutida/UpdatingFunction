@@ -3,16 +3,19 @@ package Tsuchida;
 import Tsuda.Component;
 import Tsuda.Port;
 
-public abstract class Analysis extends Component{
+public abstract class Analyze extends Component{
 
+	public volatile Knowledge knowledge = null;
+	
 	//configurationを使用しない場合
-	public Analysis(ComponentManager cm, String name) {
+	public Analyze(ComponentManager cm, String name) {
 		super(cm, name);
+		this.knowledge = getKnowledge(cm);
 		makePort();
 	}
 	
 	//configurationを使用する場合
-	public Analysis(ComponentManager cm, String name, Configuration conf) {
+	public Analyze(ComponentManager cm, String name, Configuration conf) {
 		super(cm, name, conf);
 		makePort();
 	}
@@ -21,6 +24,11 @@ public abstract class Analysis extends Component{
 	public void makePort() {
 		super.addPort(new Port<Object>("analysisP", Port.PortType.PROVIDED, this));
 		super.addPort(new Port<Object>("analysisR", Port.PortType.REQUIRED, this));
+	}
+	
+	//get knowledge
+	public Knowledge getKnowledge(ComponentManager cm) {
+		return cm.getKnowledge();
 	}
 
 	@Override

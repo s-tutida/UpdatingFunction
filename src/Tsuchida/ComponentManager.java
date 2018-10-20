@@ -29,6 +29,7 @@ public abstract class ComponentManager extends Thread{
     	public volatile Component analysisSub = null;
     	public volatile Component planSub = null;
     	public volatile Component executeSub = null;
+    	public volatile Knowledge knowledge = null;
     	
 	private volatile boolean loopStatus = false;//MAPE loopの状態を保持するフラグ
 	
@@ -117,6 +118,15 @@ public abstract class ComponentManager extends Thread{
         
         return this;
     }
+	
+	public ComponentManager addKnowledge(Knowledge c) {
+		knowledge = c;
+		return this;
+	}
+	
+	public Knowledge getKnowledge() {
+		return this.knowledge;
+	}
 	
 	//標準入力から文字列を受け付ける
 	public void run() {

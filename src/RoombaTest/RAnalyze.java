@@ -1,9 +1,9 @@
 package RoombaTest;
 
-import Tsuchida.Analysis;
+import Tsuchida.Analyze;
 import Tsuchida.ComponentManager;
 
-public class RAnalyze extends Analysis{
+public class RAnalyze extends Analyze{
 
 	public RAnalyze(ComponentManager cm, String name) {
 		super(cm, name);

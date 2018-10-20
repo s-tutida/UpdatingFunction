@@ -31,19 +31,6 @@ public class ObjectDetector {
 						count4++;
 					}
 		        }
-//		        if(data[0]!= 0){
-//					if(j <  (sizeA.width)*1/5){
-//						count1++;
-//					}else if(j >=  (sizeA.width)*1/5 && j <  (sizeA.width)*2/5){
-//						count2++;
-//					}else if(j >=  (sizeA.width)*2/5 && j <  (sizeA.width)*3/5){
-//						count3++;
-//					}else if(j >=  (sizeA.width)*3/5 && j <  (sizeA.width)*4/5){
-//						count4++;
-//					}else if(j >=  (sizeA.width)*4/5 && j <  (sizeA.width)*5/5){
-//						count5++;
-//					}
-//		        }
 		    }
 		}
 		

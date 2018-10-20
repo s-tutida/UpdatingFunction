@@ -19,12 +19,6 @@ public class RExecute extends Execute{
 	
 	@Override
 	public Object execute(Object o) {
-		return o;
-	}
-
-	@Override
-	public void setData(Object o) {
-        
 		String str = String.valueOf(o);
 		String[] commands = str.split(",", 0);
         
@@ -53,7 +47,7 @@ public class RExecute extends Execute{
 				}
 			}
 		}
-	
-    }
+		return null;
+	}
 
 }

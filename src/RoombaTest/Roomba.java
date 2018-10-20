@@ -21,11 +21,11 @@ public class Roomba extends ComponentManager{
 		USBcamera uc = new USBcamera();
 		
 		rm.addMonitor(new RMonitor(rm, "Monitor", uc))
-		   .addAnalysis(new RAnalyze(rm, "Analyze"))
-		   .addPlan(new RPlan(rm, "Plan"))
-		   .addExecute(new RExecute(rm, "Eexecute",sc))
-           .build()
-           .start();
+		  .addAnalysis(new RAnalyze(rm, "Analyze"))
+		  .addPlan(new RPlan(rm, "Plan"))
+		  .addExecute(new RExecute(rm, "Eexecute",sc))
+          .build()
+          .start();
 
 	}
 

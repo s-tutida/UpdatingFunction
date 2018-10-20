@@ -5,9 +5,12 @@ import Tsuda.Port;
 
 public abstract class Execute extends Component{
 
+	public volatile Knowledge knowledge = null;
+	
 	//configurationを使用しない場合
 	public Execute(ComponentManager cm, String name) {
 		super(cm, name);
+		this.knowledge = getKnowledge(cm);
 		makePort();
 	}
 	
@@ -20,6 +23,11 @@ public abstract class Execute extends Component{
 	//make port
 	public void makePort() {
 		super.addPort(new Port<Object>("executeR", Port.PortType.REQUIRED, this));
+	}
+	
+	//get knowledge
+	public Knowledge getKnowledge(ComponentManager cm) {
+		return cm.getKnowledge();
 	}
 
 	@Override
@@ -38,9 +46,6 @@ public abstract class Execute extends Component{
 		//2. Executeクラスの本体の実行
 		obj = execute(o);
 		
-		//3.setDataメソッドで呼び出す
-		setData(obj);
-		
 	}
 
 	@Override
@@ -48,5 +53,4 @@ public abstract class Execute extends Component{
 	}
 	
 	public abstract Object execute(Object o);
-	public abstract void setData(Object o);
 }

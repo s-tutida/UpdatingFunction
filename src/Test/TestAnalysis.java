@@ -1,10 +1,10 @@
 package Test;
 
-import Tsuchida.Analysis;
+import Tsuchida.Analyze;
 import Tsuchida.ComponentManager;
 import Tsuchida.Configuration;
 
-public class TestAnalysis extends Analysis {
+public class TestAnalysis extends Analyze {
 	
 	private int referenceValue = 0;
 

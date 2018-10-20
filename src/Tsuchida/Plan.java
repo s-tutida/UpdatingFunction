@@ -4,10 +4,13 @@ import Tsuda.Component;
 import Tsuda.Port;
 
 public abstract class Plan extends Component{
+	
+	public volatile Knowledge knowledge = null;
 
 	//configurationを使用しない場合
 	public Plan(ComponentManager cm, String name) {
 		super(cm, name);
+		this.knowledge = getKnowledge(cm);
 		makePort();
 	}
 	
@@ -15,6 +18,11 @@ public abstract class Plan extends Component{
 	public Plan(ComponentManager cm, String name, Configuration conf) {
 		super(cm, name,conf);
 		makePort();
+	}
+	
+	//get knowledge
+	public Knowledge getKnowledge(ComponentManager cm) {
+		return cm.getKnowledge();
 	}
 	
 	//make port
