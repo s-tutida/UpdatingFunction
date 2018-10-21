@@ -37,6 +37,7 @@ public class RExecute extends Execute{
 					if(Integer.parseInt(command)==5) {
 						check = 1;
 						((ControlLoop) super.cm).exit();
+						System.out.println("   Send arriveSpot event to EventConverter.");
 					}
 					
 					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
