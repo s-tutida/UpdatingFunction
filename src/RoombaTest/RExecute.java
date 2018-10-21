@@ -34,7 +34,7 @@ public class RExecute extends Execute{
 				if(! (command==null || command.isEmpty())) {//実行コマンドがある
 										
 					//MAPEの終了
-					if(Integer.parseInt(command)==134) {
+					if(Integer.parseInt(command)==5) {
 						check = 1;
 						System.out.println("   Send arriveSpot event to EventConverter.");
 						cm.exit();
