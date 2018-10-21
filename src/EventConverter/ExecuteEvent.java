@@ -47,11 +47,26 @@ public class ExecuteEvent extends Execute{
         		// TODO eventの送信
 	    		while(event_list.peekLast()!=null) {
 	    			System.out.println("      MMAPE-K loop will send this event : "+ event_list.pollLast());
-	    			sc.send_command(1);
-	    			sc.send_command(4);
-	    			sc.send_command(5);
+//	    			sc.send_command(1);
+//	    			sc.send_command(4);
+//	    			sc.send_command(5);
 	    			//ここで, eventを送信.
 	    		}
+    			sc.send_command(1);
+				//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
+				try {
+					Thread.sleep(700);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+    			sc.send_command(4);
+				//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
+				try {
+					Thread.sleep(700);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+    			sc.send_command(5);
 	        break;
         case 3:
         	    break;
