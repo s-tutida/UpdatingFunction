@@ -11,6 +11,7 @@ public class RExecute extends Execute{
 
     SerialCommunication sc = null;
     SerialPort serialPort = null;
+    Integer check = 0;
 	
 	public RExecute(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
@@ -21,23 +22,22 @@ public class RExecute extends Execute{
 	public Object execute(Object o) {
 		String str = String.valueOf(o);
 		String[] commands = str.split(",", 0);
+		
+		if(check == 1) {
+			return null;
+		}
         
-		if(sc!=null){
+		if(sc!=null){//通信がある.
 			for(String command: commands){
-				if(! (command==null || command.isEmpty())) {
+				if(! (command==null || command.isEmpty())) {//実行コマンドがある
 					sc.send_command(Integer.parseInt(command));
 					
 					//MAPEの終了
 					if(Integer.parseInt(command)==5) {
-							try {
-								Thread.sleep(10000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+						check = 1;
 					}
 					
-//				    System.out.println("DEBUG : this command is send " + Integer.parseInt(command));
+					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
 					try {
 						Thread.sleep(700);
 					} catch (InterruptedException e) {
