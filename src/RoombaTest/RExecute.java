@@ -34,13 +34,16 @@ public class RExecute extends Execute{
 				if(! (command==null || command.isEmpty())) {//実行コマンドがある
 										
 					//MAPEの終了
-					if(Integer.parseInt(command)==5) {
+					if(Integer.parseInt(command)==5) {//clean
 						check = 1;
 						System.out.println("   Arrive at target point");
 						System.out.println("   Send arriveSpot event to EventConverter.");
-						sc.send_command(1);
-						sc.send_command(0);
-						sc.send_command(4);
+						sc.send_command(2);
+//						sc.send_command(0);
+//						sc.send_command(4);
+//						sc.send_command(1);
+//						sc.send_command(0);
+//						sc.send_command(4);
 						cm.exit();
 						return null;
 					}
