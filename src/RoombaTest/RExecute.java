@@ -15,7 +15,7 @@ public class RExecute extends Execute{
     Integer check = 0;
 	
 	public RExecute(ControlLoop in_cm, String name, SerialCommunication in_sc) {
-		super(cm, name);
+		super(in_cm, name);
 		this.cm = in_cm;
 		sc = in_sc;
 	}
