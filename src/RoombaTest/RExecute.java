@@ -38,6 +38,7 @@ public class RExecute extends Execute{
 						check = 1;
 						System.out.println("   Send arriveSpot event to EventConverter.");
 						cm.exit();
+						return null;
 					}
 					
 					sc.send_command(Integer.parseInt(command));
