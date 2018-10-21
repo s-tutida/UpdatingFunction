@@ -32,15 +32,15 @@ public class RExecute extends Execute{
 		if(sc!=null){//通信がある.
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {//実行コマンドがある
-					
-					sc.send_command(Integer.parseInt(command));
-					
+										
 					//MAPEの終了
 					if(Integer.parseInt(command)==134) {
 						check = 1;
 						System.out.println("   Send arriveSpot event to EventConverter.");
 						cm.exit();
 					}
+					
+					sc.send_command(Integer.parseInt(command));
 					
 					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
 					try {
