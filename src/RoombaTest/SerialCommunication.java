@@ -122,10 +122,7 @@ public class SerialCommunication {
 
 	    public static void clean(OutputStream out) throws IOException {
 //	        System.out.println("Sending 'clean' command to roomba.");
-	        write(out, OPC_CLEAN);
-		int i=1;
-		while(i==1){
-		}					
+	        write(out, OPC_CLEAN);				
 	    }
 
 
