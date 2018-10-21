@@ -14,8 +14,6 @@ public class RPlan extends Plan{
 		
 		int mode = Integer.parseInt(String.valueOf(o));
 		
-//	    System.out.println("DEBUG : mode in RPlan instance is " + mode);
-		
 		if(mode == -1) {
 			String commands= "1,0,4,8,5";//Start cleaning
 			return commands;

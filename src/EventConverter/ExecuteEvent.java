@@ -7,8 +7,10 @@ import Tsuchida.*;
 
 public class ExecuteEvent extends Execute{
 
-	public ExecuteEvent(ComponentManager cm, String name) {
+	SerialCommunication sc;
+	public ExecuteEvent(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
+		sc = in_sc;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -23,7 +25,7 @@ public class ExecuteEvent extends Execute{
 		String event =  (String) result_of_planning[1];//event
 		Deque<String> event_list =  (Deque<String>) result_of_planning[2];//event
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
-	
+		
 		
 		switch (mode) {
         case 1://追加機能を動かす
@@ -45,6 +47,7 @@ public class ExecuteEvent extends Execute{
         		// TODO eventの送信
 	    		while(event_list.peekLast()!=null) {
 	    			System.out.println("      MMAPE-K loop will send this event : "+ event_list.pollLast());
+	    			sc.send_command(1);
 	    			//ここで, eventを送信.
 	    		}
 	        break;

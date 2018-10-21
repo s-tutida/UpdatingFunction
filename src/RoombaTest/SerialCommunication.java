@@ -1,6 +1,5 @@
 package RoombaTest;
 
-
 import java.io.IOException;
 import java.io.OutputStream;
 import gnu.io.CommPort;
