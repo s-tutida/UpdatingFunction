@@ -48,6 +48,8 @@ public class ExecuteEvent extends Execute{
 	    		while(event_list.peekLast()!=null) {
 	    			System.out.println("      MMAPE-K loop will send this event : "+ event_list.pollLast());
 	    			sc.send_command(1);
+	    			sc.send_command(4);
+	    			sc.send_command(5);
 	    			//ここで, eventを送信.
 	    		}
 	        break;
