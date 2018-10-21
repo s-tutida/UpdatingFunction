@@ -3,8 +3,6 @@ package EventConverter;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
-
-import RoombaTest.SerialCommunication;
 import Tsuchida.*;  
 
 
