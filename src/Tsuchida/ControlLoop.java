@@ -139,6 +139,10 @@ public abstract class ControlLoop extends Thread{
     //[start] startコマンドの処理
 	private void startLoop() {
 		
+		if(getLoopCondition()) {
+			return;
+		}
+		
 		OnLoopCondition();
 		
 		threadManager = Executors.newFixedThreadPool(1);
@@ -152,7 +156,7 @@ public abstract class ControlLoop extends Thread{
 	//[start] M,A,P,Eのループ処理
 	private void controlLoopOrder(){
 
-			System.out.println("*** New function corresponds to MoveToStartPoin state  ***"); 
+			System.out.println("***  Start to run new functions. ***"); 
 			ExecutorService executorService = null;
 			String time = null;
 			
