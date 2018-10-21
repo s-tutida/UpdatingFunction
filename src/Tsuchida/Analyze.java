@@ -8,14 +8,14 @@ public abstract class Analyze extends Component{
 	public volatile Knowledge knowledge = null;
 	
 	//configurationを使用しない場合
-	public Analyze(ComponentManager cm, String name) {
+	public Analyze(Thread cm, String name) {
 		super(cm, name);
 		this.knowledge = getKnowledge(cm);
 		makePort();
 	}
 	
 	//configurationを使用する場合
-	public Analyze(ComponentManager cm, String name, Configuration conf) {
+	public Analyze(Thread cm, String name, Configuration conf) {
 		super(cm, name, conf);
 		makePort();
 	}
@@ -27,8 +27,11 @@ public abstract class Analyze extends Component{
 	}
 	
 	//get knowledge
-	public Knowledge getKnowledge(ComponentManager cm) {
-		return cm.getKnowledge();
+	public Knowledge getKnowledge(Thread cm) {
+		if(((ComponentManager)cm) != null) {
+			return ((ComponentManager)cm).getKnowledge();
+		}
+		return ((ControlLoop)cm).getKnowledge();
 	}
 
 	@Override

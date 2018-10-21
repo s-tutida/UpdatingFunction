@@ -8,7 +8,7 @@ public abstract class Monitor extends Component{
 	public volatile Knowledge knowledge = null;
 
 	//configurationを使用しない場合
-	public Monitor(ComponentManager cm, String name) {
+	public Monitor(Thread cm, String name) {
 		super(cm, name);
 		this.knowledge = getKnowledge(cm);
 		makePort();//Monitorクラスのインスタンスが作成された時に、Portをつなぐ
@@ -26,8 +26,11 @@ public abstract class Monitor extends Component{
 	}
 
 	//get knowledge
-	public Knowledge getKnowledge(ComponentManager cm) {
-		return cm.getKnowledge();
+	public Knowledge getKnowledge(Thread cm) {
+		if(((ComponentManager)cm) != null) {
+			return ((ComponentManager)cm).getKnowledge();
+		}
+		return ((ControlLoop)cm).getKnowledge();
 	}
 	
 	

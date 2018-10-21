@@ -1,10 +1,10 @@
 package RoombaTest;
 
-import Tsuchida.ComponentManager;
+import Tsuchida.ControlLoop;
 import WebApplicationTest.TestMonitor;
  
 
-public class Roomba extends ComponentManager{
+public class Roomba extends ControlLoop{
 	
 	public static void main(String[] args) {
 		Roomba rm = new Roomba();

@@ -3,7 +3,7 @@ package RoombaTest;
 
 import java.io.IOException;
 
-import Tsuchida.ComponentManager;
+import Tsuchida.ControlLoop;
 import Tsuchida.Execute;
 import gnu.io.SerialPort;
 
@@ -11,9 +11,10 @@ public class RExecute extends Execute{
 
     SerialCommunication sc = null;
     SerialPort serialPort = null;
+    ControlLoop cm = null;
     Integer check = 0;
 	
-	public RExecute(ComponentManager cm, String name, SerialCommunication in_sc) {
+	public RExecute(ControlLoop cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
 		sc = in_sc;
 	}
@@ -35,13 +36,13 @@ public class RExecute extends Execute{
 					//MAPEの終了
 					if(Integer.parseInt(command)==5) {
 						check = 1;
+						((ControlLoop) super.cm).exit();
 					}
 					
 					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
 					try {
 						Thread.sleep(700);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
