@@ -41,7 +41,7 @@ public class SerialCommunication {
             	    
             	    switch(inputValue) {
             	    		case 0: write(out, 140, 0, 9, 57, 30, 57, 30, 57, 30, 53, 20, 60, 10, 57, 30, 53, 20, 60, 10, 57, 45);
-					write(out, 141, 0);
+					        write(out, 141, 0);
                 	    	        break;
                 	    	case 1: startup(out);
                 	    	        break;
@@ -51,17 +51,17 @@ public class SerialCommunication {
                 	    		 break;
                 	    	case 4 : fullMode(out);
                 	    		 break;
-                	    	case 5 : clean(out);
+                	    	case 5 : clean(out);//Spot
                 	    	         break;
                 	    	case 6 : drive(out, -50, 0);//forward_l
                 	    	         break;
                 	    	case 71: driveDirect(out, -10, 10);//clockwise_l
     	         		 	break;
-                   		case 72: driveDirect(out, -15, 15);//clockwise_h
+                   	case 72: driveDirect(out, -15, 15);//clockwise_h
 	         		 	break;
-                   		case 81: driveDirect(out, 10, -10);//counter-clockwise_h
+                   	case 81: driveDirect(out, 10, -10);//counter-clockwise_h
                    			break;
-                   		case 82:driveDirect(out, 15, -15);//counter-clockwise_h
+                   	case 82:driveDirect(out, 15, -15);//counter-clockwise_h
                    		    break;
                 	    	case 8 : break;//sleep
                 	    	default : break;

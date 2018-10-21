@@ -37,13 +37,13 @@ public class RExecute extends Execute{
 							}
 					}
 					
-				    System.out.println("DEBUG : this command is send " + Integer.parseInt(command));
-						try {
-							Thread.sleep(700);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+//				    System.out.println("DEBUG : this command is send " + Integer.parseInt(command));
+					try {
+						Thread.sleep(700);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}
