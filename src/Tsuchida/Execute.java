@@ -8,7 +8,7 @@ public abstract class Execute extends Component{
 	public volatile Knowledge knowledge = null;
 	
 	//configurationを使用しない場合
-	public Execute(ComponentManager cm, String name) {
+	public Execute(Thread cm, String name) {
 		super(cm, name);
 		this.knowledge = getKnowledge(cm);
 		makePort();
@@ -26,8 +26,11 @@ public abstract class Execute extends Component{
 	}
 	
 	//get knowledge
-	public Knowledge getKnowledge(ComponentManager cm) {
-		return cm.getKnowledge();
+	public Knowledge getKnowledge(Thread cm) {
+		if(((ComponentManager)cm) != null) {
+			return ((ComponentManager)cm).getKnowledge();
+		}
+		return ((ControlLoop)cm).getKnowledge();
 	}
 
 	@Override

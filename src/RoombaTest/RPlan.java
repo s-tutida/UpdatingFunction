@@ -1,11 +1,11 @@
 package RoombaTest;
 
-import Tsuchida.ComponentManager;
+import Tsuchida.ControlLoop;
 import Tsuchida.Plan;
 
 public class RPlan extends Plan{
 
-	public RPlan(ComponentManager cm, String name) {
+	public RPlan(ControlLoop cm, String name) {
 		super(cm, name);
 	}
 

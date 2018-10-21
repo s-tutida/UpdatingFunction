@@ -1,6 +1,6 @@
 package RoombaTest;
 
-import Tsuchida.ComponentManager;
+import Tsuchida.ControlLoop;
 import Tsuchida.Monitor;  
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
@@ -9,7 +9,7 @@ public class RMonitor extends Monitor{
 
 	USBcamera uc = null;
 	
-	public RMonitor(ComponentManager cm, String name, USBcamera in_uc) {
+	public RMonitor(ControlLoop cm, String name, USBcamera in_uc) {
 		super(cm, name);
 		uc = in_uc;
 	}

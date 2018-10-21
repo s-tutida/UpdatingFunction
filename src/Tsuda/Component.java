@@ -2,18 +2,17 @@ package Tsuda;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import Tsuchida.ComponentManager;
 import Tsuchida.Configuration;
 
 public abstract class Component extends Thread{
 
 	public String name;
-	public ComponentManager cm;
+	public Thread cm;
 	public Configuration conf;
 	public ArrayList<Port<?>> portList;
 
 	//construct
-	public Component(ComponentManager cm, String name){
+	public Component(Thread cm, String name){
 
 		portList = new ArrayList<Port<?>>();
 		this.cm = cm;
@@ -22,7 +21,7 @@ public abstract class Component extends Thread{
 	}
 	
 	//construct
-	public Component(ComponentManager cm, String name, Configuration conf){
+	public Component(Thread cm, String name, Configuration conf){
 
 		portList = new ArrayList<Port<?>>();
 		this.cm = cm;
