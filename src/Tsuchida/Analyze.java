@@ -1,7 +1,6 @@
 package Tsuchida;
 
-import Tsuda.Component;
-import Tsuda.Port;
+import Tsuda.*;
 
 public abstract class Analyze extends Component{
 

@@ -14,8 +14,9 @@ public class RExecute extends Execute{
     ControlLoop cm = null;
     Integer check = 0;
 	
-	public RExecute(ControlLoop cm, String name, SerialCommunication in_sc) {
+	public RExecute(ControlLoop in_cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
+		this.cm = in_cm;
 		sc = in_sc;
 	}
 	
@@ -31,13 +32,14 @@ public class RExecute extends Execute{
 		if(sc!=null){//通信がある.
 			for(String command: commands){
 				if(! (command==null || command.isEmpty())) {//実行コマンドがある
+					
 					sc.send_command(Integer.parseInt(command));
 					
 					//MAPEの終了
 					if(Integer.parseInt(command)==5) {
 						check = 1;
-						((ControlLoop) super.cm).exit();
 						System.out.println("   Send arriveSpot event to EventConverter.");
+						cm.exit();
 					}
 					
 					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
