@@ -139,11 +139,6 @@ public abstract class ControlLoop extends Thread{
     //[start] startコマンドの処理
 	private void startLoop() {
 		
-		if(getLoopCondition()) {
-			System.out.println("*** MAPE loop is alreaday running. ***");
-			return;
-		}
-		
 		OnLoopCondition();
 		
 		threadManager = Executors.newFixedThreadPool(1);
@@ -157,7 +152,7 @@ public abstract class ControlLoop extends Thread{
 	//[start] M,A,P,Eのループ処理
 	private void controlLoopOrder(){
 
-			System.out.println("*** MAPE loop is running now. ***"); 
+			System.out.println("*** New function corresponds to MoveToStartPoin state  ***"); 
 			ExecutorService executorService = null;
 			String time = null;
 			
