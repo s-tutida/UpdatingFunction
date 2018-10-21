@@ -27,10 +27,14 @@ public abstract class Execute extends Component{
 	
 	//get knowledge
 	public Knowledge getKnowledge(Thread cm) {
-		if(((ComponentManager)cm) != null) {
+		try {
 			return ((ComponentManager)cm).getKnowledge();
-		}
-		return ((ControlLoop)cm).getKnowledge();
+        } catch (ClassCastException exception) {
+    			return ((ControlLoop)cm).getKnowledge();
+        } catch (Exception exception) {
+
+        }
+        return null;
 	}
 
 	@Override
