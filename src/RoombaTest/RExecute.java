@@ -36,7 +36,9 @@ public class RExecute extends Execute{
 					//MAPEの終了
 					if(Integer.parseInt(command)==5) {
 						check = 1;
+						System.out.println("   Arrive at target point");
 						System.out.println("   Send arriveSpot event to EventConverter.");
+						sc.send_command(1);
 						cm.exit();
 						return null;
 					}

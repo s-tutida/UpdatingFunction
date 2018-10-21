@@ -207,11 +207,9 @@ public abstract class ControlLoop extends Thread{
 	private int stopLoop() {
 		
 		if(!getLoopCondition()) {
-			System.out.println("*** MAPE loop is alreaday in pause. ***");
 			return 0;
 		}
 		OffLoopCondition();//loopを止める
-		System.out.println("*** MAPE loop is in pause now. ***"); 
 		
 		return 1;
 	}
@@ -229,7 +227,7 @@ public abstract class ControlLoop extends Thread{
 			e.printStackTrace();
 		}
 		
-		System.out.println("*** See you ***"); 
+		System.out.println("*** Stop new functions  ***"); 
 		System.exit(0);
 	}
 	
