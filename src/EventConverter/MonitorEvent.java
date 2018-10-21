@@ -14,7 +14,7 @@ public class MonitorEvent extends Monitor{
 		
 		// TODO 実際に, Eventを監視.
 		String event = new String();
-//		event = "Clean";
+		event = "Clean";
 //		event = "Spot";
 //		event = "arriveSpot";
 //		event = "endSpot";
