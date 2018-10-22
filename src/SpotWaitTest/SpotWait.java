@@ -2,6 +2,7 @@ package SpotWaitTest;
 
 public class SpotWait extends Thread{
 	
+	public Boolean end = false;
 	public SpotWait() {
 		this.start();	
 	}
@@ -15,12 +16,10 @@ public class SpotWait extends Thread{
 		}
 		System.out.println("   Send tm(2s) event to EventConverter. ***"); 
 		System.out.println("*** Stop new functions  ***"); 
-		System.exit(0);
-		try {
-			this.finalize();
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.end=true;
+	}
+	
+	public Boolean getEndEvent() {
+		return this.end;
 	}
 }

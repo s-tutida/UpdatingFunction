@@ -26,7 +26,7 @@ public class MonitorEvent extends Monitor{
 //		event = "Spot";
 //		event = "arriveSpot";
 //		event = "endSpot";
-		System.out.println(event);
+//		System.out.println(event);
 		return event;
 	}
 

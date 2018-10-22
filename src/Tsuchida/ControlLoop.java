@@ -34,6 +34,8 @@ public abstract class ControlLoop extends Thread{
 	private volatile ExecutorService threadManager;//マルチスレッド使用時のComponentManagerのオブジェクト格納場所
 	
 	private BufferedReader in = null;
+	
+	private Boolean status = false;
 
 	//Monitorをextendsして作成されたコンポーネントを本クラスのメンバーに追加する
 	public ControlLoop addMonitor(Component c) {
@@ -224,9 +226,12 @@ public abstract class ControlLoop extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		System.out.println("*** Stop new functions  ***"); 
-		this.finalize();
+		this.status = true;
+	}
+	
+	public Boolean getEndEvent() {
+		return this.status;
 	}
 	
 	//Loopの実行を許可します
