@@ -9,7 +9,7 @@ import RoombaTest.*;
 
 public class ExecuteEvent extends Execute{
 
-	private SerialCommunication sc;
+	private SerialCommunication sc = null;
 	public ExecuteEvent(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
 		sc = in_sc;
