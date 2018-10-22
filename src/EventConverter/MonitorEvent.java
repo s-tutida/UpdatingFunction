@@ -23,7 +23,7 @@ public class MonitorEvent extends Monitor{
 			System.out.println("Internal event : " + event);
 			knowledge.setEvent(null);
 		}
-//		event = "Spot";
+		event = "Spot";
 //		event = "arriveSpot";
 //		event = "endSpot";
 //		System.out.println(event);

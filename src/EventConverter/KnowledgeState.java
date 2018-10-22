@@ -22,8 +22,8 @@ public class KnowledgeState extends Knowledge{
 	private Map<String, Integer[]> new_event_list = new HashMap<String, Integer[]>();
 	
 	// value for handle current state
-	private Integer original_state = 0;
-	private Integer new_state = 0;
+	private Integer original_state = 1;
+	private Integer new_state = 1;
 	
 	// internal event 
 	public String event = null;
@@ -39,8 +39,8 @@ public class KnowledgeState extends Knowledge{
 		this.new_event_list = ps.get_new_event_list();
 		
 		//開始擬似状態から, 初期状態に移行させる.
-		moveOriginalNextState("Initial_event");
-		moveNewNextState("Initial_event");
+//		moveOriginalNextState("Initial_event");
+//		moveNewNextState("Initial_event");
 	}
 
 	// Override
