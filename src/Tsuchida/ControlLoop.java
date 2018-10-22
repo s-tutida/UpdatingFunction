@@ -215,7 +215,7 @@ public abstract class ControlLoop extends Thread{
 	}
 	
 	//[exit] exitコマンドの処理
-	public void exit() throws Throwable {
+	public void exit() {
 		
 		//stopコマンドを呼び出す
 		stopLoop();
