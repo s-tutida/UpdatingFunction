@@ -39,7 +39,7 @@ public class RExecute extends Execute{
 						System.out.println("   Arrive at target point");
 						System.out.println("   Send arriveSpot event to EventConverter.");
 						sc.send_command(2);
-						cm.exit();
+						this.cm.exit();
 						return null;
 					}
 					
