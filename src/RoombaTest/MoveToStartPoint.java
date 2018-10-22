@@ -10,6 +10,7 @@ public class MoveToStartPoint extends ControlLoop{
 	
 	private MoveToStartPoint rm = null;
 	public MoveToStartPoint() {
+		runNewfunctions();
 	}
 	
 	public void runNewfunctions(){
