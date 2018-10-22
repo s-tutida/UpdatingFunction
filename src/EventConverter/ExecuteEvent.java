@@ -37,7 +37,7 @@ public class ExecuteEvent extends Execute{
             
             // 既存の機能を動かす.
             System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName());
-            if(knowledge.getNewCurrentStateName().equals("MoveStartPoint")) {
+            if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
             		while(!mtsp.getEndEvent()) {
             		}
