@@ -10,7 +10,7 @@ public class MoveToStartPoint extends ControlLoop{
 	public MoveToStartPoint() {
 	}
 	
-	public Boolean run(){
+	public Boolean runNewfunctions(){
 		MoveToStartPoint rm = new MoveToStartPoint();
 		
 	    SerialCommunication sc = null;
