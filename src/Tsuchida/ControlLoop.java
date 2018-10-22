@@ -213,7 +213,7 @@ public abstract class ControlLoop extends Thread{
 	}
 	
 	//[exit] exitコマンドの処理
-	public void exit() {
+	public void exit() throws Throwable {
 		
 		//stopコマンドを呼び出す
 		stopLoop();
@@ -226,7 +226,7 @@ public abstract class ControlLoop extends Thread{
 		}
 		
 		System.out.println("*** Stop new functions  ***"); 
-		System.exit(0);
+		this.finalize();
 	}
 	
 	//Loopの実行を許可します

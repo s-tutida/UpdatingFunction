@@ -3,6 +3,8 @@ package EventConverter;
 import java.util.Deque;
 
 import Tsuchida.*;  
+import SpotWaitTest.*;
+import RoombaTest.*;
 
 
 public class ExecuteEvent extends Execute{
@@ -33,9 +35,26 @@ public class ExecuteEvent extends Execute{
         		// state machine を進める
             knowledge.moveNewNextState(event);
             
-            // TODO 既存の機能を動かす.
+            // 既存の機能を動かす.
             System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName());
-            
+            if(knowledge.getNewCurrentStateName().equals("MoveStartPoint")) {
+            		MoveToStartPoint mtsp = new MoveToStartPoint();
+            		Boolean status = mtsp.runNewfunctions();
+            		if(status==true) {
+            			//arriveSpot イベント
+            			knowledge.setData("arriveSpot");//knowledgeにinternal eventを配置
+            			System.out.println("arriveSpot event");
+            		}
+            }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
+            		SpotWait sw = new SpotWait();
+            		while(sw!=null) {
+            			//tm(2s)
+            			knowledge.setData("tm(2s)");//knowledgeにinternal eventを配置
+            			System.out.println("tm(2s) event");
+            		}
+            }else {
+            		//none
+            }
             break;
         case 2://既存機能を動かす
         	
@@ -53,19 +72,19 @@ public class ExecuteEvent extends Execute{
 	    			//ここで, eventを送信.
 	    		}
     			sc.send_command(1);
-				//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
-				try {
-					Thread.sleep(700);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
+			try {
+				Thread.sleep(700);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
     			sc.send_command(4);
-				//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
-				try {
-					Thread.sleep(700);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
+			try {
+				Thread.sleep(700);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
     			sc.send_command(5);
 	        break;
         case 3:

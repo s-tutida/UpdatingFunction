@@ -24,6 +24,9 @@ public class KnowledgeState extends Knowledge{
 	// value for handle current state
 	private Integer original_state = 0;
 	private Integer new_state = 0;
+	
+	// internal event 
+	public String event = null;
 
 	public KnowledgeState(ComponentManager cm, String name, Parser ps) {
 		super(cm, name);
@@ -49,6 +52,16 @@ public class KnowledgeState extends Knowledge{
 	@Override
 	public Object getData(Object o) {
 		return null;
+	}
+
+	// Set internal event
+	public void setEvent(String s) {
+		this.event = s;
+	}
+	
+	// Get internal event
+	public String getEvent() {
+		return this.event;
 	}
 	
 	// 次の状態を確認するメソッド.

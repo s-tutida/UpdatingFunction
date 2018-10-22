@@ -37,7 +37,6 @@ public class SerialCommunication {
         public void send_command(int inputValue) {
             try {
 
-            	    
             		//Clean, Spot, EndSpotの3つのみ.
             	    switch(inputValue) {
                 	    	case 1: startup(out);
@@ -84,36 +83,30 @@ public class SerialCommunication {
 		}
 		
 	    public static void startup(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'startup' and 'safeMode' command to roomba.");
 	        int cmd[] = { OPC_START, OPC_SAFE };
 	        write(out, cmd);
 	    }
 
 	    public static void stop(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'stop' command to roomba.");
 	        write(out, OPC_STOP);
 	    }
 
 	    public static void safeMode(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'safe' command to roomba.");
 	        write(out, OPC_SAFE);
 	    }
 
 	    
 	    public static void fullMode(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'full' command to roomba.");
 	        write(out, OPC_FULL);
 	    }
 
 
 	    public static void clean_spot(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'clean' command to roomba.");
 	        write(out, OPC_CLEAN_SPOT);				
 	    }
 
 	    
 	    public static void clean_normal(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'clean' command to roomba.");
 	        write(out, OPC_CLEAN_NORMAL);				
 	    }
 	    
