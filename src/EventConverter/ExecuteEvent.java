@@ -43,7 +43,7 @@ public class ExecuteEvent extends Execute{
             		}
         			//arriveSpot event
         			knowledge.setData("arriveSpot");//knowledgeにinternal eventを配置
-        			System.out.println("arriveSpot event");
+        			System.out.println("      arriveSpot event");
             		
             }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
             		SpotWait sw = new SpotWait();
@@ -51,7 +51,7 @@ public class ExecuteEvent extends Execute{
             		}
         			//tm(2s) event
         			knowledge.setData("tm(2s)");//knowledgeにinternal eventを配置
-        			System.out.println("tm(2s) event");
+        			System.out.println("      tm(2s) event");
             }else {
             		//none
             }
@@ -66,26 +66,22 @@ public class ExecuteEvent extends Execute{
         		// TODO eventの送信
 	    		while(event_list.peekLast()!=null) {
 	    			System.out.println("      MMAPE-K loop will send this event : "+ event_list.pollLast());
-//	    			sc.send_command(1);
-//	    			sc.send_command(4);
-//	    			sc.send_command(5);
-	    			//ここで, eventを送信.
 	    		}
-    			sc.send_command(1);
+    			sc.send_command_original(1);
 			//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
 			try {
 				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-    			sc.send_command(4);
+    			sc.send_command_original(4);
 			//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
 			try {
 				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-    			sc.send_command(5);
+    			sc.send_command_original(5);
 	        break;
         case 3:
         	    break;

@@ -14,7 +14,7 @@ public class SpotWait extends Thread{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("   Send tm(2s) event to EventConverter. ***"); 
+		System.out.println("***  Send tm(2s) event to EventConverter. ***"); 
 		System.out.println("*** Stop new functions  ***"); 
 		this.end=true;
 	}
