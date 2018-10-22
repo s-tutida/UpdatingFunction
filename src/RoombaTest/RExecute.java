@@ -17,7 +17,7 @@ public class RExecute extends Execute{
 	public RExecute(ControlLoop in_cm, String name, SerialCommunication in_sc) {
 		super(in_cm, name);
 		this.cm = in_cm;
-		sc = in_sc;
+		this.sc = in_sc;
 	}
 	
 	@Override

@@ -22,10 +22,10 @@ public class MoveToStartPoint extends ControlLoop{
         
 		USBcamera uc = new USBcamera();
 		
-		rm.addMonitor(new RMonitor(rm, "Monitor", uc))
-		  .addAnalysis(new RAnalyze(rm, "Analyze"))
-		  .addPlan(new RPlan(rm, "Plan"))
-		  .addExecute(new RExecute(rm, "Eexecute",this.sc))
+		rm.addMonitor(new RoombaTest.RMonitor(rm, "Monitor", uc))
+		  .addAnalysis(new RoombaTest.RAnalyze(rm, "Analyze"))
+		  .addPlan(new RoombaTest.RPlan(rm, "Plan"))
+		  .addExecute(new RoombaTest.RExecute(rm, "Execute",this.sc))
           .build()
           .start();
 
