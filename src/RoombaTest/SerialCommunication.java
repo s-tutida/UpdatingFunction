@@ -12,7 +12,7 @@ public class SerialCommunication {
 		SerialPort sp = null;
 
 		//シリアルポートとの接続を確立する関数
-	    void connect(String portName) throws Exception {
+	    public void connect(String portName) throws Exception {
 	        CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);
 	        if (portIdentifier.isCurrentlyOwned()) {
 	            System.out.println("Error: Port is currently in use");
@@ -33,6 +33,33 @@ public class SerialCommunication {
 	            }
 	        }
 	    }
+	    
+       public void send_command_original(int inputValue) {
+            try {
+
+            		//Clean, Spot, EndSpotの3つのみ.
+            	    switch(inputValue) {
+                	    	case 1: startup(out);
+                	    	        break;
+                	    	case 2:	stop(out);
+                	    		 break;
+                	    	case 3 : safeMode(out);
+                	    		 break;
+                	    	case 4 : fullMode(out);
+                	    		 break;
+//                	    	case 5 : clean_spot(out);//Spot
+//                	    	         break;
+//                	    	case 6 : clean_normal(out);
+//                	    			break;
+                	    	default : break;
+		                	    	
+	                	    
+	            }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 	    
         public void send_command(int inputValue) {
             try {

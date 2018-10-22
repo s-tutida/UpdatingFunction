@@ -9,28 +9,23 @@ public class MoveToStartPoint extends ControlLoop{
 	
 	
 	private MoveToStartPoint rm = null;
-	public MoveToStartPoint() {
+	private SerialCommunication sc = null;
+	public MoveToStartPoint(SerialCommunication in_sc) {
+		
+		this.sc = in_sc;
 		runNewfunctions();
 	}
 	
 	public void runNewfunctions(){
-		this.rm = new MoveToStartPoint();
 		
-	    SerialCommunication sc = null;
-        try {
-	    	    sc = new SerialCommunication();
-	        sc.connect("/dev/ttyUSB0");
-			
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+		this.rm = new MoveToStartPoint(this.sc);
         
 		USBcamera uc = new USBcamera();
 		
 		rm.addMonitor(new RMonitor(rm, "Monitor", uc))
 		  .addAnalysis(new RAnalyze(rm, "Analyze"))
 		  .addPlan(new RPlan(rm, "Plan"))
-		  .addExecute(new RExecute(rm, "Eexecute",sc))
+		  .addExecute(new RExecute(rm, "Eexecute",this.sc))
           .build()
           .start();
 

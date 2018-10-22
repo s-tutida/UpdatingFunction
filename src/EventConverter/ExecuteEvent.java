@@ -9,7 +9,7 @@ import RoombaTest.*;
 
 public class ExecuteEvent extends Execute{
 
-	SerialCommunication sc;
+	private SerialCommunication sc;
 	public ExecuteEvent(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
 		sc = in_sc;
@@ -38,7 +38,7 @@ public class ExecuteEvent extends Execute{
             // 既存の機能を動かす.
             System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName());
             if(knowledge.getNewCurrentStateName().equals("MoveStartPoint")) {
-            		MoveToStartPoint mtsp = new MoveToStartPoint();
+            		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
             		while(mtsp.getEndEvent()) {
             		}
         			//arriveSpot event
