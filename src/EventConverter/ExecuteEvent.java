@@ -62,7 +62,8 @@ public class ExecuteEvent extends Execute{
 	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
 	    		}
 	    		
-    			sc.send_command_original(1);//start up 
+			System.out.println("start up");
+    			this.sc.send_command_original(1);//start up 
 
 			try {
 				Thread.sleep(2000);
@@ -87,23 +88,23 @@ public class ExecuteEvent extends Execute{
 				e.printStackTrace();
 			}
 
-			System.out.println("clean spot");
-    			sc.send_command_original(5);//clean spot
-    			
-    			try {
-    				Thread.sleep(2000);
-    			} catch (InterruptedException e) {
-    				e.printStackTrace();
-    			}
-    			
-    			System.out.println("stop");
-    			sc.send_command_original(2);//stop
-    			
-    			try {
-    				Thread.sleep(2000);
-    			} catch (InterruptedException e) {
-    				e.printStackTrace();
-    			}
+//			System.out.println("clean spot");
+//    			sc.send_command_original(5);//clean spot
+//    			
+//    			try {
+//    				Thread.sleep(2000);
+//    			} catch (InterruptedException e) {
+//    				e.printStackTrace();
+//    			}
+//    			
+//    			System.out.println("stop");
+//    			sc.send_command_original(2);//stop
+//    			
+//    			try {
+//    				Thread.sleep(2000);
+//    			} catch (InterruptedException e) {
+//    				e.printStackTrace();
+//    			}
     			
     			System.out.println("sensor commands");
     			sc.send_command_original(0);//sensor commands
