@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import Tsuchida.ControlLoop;
 import Tsuchida.Execute;
+import EventConverter.KnowledgeState;
 import gnu.io.SerialPort;
 
 public class RExecute extends Execute{
@@ -41,6 +42,7 @@ public class RExecute extends Execute{
 						sc.send_command(2);//Reset
 						try {
 							this.cm.exit();
+							((KnowledgeState) this.cm.knowledge).setEvent("arriveSpot");
 						}catch(Exception e){
 						}
 						return null;

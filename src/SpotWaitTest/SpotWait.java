@@ -1,23 +1,28 @@
 package SpotWaitTest;
 
+import EventConverter.KnowledgeState;
+
 public class SpotWait extends Thread{
 	
 	public Boolean status = false;
-	public SpotWait() {
+	public KnowledgeState knowledge = null;
+	
+	public SpotWait(KnowledgeState knowledge) {
+		this.knowledge = knowledge;
 	}
 	
 	public void run(){
 		
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);//2秒待機
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
-		this.status = true;
+		knowledge.setEvent("tm(2s)");
 	}
 	
-	public Boolean getEndEvent() {
-		return this.status;
-	}
+//	public Boolean getEndEvent() {
+//		return this.status;
+//	}
 }

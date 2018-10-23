@@ -1,5 +1,6 @@
 package RoombaTest;
 
+import EventConverter.KnowledgeState;
 import Tsuchida.ControlLoop;
 
 //Roomba.javaのnew functions版
@@ -9,34 +10,37 @@ public class MoveToStartPoint extends ControlLoop{
 	public MoveToStartPoint rm = null;
 	private SerialCommunication sc = null;
 	
-	public MoveToStartPoint(SerialCommunication in_sc) {
+	public MoveToStartPoint(SerialCommunication in_sc, KnowledgeState knowledge) {
 		this.sc = in_sc;
+		super.setKnowledge(this.knowledge);
+		
+		runNewfunctions();
 	}
 	
 	public void runNewfunctions(){
 		
-		this.rm = new MoveToStartPoint(this.sc);
+//		rm = new MoveToStartPoint(this.sc, this.knowledge);
         
 		USBcamera uc = new USBcamera();
 		
-		this.rm.addMonitor(new RMonitor(rm, "Monitor", uc))
-		  .addAnalysis(new RAnalyze(rm, "Analyze"))
-		  .addPlan(new RPlan(rm, "Plan"))
-		  .addExecute(new RExecute(rm, "Execute",this.sc))
+		this.addMonitor(new RMonitor(this, "Monitor", uc))
+		  .addAnalysis(new RAnalyze(this, "Analyze"))
+		  .addPlan(new RPlan(this, "Plan"))
+		  .addExecute(new RExecute(this, "Execute", this.sc))
           .build()
           .start();
 
 	}
 	
-	public Boolean getEndEvent() {
-		if(this.rm==null) return false;
-		return this.rm.getStatus();
-	}
-	
-	public Boolean getStatus() {
-		return super.getEndEvent();
-	}
-	
+//	public Boolean getEndEvent() {
+//		if(this.rm==null) return false;
+//		return this.rm.getStatus();
+//	}
+//	
+//	public Boolean getStatus() {
+//		return super.getEndEvent();
+//	}
+//	
 	
 
 

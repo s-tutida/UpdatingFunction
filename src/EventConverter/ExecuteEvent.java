@@ -40,29 +40,29 @@ public class ExecuteEvent extends Execute{
             
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
             		
-            		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
-            		mtsp.runNewfunctions();
-            		while(!mtsp.getEndEvent()) {
-            		}
+            		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc, knowledge);
+//            		mtsp.runNewfunctions();
+//            		while(!mtsp.getEndEvent()) {
+//            		}
             		
-        			knowledge.setEvent("arriveSpot");//knowledgeにinternal eventを配置
-        			mtsp = null;
+//        			knowledge.setEvent("arriveSpot");//knowledgeにinternal eventを配置
+//        			mtsp = null;
             		
             }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
             		
-            		SpotWait sw = new SpotWait();
+            		SpotWait sw = new SpotWait(knowledge);
             		sw.start();
-            		try {
-            			sw.join();
-            		} catch (InterruptedException e) {
-            			// 例外処理
-            			e.printStackTrace();
-            		}
-            		while((!sw.getEndEvent())&&sw!=null) {
-            		}
+//            		try {
+//            			sw.join();
+//            		} catch (InterruptedException e) {
+//            			// 例外処理
+//            			e.printStackTrace();
+//            		}
+//            		while((!sw.getEndEvent())&&sw!=null) {
+//            		}
             		
-        			knowledge.setEvent("tm%282s%29");//knowledgeにinternal eventを配置
-        			sw = null;
+//        			knowledge.setEvent("tm(2s)");//knowledgeにinternal eventを配置
+//        			sw = null;
         			
             }else {
             		//none

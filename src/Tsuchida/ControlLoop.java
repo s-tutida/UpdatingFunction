@@ -94,7 +94,6 @@ public abstract class ControlLoop extends Thread{
 	}
 	
 	
-	
 	//実行するコンポーネントをメンバーに格納する
 	private void addComponent(Component c) {
 		componentList.add(c);
@@ -229,12 +228,12 @@ public abstract class ControlLoop extends Thread{
 		}
 		System.out.println("***  Stop new functions  ***"); 
 		System.out.println(""); 
-		this.status = true;
+//		this.status = true;
 	}
 	
-	public Boolean getEndEvent() {
-		return this.status;
-	}
+//	public Boolean getEndEvent() {
+//		return this.status;
+//	}
 	
 	//Loopの実行を許可します
 	private void OnLoopCondition(){
@@ -249,6 +248,10 @@ public abstract class ControlLoop extends Thread{
 	//Loopの実行状況を取得します
 	private boolean getLoopCondition() {
 		return loopStatus;
+	}
+	
+	public void setKnowledge(Knowledge knowledge) {
+		this.knowledge = knowledge;
 	}
 
 }
