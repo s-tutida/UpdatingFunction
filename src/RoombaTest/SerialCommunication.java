@@ -81,8 +81,8 @@ public class SerialCommunication {
 	                {
             	            System.out.println("");
                 	        int i = buffer[0]&0xFF;
-	                    System.out.println("int " + i);
-            	            System.out.println("");
+//	                    System.out.println("int " + i);
+//            	            System.out.println("");
             	            this.sc.button_event = i; 
             	            this.sc.send_command_original(2);
             	            this.sc.send_command_original(1);
