@@ -83,6 +83,7 @@ public class SerialCommunication {
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
+                	        System.out.print("read" + len);
 	                    System.out.print(new String(buffer,0,len));
 	                }
 	            }
@@ -110,7 +111,8 @@ public class SerialCommunication {
 	                int c = 0;
 	                while ( ( c = System.in.read()) > -1 )
 	                {
-	                    this.out.write(c);
+	                	    System.out.print("write" + c);
+	                    this.out.write((byte)c);
 	                }                
 	            }
 	            catch ( IOException e )
