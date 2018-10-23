@@ -87,7 +87,17 @@ public class SerialCommunication {
 	            	            this.sc.button_event = input; 
 //	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
+	            				try {
+	            					Thread.sleep(700);
+	            				} catch (InterruptedException e) {
+	            					e.printStackTrace();
+	            				}
 	            	            this.sc.send_command_original(3);
+	            				try {
+	            					Thread.sleep(700);
+	            				} catch (InterruptedException e) {
+	            					e.printStackTrace();
+	            				}
 	                		}
 	                }
 	            }
