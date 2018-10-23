@@ -40,6 +40,7 @@ public class ExecuteEvent extends Execute{
             
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
+            		mtsp.runNewfunctions();
             		while(!mtsp.getEndEvent()) {
             		}
         			//arriveSpot event

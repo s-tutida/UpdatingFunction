@@ -11,7 +11,6 @@ public class MoveToStartPoint extends ControlLoop{
 	
 	public MoveToStartPoint(SerialCommunication in_sc) {
 		this.sc = in_sc;
-		runNewfunctions();
 	}
 	
 	public void runNewfunctions(){
@@ -19,6 +18,7 @@ public class MoveToStartPoint extends ControlLoop{
 		this.rm = new MoveToStartPoint(this.sc);
         
 		USBcamera uc = new USBcamera();
+		System.out.println("before starting new functions.");
 		
 		this.rm.addMonitor(new RMonitor(rm, "Monitor", uc))
 		  .addAnalysis(new RAnalyze(rm, "Analyze"))
