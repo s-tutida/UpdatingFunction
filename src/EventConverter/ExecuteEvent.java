@@ -68,14 +68,13 @@ public class ExecuteEvent extends Execute{
 	    			}else if(new_event.equals("Spot")) {
 	    				System.out.println("Spot command");
 	    				this.sc.send_command_original(5);
+	    				try {
+	    					Thread.sleep(20000);
+	    				} catch (InterruptedException e) {
+	    					e.printStackTrace();
+	    				}
 	    			}
 	    		}
-	    		
-			try {
-				Thread.sleep(100000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 
 	        break;
         case 3:
