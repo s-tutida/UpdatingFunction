@@ -64,7 +64,7 @@ public class SerialCommunication {
             	    switch(inputValue) {
             	    		case 0: write(out, 142, 18);
             	    				int i = 0;
-            	    				while(i!=1)	read(in);
+            	    				while(i!=1)	read(this.in);
             	    			break;
                 	    	case 1: startup(out);
                 	    	        break;
@@ -137,11 +137,12 @@ public class SerialCommunication {
 	    }
 	    
 	    private static void read(BufferedReader in) throws IOException {
-//	    	
+
 	    		String str = null;
 	        while((str = in.readLine()) != null){
 	            System.out.println(str);
-	          }
+	        }
+	        System.out.println(str);
 	    }
 	    
 	    private static void write(OutputStream out, byte... data) throws IOException {
