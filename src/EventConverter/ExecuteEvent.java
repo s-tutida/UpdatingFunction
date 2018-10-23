@@ -44,7 +44,7 @@ public class ExecuteEvent extends Execute{
             		while(!mtsp.getEndEvent()) {
             		}
         			//arriveSpot event
-        			knowledge.setData("arriveSpot");//knowledgeにinternal eventを配置
+        			knowledge.setEvent("arriveSpot");//knowledgeにinternal eventを配置
         			System.out.println("      arriveSpot event");
         			mtsp = null;
             		

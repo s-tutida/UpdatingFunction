@@ -156,6 +156,7 @@ public abstract class ControlLoop extends Thread{
 	//[start] M,A,P,Eのループ処理
 	private void controlLoopOrder(){
 
+		    System.out.println(""); 
 			System.out.println("***  Start to run new functions. ***"); 
 			ExecutorService executorService = null;
 			String time = null;
@@ -227,6 +228,7 @@ public abstract class ControlLoop extends Thread{
 			e.printStackTrace();
 		}
 		System.out.println("*** Stop new functions  ***"); 
+		System.out.println(""); 
 		this.status = true;
 	}
 	
