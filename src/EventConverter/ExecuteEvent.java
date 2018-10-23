@@ -65,14 +65,14 @@ public class ExecuteEvent extends Execute{
     			sc.send_command_original(1);//start up 
 
 			try {
-				Thread.sleep(700);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
     			sc.send_command_original(4);//clean_normal
 			try {
-				Thread.sleep(700);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -80,7 +80,7 @@ public class ExecuteEvent extends Execute{
     			sc.send_command_original(5);//clean spot
     			
     			try {
-    				Thread.sleep(700);
+    				Thread.sleep(2000);
     			} catch (InterruptedException e) {
     				e.printStackTrace();
     			}
