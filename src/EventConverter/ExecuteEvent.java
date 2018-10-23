@@ -95,6 +95,14 @@ public class ExecuteEvent extends Execute{
     			
     			sc.send_command_original(2);//clean spot
     			
+    			try {
+    				Thread.sleep(2000);
+    			} catch (InterruptedException e) {
+    				e.printStackTrace();
+    			}
+    			
+    			sc.send_command_original(0);//sensor commands
+    			
     			int i=1;
     			while(i!=0) {
     				//testのため
