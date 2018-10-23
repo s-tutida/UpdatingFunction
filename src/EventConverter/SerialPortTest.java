@@ -108,7 +108,8 @@ public class SerialPortTest {
 	                int c = 0;
 	                while ( ( c = System.in.read()) > -1 )
 	                {
-	                	    System.out.print("write" + c);
+	                	    System.out.println("write: " + c);
+	                	    System.out.println("");
 	                    this.out.write((byte)c);
 	                }                
 	            }
