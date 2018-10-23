@@ -51,9 +51,7 @@ public class ExecuteEvent extends Execute{
             }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
             		SpotWait sw = new SpotWait();
             		while((!sw.getEndEvent())&&sw!=null) {
-            			System.out.println(sw.getEndEvent());
             		}
-            		System.out.println("out while");
         			//tm(2s) event
         			knowledge.setEvent("tm%282s%29");//knowledgeにinternal eventを配置
         			System.out.println("      tm(2s) event");
