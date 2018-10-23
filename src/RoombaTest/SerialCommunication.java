@@ -1,3 +1,4 @@
+
 package RoombaTest;
 
 import java.io.BufferedReader;
@@ -81,6 +82,7 @@ public class SerialCommunication {
 	                {
 	                		int i = buffer[0]&0xFF;
 	                		if(i != 0) {
+	                			System.out.println("button_event : "+ this.sc.button_event);
 	            	            this.sc.button_event = i; 
 	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
