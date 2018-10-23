@@ -12,7 +12,8 @@ import gnu.io.SerialPort;
 
 public class SerialCommunication {
 
-		OutputStream out = null;
+        InputStream in = null;
+        OutputStream out = null;
 //		BufferedReader in = null;
 		SerialPort sp = null;
 
@@ -45,11 +46,12 @@ public class SerialCommunication {
 	                //フロー制御はしない
 	                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 	                
-	                InputStream in = serialPort.getInputStream();
-	                OutputStream out = serialPort.getOutputStream();
+	                this.in = serialPort.getInputStream();
+	                this.out = serialPort.getOutputStream();
 	                
 	                (new Thread(new SerialReader(in))).start();
-	                (new Thread(new SerialWriter(out))).start();
+//	                (new Thread(new SerialWriter(out))).start();
+	                
 //	                in = serialPort.getInputStream();;
 	                // シリアルポート受信側ストリームを開く
 //	                try {
@@ -94,33 +96,33 @@ public class SerialCommunication {
 	        }
 	    }
 
-	    /** */
-	    public static class SerialWriter implements Runnable 
-	    {
-	        OutputStream out;
-	        
-	        public SerialWriter ( OutputStream out )
-	        {
-	            this.out = out;
-	        }
-	        
-	        public void run ()
-	        {
-	            try
-	            {                
-	                int c = 0;
-	                while ( ( c = System.in.read()) > -1 )
-	                {
-	                	    System.out.print("write" + c);
-	                    this.out.write((byte)c);
-	                }                
-	            }
-	            catch ( IOException e )
-	            {
-	                e.printStackTrace();
-	            }            
-	        }
-	    }
+//	    /** */
+//	    public static class SerialWriter implements Runnable 
+//	    {
+//	        OutputStream out;
+//	        
+//	        public SerialWriter ( OutputStream out )
+//	        {
+//	            this.out = out;
+//	        }
+//	        
+//	        public void run ()
+//	        {
+//	            try
+//	            {                
+//	                int c = 0;
+//	                while ( ( c = System.in.read()) > -1 )
+//	                {
+//	                	    System.out.print("write" + c);
+//	                    this.out.write((byte)c);
+//	                }                
+//	            }
+//	            catch ( IOException e )
+//	            {
+//	                e.printStackTrace();
+//	            }            
+//	        }
+//	    }
 	    
 	   public SerialCommunication(){}
 	    
@@ -130,7 +132,7 @@ public class SerialCommunication {
             		//Clean, Spot, EndSpotの3つのみ.
             	    switch(inputValue) {
             	    		case 0: write(out, 142, 18);
-            	    				int i = 0;
+//            	    				int i = 0;
 //            	    				this.read(this.in);
             	    			break;
                 	    	case 1: startup(out);
