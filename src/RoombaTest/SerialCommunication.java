@@ -82,9 +82,9 @@ public class SerialCommunication {
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-	                		if((input != (buffer[0]&0xFF)) && ((buffer[0]&0xFF) != 0)) {//前回と同じじゃない, かつ, 一緒じゃない
+	                		if((input != (buffer[0]&0xFF)) && ((buffer[0]&0xFF) != 0)  && ((buffer[0]&0xFF) != -1)) {//前回と同じじゃない, かつ, 0じゃない
 	                			input = buffer[0]&0xFF;
-	                			System.out.println("button_event : "+ this.sc.button_event);
+	                			System.out.println("button_event : "+ input);
 	            	            this.sc.button_event = input; 
 	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
