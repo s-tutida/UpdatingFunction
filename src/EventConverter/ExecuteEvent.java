@@ -72,7 +72,7 @@ public class ExecuteEvent extends Execute{
 			}
 			
 			System.out.println("full mode");
-			sc.send_command_original(3);//full modeへ以降
+			this.sc.send_command_original(3);//full modeへ以降
 
 			try {
 				Thread.sleep(2000);
@@ -81,7 +81,7 @@ public class ExecuteEvent extends Execute{
 			}
 
 			System.out.println("clean normal");
-    			sc.send_command_original(4);//clean_normal
+    			this.sc.send_command_original(4);//clean_normal
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
@@ -107,7 +107,7 @@ public class ExecuteEvent extends Execute{
 //    			}
     			
     			System.out.println("sensor commands");
-    			sc.send_command_original(0);//sensor commands
+    			this.sc.send_command_original(0);//sensor commands
     			
     			int i=1;
     			while(i!=0) {
