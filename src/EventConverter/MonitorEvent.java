@@ -14,8 +14,8 @@ public class MonitorEvent extends Monitor{
 		
 		// TODO 実際に, Eventを監視.
 		String event = new String();
-		event = "Clean";
-		
+//		event = "Clean";
+		event = "Spot";
 		//internal eventの設定
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
 		if(knowledge.getEvent()!=null) {
@@ -23,7 +23,7 @@ public class MonitorEvent extends Monitor{
 			System.out.println("Internal event : " + event);
 			knowledge.setEvent(null);
 		}
-		event = "Spot";
+//		event = "Spot";
 //		event = "arriveSpot";
 //		event = "endSpot";
 //		System.out.println(event);
