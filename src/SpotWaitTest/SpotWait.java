@@ -8,15 +8,16 @@ public class SpotWait extends Thread{
 	}
 	
 	public void run(){
-		System.out.println("***  Start to run new functions. ***"); 
+//		System.out.println("***  Start to run new functions. ***"); 
 		try {
 			Thread.sleep(3000);
+			this.status=true;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("***  Send tm(2s) event to EventConverter. ***"); 
-		System.out.println("***  Stop new functions  ***"); 
-		this.status=true;
+//		System.out.println("***  Send tm(2s) event to EventConverter. ***"); 
+//		System.out.println("***  Stop new functions  ***"); 
+//		this.status=true;
 	}
 	
 	public Boolean getEndEvent() {

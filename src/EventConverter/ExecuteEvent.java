@@ -54,7 +54,7 @@ public class ExecuteEvent extends Execute{
             		}
         			//tm(2s) event
         			knowledge.setEvent("tm%282s%29");//knowledgeにinternal eventを配置
-        			System.out.println("      tm(2s) event");
+//        			System.out.println("      tm(2s) event");
         			sw = null;
         			
             }else {
