@@ -16,12 +16,14 @@ public class MonitorEvent extends Monitor{
 		String event = new String();
 //		event = "Clean";
 		event = "Spot";
+		
 		//internal eventの設定
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
 		if(knowledge.getEvent()!=null) {
 			event = knowledge.getEvent();
 			System.out.println("Internal event : " + event);
 			knowledge.setEvent(null);
+			return event;
 		}
 //		event = "Spot";
 //		event = "arriveSpot";
