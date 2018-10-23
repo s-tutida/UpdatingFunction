@@ -42,7 +42,6 @@ public class ExecuteEvent extends Execute{
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
             		mtsp.runNewfunctions();
             		while(!mtsp.getEndEvent()) {
-            			System.out.println("in while");
             		}
         			//arriveSpot event
         			knowledge.setData("arriveSpot");//knowledgeにinternal eventを配置
