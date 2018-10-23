@@ -51,16 +51,6 @@ public class SerialCommunication {
 	                this.out = serialPort.getOutputStream();
 	                
 	                (new Thread(new SerialReader(in, this))).start();
-//	                (new Thread(new SerialWriter(out))).start();
-	                
-//	                in = serialPort.getInputStream();;
-	                // シリアルポート受信側ストリームを開く
-//	                try {
-//	                    this.in = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
-//	                } catch (IOException e) {
-//	                    e.printStackTrace();
-//	                }
-//	                sp = serialPort;
 
 	            } else {
 	                System.out.println("Error: Only serial ports are handled by this example.");

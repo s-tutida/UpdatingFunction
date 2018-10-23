@@ -26,7 +26,6 @@ public class ExecuteEvent extends Execute{
 		Deque<String> event_list =  (Deque<String>) result_of_planning[2];//event
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
 		
-		mode = 2;
 		switch (mode) {
         case 1://追加機能を動かす
         	
