@@ -86,8 +86,10 @@ public class SerialCommunication {
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-                	        System.out.print("length " + len);
-	                    System.out.print(ByteBuffer.wrap(buffer).getInt());
+            	            System.out.println("");
+                	        System.out.println("length " + len);
+	                    System.out.println(ByteBuffer.wrap(buffer).getInt());
+            	            System.out.println("");
 	                }
 	            }
 	            catch ( IOException e )
