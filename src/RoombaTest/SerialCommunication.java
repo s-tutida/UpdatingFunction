@@ -17,7 +17,7 @@ public class SerialCommunication {
         InputStream in = null;
         OutputStream out = null;
 		SerialPort sp = null;
-		public Integer button_event = 0;
+		public Integer button_event = -1;
 		public Thread serialReaderThread = null;
 
 		//シリアルポートとの接続を確立する関数
@@ -77,22 +77,17 @@ public class SerialCommunication {
 	        {
 	            byte[] buffer = new byte[1024];
 	            int len = -1;
-	            int input = -1;
 	            try
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-	                		if((buffer[0]&0xFF) != 0) {//0じゃない
-	                			input = buffer[0]&0xFF;
+	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1)) {//0じゃない, リセットされてない.
+	                			int input = buffer[0]&0xFF;
 	                			System.out.println("button_event : "+ input);
 	            	            this.sc.button_event = input; 
 	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
 	            	            this.sc.send_command_original(3);
-	                	        try{
-	             	    		   this.sc.serialReaderThread.sleep(2000);
-	             	        }catch (InterruptedException e){
-	             	        }
 	                		}
 	                }
 	            }
