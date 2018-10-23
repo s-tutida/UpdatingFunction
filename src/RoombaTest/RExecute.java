@@ -56,7 +56,7 @@ public class RExecute extends Execute{
 					
 					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
 					try {
-						Thread.sleep(700);
+						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

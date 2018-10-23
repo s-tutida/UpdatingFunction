@@ -151,11 +151,11 @@ public class SerialCommunication {
                 	    		 break;
                 	    	case 5 : clean_spot(out);//Spot
                 	    	         break;
-                	    	case 6 : drive(out, -30, 0);//forward_l
+                	    	case 6 : drive(out, -20, 0);//forward_l
                 	    	         break;
                 	    	case 71: driveDirect(out, -6, 6);//clockwise_l
     	         		 	break;
-                   	case 72: driveDirect(out, 9, 9);//clockwise_h
+                   	case 72: driveDirect(out, -9, 9);//clockwise_h
 	         		 	break;
                    	case 81: driveDirect(out, 6, -6);//counter-clockwise_h
                    			break;
