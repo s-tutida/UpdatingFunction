@@ -226,8 +226,8 @@ public abstract class ControlLoop extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("*** Stop new functions  ***"); 
 		this.status = true;
+		System.out.println("*** Stop new functions  ***"); 
 	}
 	
 	public Boolean getEndEvent() {
