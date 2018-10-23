@@ -66,16 +66,10 @@ public class ExecuteEvent extends Execute{
 	    			if(new_event.equals("Clean")) {
 	    				this.sc.send_command_original(4);//clean_normal
 	    			}else if(new_event.equals("Spot")) {
+	    				System.out.println("Spot command");
 	    				this.sc.send_command_original(5);
 	    			}
 	    		}
-
-	    		//実行中
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 
 	        break;
         case 3:
