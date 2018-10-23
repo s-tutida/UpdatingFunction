@@ -17,6 +17,7 @@ public class SerialCommunication {
         OutputStream out = null;
 //		BufferedReader in = null;
 		SerialPort sp = null;
+		public Integer button_event = 0;
 
 		//シリアルポートとの接続を確立する関数
 	    public void connect(String portName) throws Exception {
@@ -68,14 +69,17 @@ public class SerialCommunication {
 	        }
 	    }
 	    
-	    /** */
-	    public static class SerialReader implements Runnable 
+	    public SerialCommunication(){}
+	    
+	   public static class SerialReader implements Runnable 
 	    {
 	        InputStream in;
+	        SerialCommunication sc;
 	        
-	        public SerialReader ( InputStream in )
+	        public SerialReader ( InputStream in_in , SerialCommunication in_sc)
 	        {
-	            this.in = in;
+	            this.in = in_in;
+	            this.sc = in_sc;
 	        }
 	        
 	        public void run ()
@@ -87,11 +91,13 @@ public class SerialCommunication {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
             	            System.out.println("");
-                	        System.out.println("length " + len);
-                	        System.out.println("real " + buffer[0]);
                 	        int i = buffer[0]&0xFF;
 	                    System.out.println("int " + i);
             	            System.out.println("");
+            	            this.sc.button_event = i; 
+            	            this.sc.send_command_original(2);
+            	            this.sc.send_command_original(1);
+            	            this.sc.send_command_original(3);
 	                }
 	            }
 	            catch ( IOException e )
@@ -100,36 +106,14 @@ public class SerialCommunication {
 	            }            
 	        }
 	    }
-
-//	    /** */
-//	    public static class SerialWriter implements Runnable 
-//	    {
-//	        OutputStream out;
-//	        
-//	        public SerialWriter ( OutputStream out )
-//	        {
-//	            this.out = out;
-//	        }
-//	        
-//	        public void run ()
-//	        {
-//	            try
-//	            {                
-//	                int c = 0;
-//	                while ( ( c = System.in.read()) > -1 )
-//	                {
-//	                	    System.out.print("write" + c);
-//	                    this.out.write((byte)c);
-//	                }                
-//	            }
-//	            catch ( IOException e )
-//	            {
-//	                e.printStackTrace();
-//	            }            
-//	        }
-//	    }
 	    
-	   public SerialCommunication(){}
+	    public int getButtonEvent() {
+	    		return this.button_event;
+	    }
+	    
+	    public int resetButtonEvent() {
+	    		this.button_event = -1;
+	    }
 	    
        public void send_command_original(int inputValue) {
             try {
@@ -137,11 +121,9 @@ public class SerialCommunication {
             		//Clean, Spot, EndSpotの3つのみ.
             	    switch(inputValue) {
             	    		case 0: write(out, 142, 18);
-//            	    				int i = 0;
-//            	    				this.read(this.in);
             	    			break;
                 	    	case 1: startup(out);
-                	    	        break;
+                	    	    break;
                 	    	case 2:	stop(out);
                 	    		 break;
                 	    	case 3 : fullMode(out);
@@ -159,8 +141,7 @@ public class SerialCommunication {
             }
             
         }
-
-	    
+    
         public void send_command(int inputValue) {
             try {
 
@@ -216,28 +197,6 @@ public class SerialCommunication {
 	            output[i] = data[i];
 	        }
 	        out.write(output);
-	    }
-	    
-	    private static void read(BufferedReader in) throws IOException {
-
-//	    		String str = null;
-//	        while((str = in.readLine()) != null){
-//	            System.out.println(str);
-//	        }
-//	    	    System.out.println(str);
-		    	while(true){
-		    		try{
-		    			int recDat=in.read();
-		    			if(recDat==-1) break; // 文字無しの場合抜ける
-		    			if((char)recDat!='\r'){
-		    	        System.out.println(recDat);
-					}else{
-						break;
-					}
-				}catch(IOException ex){
-					ex.printStackTrace();
-				}
-			}
 	    }
 		
 	    public static void startup(OutputStream out) throws IOException {

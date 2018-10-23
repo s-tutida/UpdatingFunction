@@ -53,62 +53,31 @@ public class ExecuteEvent extends Execute{
         case 2://既存機能を動かす
         	
 	    		// state machine を進める
-//	    		String name = knowledge.getNewNextStateName(event);
-//	        knowledge.setOriginalCurrentState(knowledge.get_original_state_list().get(name));// originalを進める
-//	        knowledge.moveNewNextState(event);// currentを進める
-//        	
-//        		// TODO eventの送信
-//	    		while(event_list.peekLast()!=null) {
-//	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
-//	    		}
-	    		
+	    		String name = knowledge.getNewNextStateName(event);
+	        knowledge.setOriginalCurrentState(knowledge.get_original_state_list().get(name));// originalを進める
+	        knowledge.moveNewNextState(event);// currentを進める
+        	
+        		// eventの送信
 			System.out.println("start up");
-    			this.sc.send_command_original(1);//start up 
+			this.sc.send_command_original(1);//start up 
+			this.sc.send_command_original(3);//full mode
+			
+	    		while(event_list.peekLast()!=null) {
+	    			String new_event = event_list.pollLast();
+	    			System.out.println("      MAPE-K loop will send this event : "+ new_event);
+	    			if(new_event.equals("Clean")) {
+	    				this.sc.send_command_original(4);//clean_normal
+	    			}else if(new_event.equals("Spot")) {
+	    				this.sc.send_command_original(5);
+	    			}
+	    		}
 
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			System.out.println("full mode");
-//			this.sc.send_command_original(3);//full modeへ以降
-//
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//
-//			System.out.println("clean normal");
-//    			this.sc.send_command_original(4);//clean_normal
-//			try {
-//				Thread.sleep(10000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//
-//			System.out.println("clean spot");
-//    			this.sc.send_command_original(5);//clean spot
-//    			
-//    			try {
-//    				Thread.sleep(10000);
-//    			} catch (InterruptedException e) {
-//    				e.printStackTrace();
-//    			}
-//    			
-//    			System.out.println("stop");
-//    			this.sc.send_command_original(2);//stop
-//    			
-//    			try {
-//    				Thread.sleep(10000);
-//    			} catch (InterruptedException e) {
-//    				e.printStackTrace();
-//    			}
-    			
-    			System.out.println("sensor commands");
-    			this.sc.send_command_original(0);//sensor commands
-    			
+			try {
+				Thread.sleep(700);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
 	        break;
         case 3:
         	    break;

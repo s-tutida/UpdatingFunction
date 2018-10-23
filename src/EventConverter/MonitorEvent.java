@@ -1,12 +1,14 @@
 package EventConverter;
 
+import RoombaTest.SerialCommunication;
 import Tsuchida.*;  
 
 public class MonitorEvent extends Monitor{
 
-	public MonitorEvent(ComponentManager cm, String name) {
+	SerialCommunication sc = null;
+	public MonitorEvent(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
-		// TODO Auto-generated constructor stub
+		this.sc = in_sc;
 	}
 
 	@Override
@@ -14,9 +16,7 @@ public class MonitorEvent extends Monitor{
 		
 		// TODO 実際に, Eventを監視.
 		String event = new String();
-//		event = "Clean";
-		event = "Spot";
-		
+
 		//internal eventの設定
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
 		if(knowledge.getEvent()!=null) {
@@ -24,11 +24,29 @@ public class MonitorEvent extends Monitor{
 			knowledge.setEvent(null);
 			return event;
 		}
+		
+		//internal eventがない場合, コマンドを受けつけを待つ
+		while(true) {
+			this.sc.send_command_original(0);//受信モード
+			int button_event = -1;
+			if((button_event = sc.getButtonEvent()) != -1) {
+				sc.resetButtonEvent();
+	        		//Clean, Spot, EndSpotの3つのみ.
+	        	    switch(button_event) {
+	        	    		case 1: return "Clean";
+	            	    	case 2: return "Spot";
+	            	    	default : break;
+	        	    }
+			}
+		}
+		
+//		event = "Clean";
+//		event = "Spot";
 //		event = "Spot";
 //		event = "arriveSpot";
 //		event = "endSpot";
 //		System.out.println(event);
-		return event;
+//		return event;
 	}
 
 	@Override

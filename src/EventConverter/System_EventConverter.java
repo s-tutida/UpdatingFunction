@@ -28,7 +28,7 @@ public class System_EventConverter extends ComponentManager{
         
 		//add MAPE-K components to system instance
 		se.addKnowledge(new KnowledgeState(se, "Knowledge", ps))
-		  .addMonitor(new MonitorEvent(se, "Monitor"))
+		  .addMonitor(new MonitorEvent(se, "Monitor", sc))
 		  .addAnalysis(new AnalyzeState(se, "Analyze"))
 		  .addPlan(new PlanEvent(se, "Plan"))
 		  .addExecute(new ExecuteEvent(se, "Eexecute", sc))
