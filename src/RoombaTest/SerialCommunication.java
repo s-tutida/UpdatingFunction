@@ -129,7 +129,7 @@ public class SerialCommunication {
             	    switch(inputValue) {
             	    		case 0: write(out, 142, 18);
             	    				int i = 0;
-            	    				this.read(this.in);
+//            	    				this.read(this.in);
             	    			break;
                 	    	case 1: startup(out);
                 	    	        break;
