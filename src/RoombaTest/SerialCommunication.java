@@ -88,6 +88,7 @@ public class SerialCommunication {
 	                {
             	            System.out.println("");
                 	        System.out.println("length " + len);
+                	        System.out.println("real " + buffer[0]);
 	                    System.out.println(ByteBuffer.wrap(buffer).getInt());
             	            System.out.println("");
 	                }
