@@ -12,45 +12,111 @@ import gnu.io.SerialPort;
 
 public class SerialCommunication {
 
-		OutputStream out = null;
-		BufferedReader in = null;
+//		OutputStream out = null;
+//		BufferedReader in = null;
 		SerialPort sp = null;
 
 		//シリアルポートとの接続を確立する関数
 	    public void connect(String portName) throws Exception {
+	    	
+	    	    //ポートを取得
 	        CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);
 	        
 	        if (portIdentifier.isCurrentlyOwned()) {
 	            System.out.println("Error: Port is currently in use");
 	        } else {
 	        	
+	        	    //ポートを開く, timeoutを2s秒に設定
 	            int timeout = 2000;
 	            CommPort commPort = portIdentifier.open(this.getClass().getName(),timeout);
 
 	            if (commPort instanceof SerialPort) {
 	            	
+	            	    //シリアルポートのインスタンスを作成
 	                SerialPort serialPort = (SerialPort) commPort;
+	                
+	                //ボーレート, データビット数, ストップビット数, パリティを設定
 	                serialPort.setSerialPortParams(
 	                		115200, 
 	                		SerialPort.DATABITS_8,
 	                		SerialPort.STOPBITS_1, 
 	                		SerialPort.PARITY_NONE
-                		);          
+                		);
+	                //フロー制御はしない
 	                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 	                
-	                out = serialPort.getOutputStream();
+	                InputStream in = serialPort.getInputStream();
+	                OutputStream out = serialPort.getOutputStream();
+	                
+	                (new Thread(new SerialReader(in))).start();
+	                (new Thread(new SerialWriter(out))).start();
 //	                in = serialPort.getInputStream();;
 	                // シリアルポート受信側ストリームを開く
-	                try {
-	                    this.in = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
-	                } catch (IOException e) {
-	                    e.printStackTrace();
-	                }
-	                sp = serialPort;
+//	                try {
+//	                    this.in = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
+//	                } catch (IOException e) {
+//	                    e.printStackTrace();
+//	                }
+//	                sp = serialPort;
 
 	            } else {
 	                System.out.println("Error: Only serial ports are handled by this example.");
 	            }
+	        }
+	    }
+	    
+	    /** */
+	    public static class SerialReader implements Runnable 
+	    {
+	        InputStream in;
+	        
+	        public SerialReader ( InputStream in )
+	        {
+	            this.in = in;
+	        }
+	        
+	        public void run ()
+	        {
+	            byte[] buffer = new byte[1024];
+	            int len = -1;
+	            try
+	            {
+	                while ( ( len = this.in.read(buffer)) > -1 )
+	                {
+	                    System.out.print(new String(buffer,0,len));
+	                }
+	            }
+	            catch ( IOException e )
+	            {
+	                e.printStackTrace();
+	            }            
+	        }
+	    }
+
+	    /** */
+	    public static class SerialWriter implements Runnable 
+	    {
+	        OutputStream out;
+	        
+	        public SerialWriter ( OutputStream out )
+	        {
+	            this.out = out;
+	        }
+	        
+	        public void run ()
+	        {
+	            try
+	            {                
+	                int c = 0;
+	                while ( ( c = System.in.read()) > -1 )
+	                {
+	                    this.out.write(c);
+	                }                
+	            }
+	            catch ( IOException e )
+	            {
+	                e.printStackTrace();
+	            }            
 	        }
 	    }
 	    
