@@ -90,7 +90,7 @@ public class SerialCommunication {
 	            	            this.sc.send_command_original(1);
 	            	            this.sc.send_command_original(3);
 	                	        try{
-	             	    		   this.sc.serialReaderThread.sleep(1000);
+	             	    		   this.sc.serialReaderThread.sleep(2000);
 	             	        }catch (InterruptedException e){
 	             	        }
 	                		}
