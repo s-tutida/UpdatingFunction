@@ -18,7 +18,6 @@ public class MoveToStartPoint extends ControlLoop{
 		this.rm = new MoveToStartPoint(this.sc);
         
 		USBcamera uc = new USBcamera();
-		System.out.println("before starting new functions.");
 		
 		this.rm.addMonitor(new RMonitor(rm, "Monitor", uc))
 		  .addAnalysis(new RAnalyze(rm, "Analyze"))
@@ -30,8 +29,8 @@ public class MoveToStartPoint extends ControlLoop{
 	}
 	
 	public Boolean getEndEvent() {
-		if(rm==null) return false;
-		return rm.getEndEvent();
+		if(this.rm==null) return false;
+		return super.getEndEvent();
 	}
 	
 	

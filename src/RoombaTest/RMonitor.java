@@ -22,7 +22,6 @@ public class RMonitor extends Monitor{
 	@Override
 	public Object prepareData(Object o) {
 		
-		System.out.println("Rmonitor");
 		
 		Mat webcam_image=new Mat();		
 		

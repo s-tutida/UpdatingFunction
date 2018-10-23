@@ -25,9 +25,6 @@ public class RExecute extends Execute{
 		String str = String.valueOf(o);
 		String[] commands = str.split(",", 0);
 		
-		System.out.println(commands);
-		System.out.println("Rexecute");
-		
 		if(check == 1) {//既に到達した場合.
 			return null;
 		}
