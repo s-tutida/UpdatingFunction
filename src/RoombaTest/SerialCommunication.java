@@ -59,7 +59,6 @@ public class SerialCommunication {
        public void send_command_original(int inputValue) {
             try {
 
-            		System.out.println("in send_command_original method.");
             		//Clean, Spot, EndSpotの3つのみ.
             	    switch(inputValue) {
             	    		case 0: write(out, 142, 18);
@@ -84,7 +83,6 @@ public class SerialCommunication {
                 e.printStackTrace();
             }
             
-    		    System.out.println("out send_command_original method.");
         }
 
 	    

@@ -75,7 +75,7 @@ public class ExecuteEvent extends Execute{
 			this.sc.send_command_original(3);//full modeへ以降
 
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -89,7 +89,7 @@ public class ExecuteEvent extends Execute{
 			}
 
 			System.out.println("clean spot");
-    			this.sc.send_command_original(4);//clean spot
+    			this.sc.send_command_original(5);//clean spot
     			
     			try {
     				Thread.sleep(10000);
@@ -98,10 +98,10 @@ public class ExecuteEvent extends Execute{
     			}
     			
     			System.out.println("stop");
-    			this.sc.send_command_original(4);//stop
+    			this.sc.send_command_original(2);//stop
     			
     			try {
-    				Thread.sleep(2000);
+    				Thread.sleep(10000);
     			} catch (InterruptedException e) {
     				e.printStackTrace();
     			}
