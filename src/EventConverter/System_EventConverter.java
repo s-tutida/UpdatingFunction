@@ -20,7 +20,7 @@ public class System_EventConverter extends ComponentManager{
 	    SerialCommunication sc = null;
         try {
 	    	    sc = new SerialCommunication();
-	        sc.connect("/dev/ttyUSB1");
+	        sc.connect("/dev/ttyUSB0");
 			
 	    } catch (Exception e) {
 	        e.printStackTrace();
