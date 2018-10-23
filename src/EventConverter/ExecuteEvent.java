@@ -36,38 +36,22 @@ public class ExecuteEvent extends Execute{
             knowledge.moveNewNextState(event);
             
             // 既存の機能を動かす.
-            System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName());
+            System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName() + " in the another thread.");
             
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
             		
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc, knowledge);
-//            		mtsp.runNewfunctions();
-//            		while(!mtsp.getEndEvent()) {
-//            		}
-            		
-//        			knowledge.setEvent("arriveSpot");//knowledgeにinternal eventを配置
-//        			mtsp = null;
+            		mtsp.start();
             		
             }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
             		
             		SpotWait sw = new SpotWait(knowledge);
             		sw.start();
-//            		try {
-//            			sw.join();
-//            		} catch (InterruptedException e) {
-//            			// 例外処理
-//            			e.printStackTrace();
-//            		}
-//            		while((!sw.getEndEvent())&&sw!=null) {
-//            		}
-            		
-//        			knowledge.setEvent("tm(2s)");//knowledgeにinternal eventを配置
-//        			sw = null;
         			
-            }else {
-            		//none
             }
+            
             break;
+            
         case 2://既存機能を動かす
         	
 	    		// state machine を進める

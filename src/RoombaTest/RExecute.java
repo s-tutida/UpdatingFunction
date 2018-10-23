@@ -36,15 +36,19 @@ public class RExecute extends Execute{
 										
 					//MAPEの終了
 					if(Integer.parseInt(command)==5) {//start to clean
+						
 						check = 1;
+						
+					    //Log
+						System.out.println(""); 
 						System.out.println("***  Arrive at target point  ***  ");
 						System.out.println("***  Send arriveSpot event to EventConverter.  ***  ");
-						sc.send_command(2);//Reset
-						try {
-							this.cm.exit();
-							((KnowledgeState) this.cm.getKnowledge()).setEvent("arriveSpot");
-						}catch(Exception e){
-						}
+						
+						sc.send_command(2);//Reset cleaning robot
+						this.cm.exit();//Stop MAPE loop
+						
+						((KnowledgeState) this.cm.getKnowledge()).setEvent("arriveSpot");
+						
 						return null;
 					}
 					

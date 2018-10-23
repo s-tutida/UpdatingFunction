@@ -25,6 +25,7 @@ public class System_EventConverter extends ComponentManager{
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+        
 		//add MAPE-K components to system instance
 		se.addKnowledge(new KnowledgeState(se, "Knowledge", ps))
 		  .addMonitor(new MonitorEvent(se, "Monitor"))

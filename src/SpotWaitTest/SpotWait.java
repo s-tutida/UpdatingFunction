@@ -21,8 +21,4 @@ public class SpotWait extends Thread{
 
 		knowledge.setEvent("tm(2s)");
 	}
-	
-//	public Boolean getEndEvent() {
-//		return this.status;
-//	}
 }

@@ -34,8 +34,6 @@ public abstract class ControlLoop extends Thread{
 	private volatile ExecutorService threadManager;//マルチスレッド使用時のComponentManagerのオブジェクト格納場所
 	
 	private BufferedReader in = null;
-	
-//	private Boolean status = false;
 
 	//Monitorをextendsして作成されたコンポーネントを本クラスのメンバーに追加する
 	public ControlLoop addMonitor(Component c) {
@@ -129,12 +127,11 @@ public abstract class ControlLoop extends Thread{
 		return this.knowledge;
 	}
 	
-	//標準入力から文字列を受け付ける
+	//MAPEを開始する.
 	public void run() {
 		startLoop();
 	}
 
-	
     //[start] startコマンドの処理
 	private void startLoop() {
 		
@@ -158,7 +155,7 @@ public abstract class ControlLoop extends Thread{
 		    System.out.println(""); 
 			System.out.println("***  Start to run new functions. ***"); 
 			ExecutorService executorService = null;
-			String time = null;
+//			String time = null;
 			
 			//TODO repeat.
 //			if(plan.conf.getValue("time") != null) time = plan.conf.getValue("time");
@@ -226,14 +223,10 @@ public abstract class ControlLoop extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		System.out.println("***  Stop new functions  ***"); 
 		System.out.println(""); 
-//		this.status = true;
 	}
-	
-//	public Boolean getEndEvent() {
-//		return this.status;
-//	}
 	
 	//Loopの実行を許可します
 	private void OnLoopCondition(){
