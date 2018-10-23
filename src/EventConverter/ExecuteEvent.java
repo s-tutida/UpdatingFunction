@@ -89,7 +89,7 @@ public class ExecuteEvent extends Execute{
 			}
 
 			System.out.println("clean spot");
-    			sc.send_command_original(5);//clean spot
+    			this.sc.send_command_original(4);//clean spot
     			
     			try {
     				Thread.sleep(10000);
@@ -98,7 +98,7 @@ public class ExecuteEvent extends Execute{
     			}
     			
     			System.out.println("stop");
-    			sc.send_command_original(2);//stop
+    			this.sc.send_command_original(4);//stop
     			
     			try {
     				Thread.sleep(2000);
@@ -109,10 +109,6 @@ public class ExecuteEvent extends Execute{
     			System.out.println("sensor commands");
     			this.sc.send_command_original(0);//sensor commands
     			
-    			int i=1;
-    			while(i!=0) {
-    				//testのため
-    			}
 	        break;
         case 3:
         	    break;

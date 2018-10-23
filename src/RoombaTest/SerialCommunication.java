@@ -1,8 +1,11 @@
 package RoombaTest;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
@@ -10,25 +13,39 @@ import gnu.io.SerialPort;
 public class SerialCommunication {
 
 		OutputStream out = null;
-		InputStream in = null;
+		BufferedReader in = null;
 		SerialPort sp = null;
 
 		//シリアルポートとの接続を確立する関数
 	    public void connect(String portName) throws Exception {
 	        CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);
+	        
 	        if (portIdentifier.isCurrentlyOwned()) {
 	            System.out.println("Error: Port is currently in use");
 	        } else {
+	        	
 	            int timeout = 2000;
 	            CommPort commPort = portIdentifier.open(this.getClass().getName(),timeout);
 
 	            if (commPort instanceof SerialPort) {
+	            	
 	                SerialPort serialPort = (SerialPort) commPort;
-	                serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8,SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+	                serialPort.setSerialPortParams(
+	                		115200, 
+	                		SerialPort.DATABITS_8,
+	                		SerialPort.STOPBITS_1, 
+	                		SerialPort.PARITY_NONE
+                		);          
 	                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 	                
 	                out = serialPort.getOutputStream();
-	                in = serialPort.getInputStream();
+//	                in = serialPort.getInputStream();;
+	                 シリアルポート受信側ストリームを開く
+	                try {
+	                    this.in = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
 	                sp = serialPort;
 
 	            } else {
@@ -119,14 +136,12 @@ public class SerialCommunication {
 	        out.write(output);
 	    }
 	    
-	    private static void read(InputStream in) throws IOException {
+	    private static void read(BufferedReader in) throws IOException {
 //	    	
-	        byte[] input = null;
-//	        for(int i = 0; i < data.length; i++) {
-//	            output[i] = (byte)(data[i]);
-//	        }
-	        int a = in.read(input);
-	        System.out.println(a);
+	    		String str = null;
+	        while((str = in.readLine()) != null){
+	            System.out.println(str);
+	          }
 	    }
 	    
 	    private static void write(OutputStream out, byte... data) throws IOException {
