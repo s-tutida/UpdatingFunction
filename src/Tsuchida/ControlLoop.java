@@ -231,6 +231,7 @@ public abstract class ControlLoop extends Thread{
 	}
 	
 	public Boolean getEndEvent() {
+		System.out.println(this.status);
 		return this.status;
 	}
 	
