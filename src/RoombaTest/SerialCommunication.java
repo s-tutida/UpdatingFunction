@@ -40,7 +40,7 @@ public class SerialCommunication {
 	                
 	                out = serialPort.getOutputStream();
 //	                in = serialPort.getInputStream();;
-	                 シリアルポート受信側ストリームを開く
+	                // シリアルポート受信側ストリームを開く
 	                try {
 	                    this.in = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
 	                } catch (IOException e) {
