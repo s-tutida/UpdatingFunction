@@ -70,6 +70,7 @@ public class ExecuteEvent extends Execute{
 				e.printStackTrace();
 			}
 			
+			System.out.println("full mode");
 			sc.send_command_original(3);//full modeへ以降
 
 			try {
@@ -77,14 +78,16 @@ public class ExecuteEvent extends Execute{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
+			System.out.println("clean normal");
     			sc.send_command_original(4);//clean_normal
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
+			System.out.println("clean spot");
     			sc.send_command_original(5);//clean spot
     			
     			try {
@@ -93,7 +96,8 @@ public class ExecuteEvent extends Execute{
     				e.printStackTrace();
     			}
     			
-    			sc.send_command_original(2);//clean spot
+    			System.out.println("stop");
+    			sc.send_command_original(2);//stop
     			
     			try {
     				Thread.sleep(2000);
@@ -101,6 +105,7 @@ public class ExecuteEvent extends Execute{
     				e.printStackTrace();
     			}
     			
+    			System.out.println("sensor commands");
     			sc.send_command_original(0);//sensor commands
     			
     			int i=1;
