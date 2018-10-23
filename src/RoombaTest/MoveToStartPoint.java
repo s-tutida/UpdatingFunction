@@ -30,6 +30,7 @@ public class MoveToStartPoint extends ControlLoop{
 	}
 	
 	public Boolean getEndEvent() {
+		if(rm==null) return false;
 		return rm.getEndEvent();
 	}
 	
