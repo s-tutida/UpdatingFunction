@@ -10,7 +10,7 @@ public class Roomba extends ControlLoop{
 	    SerialCommunication sc = null;
         try {
 	    	    sc = new SerialCommunication();
-	        sc.connect("/dev/ttyUSB0");
+	        sc.connect("/dev/ttyUSB1");
 			
 	    } catch (Exception e) {
 	        e.printStackTrace();
