@@ -39,23 +39,24 @@ public class ExecuteEvent extends Execute{
             System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName());
             
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
+            		
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
             		mtsp.runNewfunctions();
             		while(!mtsp.getEndEvent()) {
             		}
-        			//arriveSpot event
+            		
         			knowledge.setEvent("arriveSpot");//knowledgeにinternal eventを配置
-        			System.out.println("      arriveSpot event");
         			mtsp = null;
             		
             }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
+            		
             		SpotWait sw = new SpotWait();
+            		sw.start();
             		while((!sw.getEndEvent())&&sw!=null) {
             			sw.getEndEvent();
             		}
-        			//tm(2s) event
+            		
         			knowledge.setEvent("tm%282s%29");//knowledgeにinternal eventを配置
-//        			System.out.println("      tm(2s) event");
         			sw = null;
         			
             }else {

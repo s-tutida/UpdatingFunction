@@ -21,7 +21,6 @@ public class MonitorEvent extends Monitor{
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
 		if(knowledge.getEvent()!=null) {
 			event = knowledge.getEvent();
-//			System.out.println("Internal event : " + event);
 			knowledge.setEvent(null);
 			return event;
 		}
