@@ -52,8 +52,13 @@ public class ExecuteEvent extends Execute{
             		
             		SpotWait sw = new SpotWait();
             		sw.start();
+            		try {
+            			sw.join();
+            		} catch (InterruptedException e) {
+            			// 例外処理
+            			e.printStackTrace();
+            		}
             		while((!sw.getEndEvent())&&sw!=null) {
-            			System.out.println(sw.getEndEvent());
             		}
             		
         			knowledge.setEvent("tm%282s%29");//knowledgeにinternal eventを配置
