@@ -85,7 +85,7 @@ public class SerialCommunication {
 	                			int input = buffer[0]&0xFF;
 	                			System.out.println("button_event : "+ input);
 	            	            this.sc.button_event = input; 
-	            	            this.sc.send_command_original(2);
+//	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
 	            	            this.sc.send_command_original(3);
 	                		}
@@ -155,11 +155,11 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 71: driveDirect(out, -20, 20);//clockwise_l
     	         		 	break;
-                   	case 72: driveDirect(out, -25, 25);//clockwise_h
+                   	case 72: driveDirect(out, -30, 30);//clockwise_h
 	         		 	break;
                    	case 81: driveDirect(out, 20, -20);//counter-clockwise_h
                    			break;
-                   	case 82:driveDirect(out, 25, -25);//counter-clockwise_h
+                   	case 82:driveDirect(out, 30, -30);//counter-clockwise_h
                    		    break;
                 	    	case 8 : break;//sleep
                 	    	default : break;
@@ -225,6 +225,7 @@ public class SerialCommunication {
 	        byte[] cmd = { (byte)OPC_DRIVE, (byte)(velocity >>> 8), (byte)velocity,
 	                        (byte)(radius >>> 8), (byte)radius
 	        };
+	        drivePWM(out, 50, 50);
 	        write(out, cmd);
 	    }
 

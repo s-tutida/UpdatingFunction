@@ -57,7 +57,7 @@ public class ExecuteEvent extends Execute{
 	        knowledge.moveNewNextState(event);// currentを進める
         	
         		// eventの送信
-            this.sc.send_command_original(2);
+//            this.sc.send_command_original(2);
 			this.sc.send_command_original(1);//start up 
 			this.sc.send_command_original(3);//full mode
 			
