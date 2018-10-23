@@ -77,12 +77,12 @@ public class SerialCommunication {
 	        {
 	            byte[] buffer = new byte[1024];
 	            int len = -1;
-	            int input = -1;
+	            int input = 0;
 	            try
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-	                		if((input != (buffer[0]&0xFF)) && (input != 0)) {
+	                		if((input != (buffer[0]&0xFF)) && ((buffer[0]&0xFF) != 0)) {//前回と同じじゃない, かつ, 一緒じゃない
 	                			input = buffer[0]&0xFF;
 	                			System.out.println("button_event : "+ this.sc.button_event);
 	            	            this.sc.button_event = input; 
@@ -108,7 +108,7 @@ public class SerialCommunication {
     	    		   this.serialReaderThread.sleep(1000);
     	        }catch (InterruptedException e){
     	        }
-	    		this.button_event = -1;
+	    		this.button_event = 0;
 	   }
 	    
        public void send_command_original(int inputValue) {
