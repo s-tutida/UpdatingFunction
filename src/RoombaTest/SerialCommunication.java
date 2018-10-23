@@ -121,11 +121,11 @@ public class SerialCommunication {
 	    
 	    private static void read(InputStream in) throws IOException {
 //	    	
-//	        byte[] output = new byte[data.length];
+	        byte[] input = null;
 //	        for(int i = 0; i < data.length; i++) {
 //	            output[i] = (byte)(data[i]);
 //	        }
-	        int a = in.read();
+	        int a = in.read(input);
 	        System.out.println(a);
 	    }
 	    

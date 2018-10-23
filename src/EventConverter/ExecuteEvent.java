@@ -83,28 +83,28 @@ public class ExecuteEvent extends Execute{
 			System.out.println("clean normal");
     			this.sc.send_command_original(4);//clean_normal
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-//			System.out.println("clean spot");
-//    			sc.send_command_original(5);//clean spot
-//    			
-//    			try {
-//    				Thread.sleep(2000);
-//    			} catch (InterruptedException e) {
-//    				e.printStackTrace();
-//    			}
-//    			
-//    			System.out.println("stop");
-//    			sc.send_command_original(2);//stop
-//    			
-//    			try {
-//    				Thread.sleep(2000);
-//    			} catch (InterruptedException e) {
-//    				e.printStackTrace();
-//    			}
+			System.out.println("clean spot");
+    			sc.send_command_original(5);//clean spot
+    			
+    			try {
+    				Thread.sleep(10000);
+    			} catch (InterruptedException e) {
+    				e.printStackTrace();
+    			}
+    			
+    			System.out.println("stop");
+    			sc.send_command_original(2);//stop
+    			
+    			try {
+    				Thread.sleep(2000);
+    			} catch (InterruptedException e) {
+    				e.printStackTrace();
+    			}
     			
     			System.out.println("sensor commands");
     			this.sc.send_command_original(0);//sensor commands
