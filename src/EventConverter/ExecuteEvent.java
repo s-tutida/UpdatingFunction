@@ -64,12 +64,14 @@ public class ExecuteEvent extends Execute{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
 			this.sc.send_command_original(3);//full mode
 			try {
 				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
 	    		while(event_list.peekLast()!=null) {
 	    			String new_event = event_list.pollLast();
 	    			System.out.println("      MAPE-K loop will send this event : "+ new_event);
