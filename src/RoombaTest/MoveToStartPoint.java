@@ -12,7 +12,7 @@ public class MoveToStartPoint extends ControlLoop{
 	
 	public MoveToStartPoint(SerialCommunication in_sc, KnowledgeState knowledge) {
 		this.sc = in_sc;
-		super.setKnowledge(this.knowledge);
+		super.addKnowledge(knowledge);
 		
 		runNewfunctions();
 	}

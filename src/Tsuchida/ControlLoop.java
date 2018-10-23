@@ -35,7 +35,7 @@ public abstract class ControlLoop extends Thread{
 	
 	private BufferedReader in = null;
 	
-	private Boolean status = false;
+//	private Boolean status = false;
 
 	//Monitorをextendsして作成されたコンポーネントを本クラスのメンバーに追加する
 	public ControlLoop addMonitor(Component c) {
@@ -248,10 +248,6 @@ public abstract class ControlLoop extends Thread{
 	//Loopの実行状況を取得します
 	private boolean getLoopCondition() {
 		return loopStatus;
-	}
-	
-	public void setKnowledge(Knowledge knowledge) {
-		this.knowledge = knowledge;
 	}
 
 }
