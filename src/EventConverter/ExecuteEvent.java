@@ -57,7 +57,6 @@ public class ExecuteEvent extends Execute{
 	        knowledge.moveNewNextState(event);// currentを進める
         	
         		// eventの送信
-			System.out.println("start up");
 			this.sc.send_command_original(1);//start up 
 			this.sc.send_command_original(3);//full mode
 			
@@ -71,8 +70,9 @@ public class ExecuteEvent extends Execute{
 	    			}
 	    		}
 
+	    		//実行中
 			try {
-				Thread.sleep(700);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
