@@ -39,9 +39,9 @@ public class PlanEvent extends Plan{
 	    		if(event_list.peekLast()==null) {
 	    			System.out.println("      Error. There are no choice to move ");
 	    		}
-	    		while(event_list.peekLast()!=null) {
-	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
-	    		}
+//	    		while(event_list.peekLast()!=null) {
+//	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
+//	    		}
 	        break;
         case 3://何もしない
 			System.out.println("      Invalid input in now state. ");
