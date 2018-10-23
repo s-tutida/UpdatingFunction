@@ -15,7 +15,6 @@ public class SerialCommunication {
 
         InputStream in = null;
         OutputStream out = null;
-//		BufferedReader in = null;
 		SerialPort sp = null;
 		public Integer button_event = 0;
 
@@ -51,7 +50,7 @@ public class SerialCommunication {
 	                this.in = serialPort.getInputStream();
 	                this.out = serialPort.getOutputStream();
 	                
-	                (new Thread(new SerialReader(in))).start();
+	                (new Thread(new SerialReader(in, this))).start();
 //	                (new Thread(new SerialWriter(out))).start();
 	                
 //	                in = serialPort.getInputStream();;
