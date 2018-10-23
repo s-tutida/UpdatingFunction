@@ -59,7 +59,7 @@ public class ExecuteEvent extends Execute{
         	
         		// TODO eventの送信
 	    		while(event_list.peekLast()!=null) {
-	    			System.out.println("      MMAPE-K loop will send this event : "+ event_list.pollLast());
+	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
 	    		}
 	    		
     			sc.send_command_original(1);//start up 

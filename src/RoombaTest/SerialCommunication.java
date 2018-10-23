@@ -2,6 +2,7 @@ package RoombaTest;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.InputStream;
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
@@ -9,6 +10,7 @@ import gnu.io.SerialPort;
 public class SerialCommunication {
 
 		OutputStream out = null;
+		InputStream in = null;
 		SerialPort sp = null;
 
 		//シリアルポートとの接続を確立する関数
@@ -26,6 +28,7 @@ public class SerialCommunication {
 	                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 	                
 	                out = serialPort.getOutputStream();
+	                in = serialPort.getInputStream();
 	                sp = serialPort;
 
 	            } else {
@@ -41,6 +44,10 @@ public class SerialCommunication {
 
             		//Clean, Spot, EndSpotの3つのみ.
             	    switch(inputValue) {
+            	    		case 0: write(out, 142, 18);
+            	    				int i = 0;
+            	    				while(i!=1)	read(in);
+            	    			break;
                 	    	case 1: startup(out);
                 	    	        break;
                 	    	case 2:	stop(out);
@@ -109,7 +116,18 @@ public class SerialCommunication {
 	        out.write(output);
 	    }
 	    
+	    private static void read(InputStream in) throws IOException {
+//	    	
+//	        byte[] output = new byte[data.length];
+//	        for(int i = 0; i < data.length; i++) {
+//	            output[i] = (byte)(data[i]);
+//	        }
+	        int a = in.read();
+	        System.out.println(a);
+	    }
+	    
 	    private static void write(OutputStream out, byte... data) throws IOException {
+	    	
 	        byte[] output = new byte[data.length];
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = data[i];
@@ -129,12 +147,10 @@ public class SerialCommunication {
 	    public static void safeMode(OutputStream out) throws IOException {
 	        write(out, OPC_SAFE);
 	    }
-
 	    
 	    public static void fullMode(OutputStream out) throws IOException {
 	        write(out, OPC_FULL);
 	    }
-
 
 	    public static void clean_spot(OutputStream out) throws IOException {
 	        write(out, OPC_CLEAN_SPOT);				
