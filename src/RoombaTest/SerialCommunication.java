@@ -12,7 +12,7 @@ import gnu.io.SerialPort;
 
 public class SerialCommunication {
 
-//		OutputStream out = null;
+		OutputStream out = null;
 //		BufferedReader in = null;
 		SerialPort sp = null;
 
