@@ -6,7 +6,7 @@ import Tsuchida.ControlLoop;
 //MAPE-K loopから呼び出せるようにした. 本機能を主として動かす場合はRoomba.javaを使用する.
 public class MoveToStartPoint extends ControlLoop{
 	
-	private MoveToStartPoint rm = null;
+	public MoveToStartPoint rm = null;
 	private SerialCommunication sc = null;
 	
 	public MoveToStartPoint(SerialCommunication in_sc) {

@@ -41,7 +41,7 @@ public class ExecuteEvent extends Execute{
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc);
             		mtsp.runNewfunctions();
-            		while(!mtsp.getEndEvent()) {
+            		while(!mtsp.rm.getEndEvent()) {
             		}
         			//arriveSpot event
         			knowledge.setData("arriveSpot");//knowledgeにinternal eventを配置
