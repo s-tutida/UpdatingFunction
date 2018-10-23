@@ -55,11 +55,11 @@ public class RExecute extends Execute{
 					sc.send_command(Integer.parseInt(command));
 					
 					//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
-//					try {
-//						Thread.sleep(700);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
+					try {
+						Thread.sleep(700);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
