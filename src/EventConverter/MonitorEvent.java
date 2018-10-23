@@ -28,6 +28,7 @@ public class MonitorEvent extends Monitor{
 		this.sc.send_command_original(0);//受信モード
 		while(true) {
 			int button_event = -1;
+			System.out.println("button_event : "+ button_event);
 			if((button_event = sc.getButtonEvent()) != -1) {
 				sc.resetButtonEvent();
 	        		//Clean, Spot, EndSpotの3つのみ.
