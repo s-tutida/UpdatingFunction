@@ -34,6 +34,14 @@ public class ObjectDetector {
 		    }
 		}
 		
+		for (int i = 0; i < sizeA.height; i++){
+		    for (int j = 0; j < sizeA.width; j++) {
+		    	double[] data = new double[3];
+		        data = A.get(i, j);
+		        System.out.println(data);
+		    }
+		}
+		
 		
 		int values[] = {count1, count2, count3, count4};
         int max = values[0];
