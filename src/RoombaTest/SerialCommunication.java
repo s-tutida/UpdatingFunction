@@ -145,11 +145,24 @@ public class SerialCommunication {
 	    
 	    private static void read(BufferedReader in) throws IOException {
 
-	    		String str = null;
-	        while((str = in.readLine()) != null){
-	            System.out.println(str);
-	        }
-	        System.out.println(str);
+//	    		String str = null;
+//	        while((str = in.readLine()) != null){
+//	            System.out.println(str);
+//	        }
+//	    	    System.out.println(str);
+		    	while(true){
+		    		try{
+		    			int recDat=in.read();
+		    			if(recDat==-1) break; // 文字無しの場合抜ける
+		    			if((char)recDat!='\r'){
+		    	        System.out.println(recDat);
+					}else{
+						break;
+					}
+				}catch(IOException ex){
+					ex.printStackTrace();
+				}
+			}
 	    }
 		
 	    public static void startup(OutputStream out) throws IOException {
