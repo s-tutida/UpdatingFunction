@@ -68,6 +68,7 @@ public class ExecuteEvent extends Execute{
 	    			}else if(new_event.equals("Spot")) {
 	    				System.out.println("Spot command");
 	    				this.sc.send_command_original(5);
+	    				this.sc.send_command(5);
 	    			}
 	    		}
 
