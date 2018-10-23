@@ -44,7 +44,7 @@ public class RExecute extends Execute{
 						System.out.println("***  Arrive at target point  ***  ");
 						System.out.println("***  Send arriveSpot event to EventConverter.  ***  ");
 						
-						sc.send_command(2);//Reset cleaning robot
+						sc.send_command(1);//Reset cleaning robot
 						this.cm.exit();//Stop MAPE loop
 						
 						((KnowledgeState) this.cm.getKnowledge()).setEvent("arriveSpot");
