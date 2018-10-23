@@ -64,47 +64,47 @@ public class ExecuteEvent extends Execute{
 	    		
 			System.out.println("start up");
     			this.sc.send_command_original(1);//start up 
-
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			System.out.println("full mode");
-			this.sc.send_command_original(3);//full modeへ以降
-
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			System.out.println("clean normal");
-    			this.sc.send_command_original(4);//clean_normal
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			System.out.println("clean spot");
-    			this.sc.send_command_original(5);//clean spot
-    			
-    			try {
-    				Thread.sleep(10000);
-    			} catch (InterruptedException e) {
-    				e.printStackTrace();
-    			}
-    			
-    			System.out.println("stop");
-    			this.sc.send_command_original(2);//stop
-    			
-    			try {
-    				Thread.sleep(10000);
-    			} catch (InterruptedException e) {
-    				e.printStackTrace();
-    			}
+//
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			System.out.println("full mode");
+//			this.sc.send_command_original(3);//full modeへ以降
+//
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//
+//			System.out.println("clean normal");
+//    			this.sc.send_command_original(4);//clean_normal
+//			try {
+//				Thread.sleep(10000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//
+//			System.out.println("clean spot");
+//    			this.sc.send_command_original(5);//clean spot
+//    			
+//    			try {
+//    				Thread.sleep(10000);
+//    			} catch (InterruptedException e) {
+//    				e.printStackTrace();
+//    			}
+//    			
+//    			System.out.println("stop");
+//    			this.sc.send_command_original(2);//stop
+//    			
+//    			try {
+//    				Thread.sleep(10000);
+//    			} catch (InterruptedException e) {
+//    				e.printStackTrace();
+//    			}
     			
     			System.out.println("sensor commands");
     			this.sc.send_command_original(0);//sensor commands
