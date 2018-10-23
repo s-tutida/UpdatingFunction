@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
 
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
@@ -85,8 +86,8 @@ public class SerialCommunication {
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-                	        System.out.print("read" + len);
-	                    System.out.print(new String(buffer,0,len));
+                	        System.out.print("length " + len);
+	                    System.out.print(ByteBuffer.wrap(buffer).getInt());
 	                }
 	            }
 	            catch ( IOException e )
