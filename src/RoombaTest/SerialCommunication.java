@@ -58,7 +58,7 @@ public class SerialCommunication {
 	        }
 	    }
 	    
-	    public SerialCommunication(){}
+	   public SerialCommunication(){}
 	    
 	   public static class SerialReader implements Runnable 
 	    {
@@ -96,13 +96,13 @@ public class SerialCommunication {
 	        }
 	    }
 	    
-	    public int getButtonEvent() {
+	   public int getButtonEvent() {
 	    		return this.button_event;
-	    }
+	   }
 	    
-	    public int resetButtonEvent() {
+	   public void resetButtonEvent() {
 	    		this.button_event = -1;
-	    }
+	   }
 	    
        public void send_command_original(int inputValue) {
             try {
@@ -131,7 +131,7 @@ public class SerialCommunication {
             
         }
     
-        public void send_command(int inputValue) {
+       public void send_command(int inputValue) {
             try {
 
             	    
