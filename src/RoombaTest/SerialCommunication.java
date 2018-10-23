@@ -103,11 +103,11 @@ public class SerialCommunication {
 	   }
 	    
 	   public void resetButtonEvent() {
-	    		this.button_event = -1;
     	        try{
     	    		   this.serialReaderThread.sleep(1000);
     	        }catch (InterruptedException e){
     	        }
+	    		this.button_event = -1;
 	   }
 	    
        public void send_command_original(int inputValue) {

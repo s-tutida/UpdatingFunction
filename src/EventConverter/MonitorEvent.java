@@ -30,7 +30,7 @@ public class MonitorEvent extends Monitor{
 			this.sc.send_command_original(0);//受信モード
 			int button_event = -1;
 			if((button_event = sc.getButtonEvent()) != -1) {
-				sc.resetButtonEvent();
+				sc.resetButtonEvent();//
 	        		//Clean, Spot, EndSpotの3つのみ.
 	        	    switch(button_event) {
 	        	    		case 1: return "Clean";
