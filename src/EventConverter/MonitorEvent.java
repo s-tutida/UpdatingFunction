@@ -14,7 +14,6 @@ public class MonitorEvent extends Monitor{
 	@Override
 	public Object getData() {
 		
-		// TODO 実際に, Eventを監視.
 		String event = new String();
 
 		//internal eventの設定
@@ -25,9 +24,9 @@ public class MonitorEvent extends Monitor{
 			return event;
 		}
 		
-		//internal eventがない場合, コマンドを受けつけを待つ
+		//internal eventがない場合, ボタン押待ち状態でボタンが押されるのを待つ
+		this.sc.send_command_original(0);//受信モード
 		while(true) {
-			this.sc.send_command_original(0);//受信モード
 			int button_event = -1;
 			if((button_event = sc.getButtonEvent()) != -1) {
 				sc.resetButtonEvent();
@@ -40,13 +39,6 @@ public class MonitorEvent extends Monitor{
 			}
 		}
 		
-//		event = "Clean";
-//		event = "Spot";
-//		event = "Spot";
-//		event = "arriveSpot";
-//		event = "endSpot";
-//		System.out.println(event);
-//		return event;
 	}
 
 	@Override
