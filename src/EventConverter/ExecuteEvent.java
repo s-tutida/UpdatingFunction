@@ -53,7 +53,7 @@ public class ExecuteEvent extends Execute{
             		while(!sw.getEndEvent()) {
             		}
         			//tm(2s) event
-        			knowledge.setData("tm%282s&29");//knowledgeにinternal eventを配置
+        			knowledge.setEvent("tm%282s&29");//knowledgeにinternal eventを配置
         			System.out.println("      tm(2s) event");
         			sw = null;
         			
