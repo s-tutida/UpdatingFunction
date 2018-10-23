@@ -57,7 +57,6 @@ public class ExecuteEvent extends Execute{
 	        knowledge.moveNewNextState(event);// currentを進める
         	
         		// eventの送信
-//            this.sc.send_command_original(2);
 			this.sc.send_command_original(1);//start up 
 			try {
 				Thread.sleep(700);
@@ -76,7 +75,9 @@ public class ExecuteEvent extends Execute{
 	    			String new_event = event_list.pollLast();
 	    			System.out.println("      MAPE-K loop will send this event : "+ new_event);
 	    			if(new_event.equals("Clean")) {
-	    				this.sc.send_command_original(4);//clean_normal
+	    				if(knowledge.getNewCurrentStateName().equals("Clean")) {
+	    					this.sc.send_command_original(4);//clean_normal
+	    				}
 	    			}else if(new_event.equals("Spot")) {
 	    				System.out.println("Spot command");
 	    				this.sc.send_command_original(5);
