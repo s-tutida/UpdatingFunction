@@ -235,7 +235,7 @@ public class SerialCommunication {
 	        byte[] cmd = { (byte)OPC_DRIVE, (byte)(velocity >>> 8), (byte)velocity,
 	                        (byte)(radius >>> 8), (byte)radius
 	        };
-	        drivePWM(out, 30, 30);
+	        drivePWM(out, 25, 25);
 	        write(out, cmd);
 	    }
 

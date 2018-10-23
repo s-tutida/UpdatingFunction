@@ -59,14 +59,14 @@ public class ExecuteEvent extends Execute{
         		// eventの送信
 			this.sc.send_command_original(1);//start up 
 			try {
-				Thread.sleep(700);
+				Thread.sleep(800);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 			this.sc.send_command_original(3);//full mode
 			try {
-				Thread.sleep(700);
+				Thread.sleep(800);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -79,10 +79,10 @@ public class ExecuteEvent extends Execute{
 	    					this.sc.send_command_original(4);//clean_normal
 	    				}
 	    			}else if(new_event.equals("Spot")) {
-	    				System.out.println("Spot command");
+	    				System.out.println("      Spot command");
 	    				this.sc.send_command_original(5);
 	    				try {
-	    					Thread.sleep(10000);
+	    					Thread.sleep(100000);
 	    				} catch (InterruptedException e) {
 	    					e.printStackTrace();
 	    				}
