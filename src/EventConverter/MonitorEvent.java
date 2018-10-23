@@ -18,7 +18,7 @@ public class MonitorEvent extends Monitor{
 
 		//internal eventの設定
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
-
+		
 		
 		//internal eventがない場合, ボタン押待ち状態でボタンが押されるのを待つ
 		sc.resetButtonEvent();

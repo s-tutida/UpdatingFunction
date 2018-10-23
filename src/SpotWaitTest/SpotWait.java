@@ -14,7 +14,7 @@ public class SpotWait extends Thread{
 	public void run(){
 		
 		try {
-			Thread.sleep(3000);//2秒待機
+			Thread.sleep(4000);//2秒待機
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
