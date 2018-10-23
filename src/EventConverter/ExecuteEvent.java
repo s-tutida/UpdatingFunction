@@ -26,7 +26,7 @@ public class ExecuteEvent extends Execute{
 		Deque<String> event_list =  (Deque<String>) result_of_planning[2];//event
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
 		
-		
+		mode = 1;
 		switch (mode) {
         case 1://追加機能を動かす
         	
@@ -53,14 +53,14 @@ public class ExecuteEvent extends Execute{
         case 2://既存機能を動かす
         	
 	    		// state machine を進める
-	    		String name = knowledge.getNewNextStateName(event);
-	        knowledge.setOriginalCurrentState(knowledge.get_original_state_list().get(name));// originalを進める
-	        knowledge.moveNewNextState(event);// currentを進める
-        	
-        		// TODO eventの送信
-	    		while(event_list.peekLast()!=null) {
-	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
-	    		}
+//	    		String name = knowledge.getNewNextStateName(event);
+//	        knowledge.setOriginalCurrentState(knowledge.get_original_state_list().get(name));// originalを進める
+//	        knowledge.moveNewNextState(event);// currentを進める
+//        	
+//        		// TODO eventの送信
+//	    		while(event_list.peekLast()!=null) {
+//	    			System.out.println("      MAPE-K loop will send this event : "+ event_list.pollLast());
+//	    		}
 	    		
 			System.out.println("start up");
     			this.sc.send_command_original(1);//start up 
