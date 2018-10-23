@@ -81,10 +81,25 @@ public class ExecuteEvent extends Execute{
 	    				System.out.println("Spot command");
 	    				this.sc.send_command_original(5);
 	    				try {
-	    					Thread.sleep(20000);
+	    					Thread.sleep(10000);
 	    				} catch (InterruptedException e) {
 	    					e.printStackTrace();
 	    				}
+	    				
+	    				this.sc.send_command_original(1);//start up 
+	    				try {
+	    					Thread.sleep(700);
+	    				} catch (InterruptedException e) {
+	    					e.printStackTrace();
+	    				}
+	    				
+	    				this.sc.send_command_original(3);//full mode
+	    				try {
+	    					Thread.sleep(700);
+	    				} catch (InterruptedException e) {
+	    					e.printStackTrace();
+	    				}
+	    				knowledge.setEvent("endSpot");
 	    			}
 	    		}
 
