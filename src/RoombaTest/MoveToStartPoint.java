@@ -14,7 +14,7 @@ public class MoveToStartPoint extends ControlLoop{
 		super.addKnowledge(knowledge);
 	}
 	
-	public void start(){
+	public void startControlLoop(){
         
 		USBcamera uc = new USBcamera();
 		

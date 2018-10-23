@@ -13,7 +13,6 @@ public class ExecuteEvent extends Execute{
 	public ExecuteEvent(ComponentManager cm, String name, SerialCommunication in_sc) {
 		super(cm, name);
 		sc = in_sc;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -41,7 +40,7 @@ public class ExecuteEvent extends Execute{
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
             		
             		MoveToStartPoint mtsp = new MoveToStartPoint(this.sc, knowledge);
-            		mtsp.start();
+            		mtsp.startControlLoop();
             		
             }else if(knowledge.getNewCurrentStateName().equals("SpotWait")){
             		
