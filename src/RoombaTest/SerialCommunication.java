@@ -45,7 +45,7 @@ public class SerialCommunication {
                 	    	        break;
                 	    	case 2:	stop(out);
                 	    		 break;
-                	    	case 3 : safeMode(out);
+                	    	case 3 : fullMode(out);
                 	    		 break;
                 	    	case 4 : clean_normal(out);//clean
                 	    	         break;

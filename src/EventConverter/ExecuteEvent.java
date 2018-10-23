@@ -70,6 +70,14 @@ public class ExecuteEvent extends Execute{
 				e.printStackTrace();
 			}
 			
+			sc.send_command_original(3);//full modeへ以降
+
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
     			sc.send_command_original(4);//clean_normal
 			try {
 				Thread.sleep(2000);
