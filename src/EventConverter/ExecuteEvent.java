@@ -70,6 +70,8 @@ public class ExecuteEvent extends Execute{
 	    				this.sc.send_command_original(5);
 	    				this.sc.send_command(5);
 	    			}
+	    			System.out.println("event equal Clean:" + new_event.equals("Clean"));
+	    			System.out.println("event equal Spot:" + new_event.equals("Spot"));
 	    		}
 
 	        break;
