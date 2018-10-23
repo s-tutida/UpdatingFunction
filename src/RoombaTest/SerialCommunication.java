@@ -18,6 +18,7 @@ public class SerialCommunication {
         OutputStream out = null;
 		SerialPort sp = null;
 		public Integer button_event = 0;
+		public Thread serialReaderThread = null;
 
 		//シリアルポートとの接続を確立する関数
 	    public void connect(String portName) throws Exception {
@@ -51,8 +52,8 @@ public class SerialCommunication {
 	                this.in = serialPort.getInputStream();
 	                this.out = serialPort.getOutputStream();
 	                
-	                (new Thread(new SerialReader(in, this))).start();
-
+	                serialReaderThread = new Thread(new SerialReader(in, this));
+	                serialReaderThread.start();
 	            } else {
 	                System.out.println("Error: Only serial ports are handled by this example.");
 	            }
@@ -103,6 +104,10 @@ public class SerialCommunication {
 	    
 	   public void resetButtonEvent() {
 	    		this.button_event = -1;
+    	        try{
+    	    		   this.serialReaderThread.sleep(1000);
+    	        }catch (InterruptedException e){
+    	        }
 	   }
 	    
        public void send_command_original(int inputValue) {
