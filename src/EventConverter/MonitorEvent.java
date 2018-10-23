@@ -18,11 +18,7 @@ public class MonitorEvent extends Monitor{
 
 		//internal eventの設定
 		KnowledgeState knowledge = (KnowledgeState)super.knowledge;
-		if(knowledge.getEvent()!=null) {
-			event = knowledge.getEvent();
-			knowledge.setEvent(null);
-			return event;
-		}
+
 		
 		//internal eventがない場合, ボタン押待ち状態でボタンが押されるのを待つ
 	
@@ -37,6 +33,12 @@ public class MonitorEvent extends Monitor{
 	            	    	case 2: return "Spot";
 	            	    	default : break;
 	        	    }
+			}
+			
+			if(knowledge.getEvent()!=null) {
+				event = knowledge.getEvent();
+				knowledge.setEvent(null);
+				return event;
 			}
 		}
 		
