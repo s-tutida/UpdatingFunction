@@ -228,11 +228,9 @@ public abstract class ControlLoop extends Thread{
 		}
 		this.status = true;
 		System.out.println("*** Stop new functions  ***"); 
-		System.out.println(this.status);
 	}
 	
 	public Boolean getEndEvent() {
-		System.out.println(this.status);
 		return this.status;
 	}
 	
