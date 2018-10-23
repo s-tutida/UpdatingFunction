@@ -77,14 +77,15 @@ public class SerialCommunication {
 	        {
 	            byte[] buffer = new byte[1024];
 	            int len = -1;
+	            int input = -1;
 	            try
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-	                		int i = buffer[0]&0xFF;
-	                		if(i != 0) {
+	                		if((input != (buffer[0]&0xFF)) && (input != 0)) {
+	                			input = buffer[0]&0xFF;
 	                			System.out.println("button_event : "+ this.sc.button_event);
-	            	            this.sc.button_event = i; 
+	            	            this.sc.button_event = input; 
 	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
 	            	            this.sc.send_command_original(3);
