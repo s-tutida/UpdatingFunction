@@ -18,7 +18,6 @@ public class ExecuteEvent extends Execute{
 	@Override
 	public Object execute(Object o) {
 		
-		// TODO 実際に命令を出す
 		System.out.println("Execute");
 		
 		Object[] result_of_planning = (Object[]) o;
@@ -34,7 +33,7 @@ public class ExecuteEvent extends Execute{
         		// state machine を進める
             knowledge.moveNewNextState(event);
             
-            // 既存の機能を動かす.
+            // 追加機能を動かす
             System.out.println("      Operate existing functions for " + knowledge.getNewCurrentStateName() + " in the another thread.");
             
             if(knowledge.getNewCurrentStateName().equals("MoveToStartPoint")) {
@@ -62,21 +61,36 @@ public class ExecuteEvent extends Execute{
 	    		while(event_list.peekLast()!=null) {
 	    			System.out.println("      MMAPE-K loop will send this event : "+ event_list.pollLast());
 	    		}
-    			sc.send_command_original(1);
-			//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
+	    		
+    			sc.send_command_original(1);//start up 
+
 			try {
 				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-    			sc.send_command_original(4);
-			//実行後, 少し時間をとる. MAPEと次のMAPEの間の時間を調整.
+			
+    			sc.send_command_original(4);//clean_normal
 			try {
 				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-    			sc.send_command_original(5);
+			
+    			sc.send_command_original(5);//clean spot
+    			
+    			try {
+    				Thread.sleep(700);
+    			} catch (InterruptedException e) {
+    				e.printStackTrace();
+    			}
+    			
+    			sc.send_command_original(2);//clean spot
+    			
+    			int i=1;
+    			while(i!=0) {
+    				//testのため
+    			}
 	        break;
         case 3:
         	    break;

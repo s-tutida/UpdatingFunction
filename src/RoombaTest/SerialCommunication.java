@@ -34,6 +34,8 @@ public class SerialCommunication {
 	        }
 	    }
 	    
+	   public SerialCommunication(){}
+	    
        public void send_command_original(int inputValue) {
             try {
 
@@ -45,12 +47,10 @@ public class SerialCommunication {
                 	    		 break;
                 	    	case 3 : safeMode(out);
                 	    		 break;
-                	    	case 4 : fullMode(out);
-                	    		 break;
-//                	    	case 5 : clean_spot(out);//Spot
-//                	    	         break;
-//                	    	case 6 : clean_normal(out);
-//                	    			break;
+                	    	case 4 : clean_normal(out);//clean
+                	    	         break;
+                	    	case 5 : clean_spot(out);//Spot
+                	    			break;
                 	    	default : break;
 		                	    	
 	                	    
@@ -77,7 +77,7 @@ public class SerialCommunication {
                 	    		 break;
                 	    	case 4 : fullMode(out);
                 	    		 break;
-                	    	case 5 : clean(out);//Spot
+                	    	case 5 : clean_spot(out);//Spot
                 	    	         break;
                 	    	case 6 : drive(out, -50, 0);//forward_l
                 	    	         break;
@@ -101,12 +101,11 @@ public class SerialCommunication {
 
 
 	    private static void write(OutputStream out, int... data) throws IOException {
-	        // Sigh, unsigned Java:
+
 	        byte[] output = new byte[data.length];
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = (byte)(data[i]);
 	        }
-//	        System.out.println("Output in write method (Option int array) : First command :" +  output[0]);
 	        out.write(output);
 	    }
 	    
@@ -115,42 +114,35 @@ public class SerialCommunication {
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = data[i];
 	        }
-//	        System.out.println("Output in write method (Option byte array) : First command :" +  output[0]);
 	        out.write(output);
 	    }
-
-		public SerialCommunication(){
-
-		}
 		
 	    public static void startup(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'startup' and 'safeMode' command to roomba.");
 	        int cmd[] = { OPC_START, OPC_SAFE };
 	        write(out, cmd);
 	    }
 
 	    public static void stop(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'stop' command to roomba.");
 	        write(out, OPC_STOP);
 	    }
 
 	    public static void safeMode(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'safe' command to roomba.");
 	        write(out, OPC_SAFE);
 	    }
 
 	    
 	    public static void fullMode(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'full' command to roomba.");
 	        write(out, OPC_FULL);
 	    }
 
 
-	    public static void clean(OutputStream out) throws IOException {
-//	        System.out.println("Sending 'clean' command to roomba.");
+	    public static void clean_spot(OutputStream out) throws IOException {
+	        write(out, OPC_CLEAN_SPOT);				
+	    }
+	    
+	    public static void clean_normal(OutputStream out) throws IOException {
 	        write(out, OPC_CLEAN);				
 	    }
-
 
 	    public static void drive(OutputStream out, int velocity, int radius) throws IllegalArgumentException, IOException {
 
@@ -230,7 +222,8 @@ public class SerialCommunication {
 	    private static final int OPC_START              = 128;
 	    private static final int OPC_SAFE               = 131;
 	    private static final int OPC_FULL               = 132;
-	    private static final int OPC_CLEAN              = 134;
+	    private static final int OPC_CLEAN_SPOT         = 134;
+	    private static final int OPC_CLEAN              = 135;
 	    private static final int OPC_DRIVE              = 137;
 	    private static final int OPC_MOTORS             = 138;
 	    private static final int OPC_PWM_MOTORS         = 144;
