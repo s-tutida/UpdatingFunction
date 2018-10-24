@@ -82,10 +82,13 @@ public class SerialCommunication {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
 	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1) &&  ((buffer[0]&0x03) != 0)) {//0じゃない, リセットされてない.
+	                			 
 	                			int input = buffer[0]&0x03;
-	                			System.out.println("----   button_event : "+ input + "   -----");
-	            	            this.sc.button_event = input; 
-	            	            this.sc.send_command_original(1);
+	                         if((input == 1) && (input == 2)){
+		                			System.out.println("----   button_event : "+ input + "   -----");
+		            	            this.sc.button_event = input; 
+		            	            this.sc.send_command_original(1);// 3で止まっているのか.
+	                         }
 	            				try {
 	            					Thread.sleep(16);//15ms毎に, searchするので
 	            				} catch (InterruptedException e) {
