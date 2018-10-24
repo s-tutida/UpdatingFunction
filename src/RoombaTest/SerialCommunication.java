@@ -85,7 +85,6 @@ public class SerialCommunication {
 	                			int input = buffer[0]&0xFF;
 	                			System.out.println("button_event : "+ input);
 	            	            this.sc.button_event = input; 
-//	            	            this.sc.send_command_original(2);
 	            	            this.sc.send_command_original(1);
 	            				try {
 	            					Thread.sleep(700);
@@ -163,14 +162,25 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 6 : drive(out, -100, 0);//forward_l
                 	    	         break;
-                	    	case 71: driveDirect(out, -10, 10);//clockwise_l
+                	    	case 71: 
+                	    		System.out.println("-20, 20");
+                	    		driveDirect(out, -20, 20);//clockwise_l
     	         		 	break;
-                   	case 72: driveDirect(out, -18, 18);//clockwise_h
+                   	case 72: 
+                   		System.out.println("-20, 20");
+                   		driveDirect(out, -20, 20);//clockwise_l
+//                   		driveDirect(out, -18, 18);//clockwise_h
 	         		 	break;
-                   	case 81: driveDirect(out, 10, -10);//counter-clockwise_h
-                   			break;
-                   	case 82:driveDirect(out, 18, -18);//counter-clockwise_h
-                   		    break;
+                   	case 81: 
+                   		System.out.println("-10, 10");
+                   		driveDirect(out, -10, 10);//clockwise_l
+//                   		driveDirect(out, 10, -10);//counter-clockwise_h
+                   		break;
+                   	case 82:
+                   		System.out.println("-10, 10");
+                   		driveDirect(out, -10, 10);//clockwise_l
+//                   		driveDirect(out, 18, -18);//counter-clockwise_h
+                   		break;
                 	    	case 8 : break;//sleep
                 	    	default : break;
 		                	    	
