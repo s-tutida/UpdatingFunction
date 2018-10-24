@@ -82,12 +82,12 @@ public class SerialCommunication {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
 	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1) &&  ((buffer[0]&0xF3) != 0)) {//0じゃない, リセットされてない.
-	                			int input = buffer[0]&0xFF;
+	                			int input = buffer[0]&0xF3;
 	                			System.out.println("----   button_event : "+ input + "   -----");
 	            	            this.sc.button_event = input; 
 	            	            this.sc.send_command_original(1);
 	            				try {
-	            					Thread.sleep(16);
+	            					Thread.sleep(16);//15ms毎に, searchするので
 	            				} catch (InterruptedException e) {
 	            					e.printStackTrace();
 	            				}
