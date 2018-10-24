@@ -99,6 +99,7 @@ public class ExecuteEvent extends Execute{
 		
 		System.out.println("      original_current_state: "  + knowledge.getOriginalCurrentState());
 		System.out.println("      new_current_state: "  + knowledge.getNewCurrentState());
+		System.out.println("");
 		
 		return null;
 	}
