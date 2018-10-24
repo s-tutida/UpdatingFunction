@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
-import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
 public class CameraTest {
@@ -13,18 +12,20 @@ public class CameraTest {
 	public static void main(String[] args) {
 
 		CameraTest c = new CameraTest();	
+		USBcamera u = new USBcamera();
+		
 		while(true) {
-			c.get_image();
+			c.get_image(u);
 		}
 		
 	}
 	
 	
-	public Object get_image() {
+	public Object get_image(USBcamera u) {
 		
 		Mat webcam_image=new Mat();		
 		
-		((VideoCapture)o).read(webcam_image);
+		((VideoCapture)u).read(webcam_image);
 		if( !(webcam_image.empty()) ) {
 			
 			//Detect red color in a picture
