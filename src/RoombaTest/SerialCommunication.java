@@ -84,6 +84,7 @@ public class SerialCommunication {
 	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1)) {//0じゃない, リセットされてない.
 	                			 
 	                			int input = buffer[0]&0xFF;
+	                			
 	                         if((input == 1) || (input == 2)){
 	                        	    System.out.println("");
 		                			System.out.println("----   button_event : "+ input + "   -----");
@@ -92,11 +93,6 @@ public class SerialCommunication {
 		            	            this.sc.send_command_original(1);
 	                         }
 	                         
-	            				try {
-	            					Thread.sleep(16);//15ms毎に, searchするので
-	            				} catch (InterruptedException e) {
-	            					e.printStackTrace();
-	            				}
 	                		}
 	                }
 	            }
