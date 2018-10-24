@@ -162,26 +162,19 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 6 : 
                 	    		System.out.println("Dont move to forward");;
-                	    		drive(out, -40, -150);//forward_l
+                	    		drive(out, -100, -150);//forward_l
                 	    	    break;
-                	    	case 71: 
-                	    		System.out.println("-20, 20");
-                	    		driveDirect(out, -20, 20);//clockwise
+                	    	case 141: // counter-clockwise_low
+                	    		driveDirect(out, 10, -10);
     	         		 	break;
-                   	case 72: 
-                   		System.out.println("-20, 20");
-                   		driveDirect(out, -20, 20);//clockwise_l
-//                   		driveDirect(out, -18, 18);//clockwise_h
+                   	case 142: // counter-clockwise_high
+                   		driveDirect(out, 20, -20);
 	         		 	break;
-                   	case 81: 
-                   		System.out.println("-10, 10");
+                   	case 231: // clockwise_low
                    		driveDirect(out, -10, 10);//clockwise_l
-//                   		driveDirect(out, 10, -10);//counter-clockwise
                    		break;
-                   	case 82:
-                   		System.out.println("-10, 10");
-                   		driveDirect(out, -10, 10);//clockwise_l
-//                   		driveDirect(out, 18, -18);//counter-clockwise_h
+                   	case 232:// clockwise_high
+                   		driveDirect(out, -20, 20);//clockwise_l
                    		break;
                 	    	case 8 : break;//sleep
                 	    	default : break;
