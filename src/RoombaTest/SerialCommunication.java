@@ -85,9 +85,11 @@ public class SerialCommunication {
 	                			 
 	                			int input = buffer[0]&0xFF;
 	                         if((input == 1) || (input == 2)){
+	                        	    System.out.println("");
 		                			System.out.println("----   button_event : "+ input + "   -----");
+		                			
 		            	            this.sc.button_event = input; 
-		            	            this.sc.send_command_original(1);// 3で止まっているのか.
+		            	            this.sc.send_command_original(1);
 	                         }
 	                         
 	            				try {
