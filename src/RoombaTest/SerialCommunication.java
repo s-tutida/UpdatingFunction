@@ -83,15 +83,9 @@ public class SerialCommunication {
 	                {
 	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1)) {//0じゃない, リセットされてない.
 	                			int input = buffer[0]&0xFF;
-	                			System.out.println("button_event : "+ input);
+	                			System.out.println("----   button_event : "+ input + "   -----");
 	            	            this.sc.button_event = input; 
 	            	            this.sc.send_command_original(1);
-	            				try {
-	            					Thread.sleep(700);
-	            				} catch (InterruptedException e) {
-	            					e.printStackTrace();
-	            				}
-	            	            this.sc.send_command_original(3);
 	            				try {
 	            					Thread.sleep(700);
 	            				} catch (InterruptedException e) {
@@ -164,16 +158,16 @@ public class SerialCommunication {
                 	    		drive(out, -160, 0);//forward_l, 第二引数は, mm/s
                 	    	    break;
                 	    	case 141: // counter-clockwise_low 左回りが弱いので,
-                	    		driveDirect(out, 13, -13);
+                	    		driveDirect(out, 14, -14);
     	         		 	break;
                    	case 142: // counter-clockwise_high
-                   		driveDirect(out, 22, -22);
+                   		driveDirect(out, 23, -23);
 	         		 	break;
                    	case 231: // clockwise_low
-                   		driveDirect(out, -8, 8);//clockwise_l
+                   		driveDirect(out, -7, 7);//clockwise_l
                    		break;
                    	case 232:// clockwise_high
-                   		driveDirect(out, -18, 18);//clockwise_l
+                   		driveDirect(out, -17, 17);//clockwise_l
                    		break;
                 	    	case 8 : break;//sleep
                 	    	default : break;
