@@ -55,7 +55,7 @@ public class ObjectDetector {
 		
 		int sum = count1 + count2 + count3 + count4;
 		System.out.println(sum);
-		if(sum > 2000) {
+		if(sum > 1900) {
 			answer = -1;//終了
 		}
 		return String.valueOf(answer);
