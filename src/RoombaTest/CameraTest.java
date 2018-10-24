@@ -36,6 +36,7 @@ public class CameraTest {
 			ObjectDetector od = new ObjectDetector();
 			return  od.detect_object(webcam_image2);
 		}
+		return null;
 	}
 	
 	public String detect_object(Mat img){
