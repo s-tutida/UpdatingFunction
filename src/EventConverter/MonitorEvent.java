@@ -30,7 +30,9 @@ public class MonitorEvent extends Monitor{
 	        	    switch(button_event) {
 	        	    		case 1: return "Clean";
 	            	    	case 2: return "Spot";
-	            	    	default : break;
+	            	    	default : 
+		            	    	sc.resetButtonEvent();
+		            	    	break;
 	        	    }
 			}
 			
