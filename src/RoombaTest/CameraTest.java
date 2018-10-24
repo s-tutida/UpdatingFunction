@@ -33,8 +33,7 @@ public class CameraTest {
 			Mat webcam_image2 = dc.detect_blue(webcam_image);
 	
 			//Detect target's place
-			ObjectDetector od = new ObjectDetector();
-			return  od.detect_object(webcam_image2);
+			return  detect_object(webcam_image2);
 		}
 		return null;
 	}
