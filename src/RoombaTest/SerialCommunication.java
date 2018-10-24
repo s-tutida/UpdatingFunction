@@ -161,7 +161,7 @@ public class SerialCommunication {
                 	    	case 5 : clean_spot(out);//Spot
                 	    	         break;
                 	    	case 6 : 
-                	    		drive(out, -150, 0);//forward_l, 第二引数は, mm/s
+                	    		drive(out, -160, 0);//forward_l, 第二引数は, mm/s
                 	    	    break;
                 	    	case 141: // counter-clockwise_low
                 	    		driveDirect(out, 10, -10);
