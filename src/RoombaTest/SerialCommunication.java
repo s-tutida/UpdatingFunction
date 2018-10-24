@@ -161,8 +161,7 @@ public class SerialCommunication {
                 	    	case 5 : clean_spot(out);//Spot
                 	    	         break;
                 	    	case 6 : 
-                	    		System.out.println("Dont move to forward");;
-                	    		drive(out, -100, -150);//forward_l
+                	    		drive(out, -300, 0);//forward_l
                 	    	    break;
                 	    	case 141: // counter-clockwise_low
                 	    		driveDirect(out, 10, -10);
