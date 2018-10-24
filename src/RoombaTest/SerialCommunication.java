@@ -81,7 +81,7 @@ public class SerialCommunication {
 	            {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
-	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1)) {//0じゃない, リセットされてない.
+	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1) &&  ((buffer[0]&0xFF) !=98)) {//0じゃない, リセットされてない.
 	                			int input = buffer[0]&0xFF;
 	                			System.out.println("----   button_event : "+ input + "   -----");
 	            	            this.sc.button_event = input; 

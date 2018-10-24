@@ -59,14 +59,14 @@ public class ExecuteEvent extends Execute{
         		// eventの送信
 			this.sc.send_command_original(1);//start up 
 			try {
-				Thread.sleep(800);
+				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 			this.sc.send_command_original(3);//full mode
 			try {
-				Thread.sleep(800);
+				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
