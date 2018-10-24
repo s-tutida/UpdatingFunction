@@ -83,7 +83,7 @@ public class SerialCommunication {
 	                {
 	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1) &&  ((buffer[0]&0x03) != 0)) {//0じゃない, リセットされてない.
 	                			 
-	                			int input = buffer[0]&0x03;
+	                			int input = buffer[0]&0xFF;
 	                         if((input == 1) && (input == 2)){
 		                			System.out.println("----   button_event : "+ input + "   -----");
 		            	            this.sc.button_event = input; 
