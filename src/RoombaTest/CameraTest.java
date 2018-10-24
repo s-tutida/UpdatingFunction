@@ -25,7 +25,7 @@ public class CameraTest {
 		
 		Mat webcam_image=new Mat();		
 		
-		((VideoCapture)u).read(webcam_image);
+		((VideoCapture)u.run()).read(webcam_image);
 		if( !(webcam_image.empty()) ) {
 			
 			//Detect red color in a picture
