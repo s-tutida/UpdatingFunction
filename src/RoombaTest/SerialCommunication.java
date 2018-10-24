@@ -162,7 +162,7 @@ public class SerialCommunication {
                 	    	         break;
                 	    	case 6 : 
                 	    		System.out.println("Dont move to forward");;
-                	    		drive(out, -10, 0);//forward_l
+                	    		drive(out, -50, 0);//forward_l
                 	    	    break;
                 	    	case 71: 
                 	    		System.out.println("-20, 20");
