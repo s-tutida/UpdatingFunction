@@ -164,10 +164,10 @@ public class SerialCommunication {
                 	    		drive(out, -160, 0);//forward_l, 第二引数は, mm/s
                 	    	    break;
                 	    	case 141: // counter-clockwise_low
-                	    		driveDirect(out, 10, -10);
+                	    		driveDirect(out, 13, -13);
     	         		 	break;
                    	case 142: // counter-clockwise_high
-                   		driveDirect(out, 20, -20);
+                   		driveDirect(out, 26, -26);
 	         		 	break;
                    	case 231: // clockwise_low
                    		driveDirect(out, -10, 10);//clockwise_l

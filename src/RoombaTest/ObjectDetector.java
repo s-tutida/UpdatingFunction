@@ -38,7 +38,7 @@ public class ObjectDetector {
 		int values[] = {count1, count2, count3, count4};
         int max = values[0];
  
-        for (int index = 1; index < values.length; index ++) {
+        for (int index = 1; index < values.length; index++) {
             max = Math.max(max, values[index]);
         }
 
@@ -55,7 +55,7 @@ public class ObjectDetector {
 		
 		int sum = count1 + count2 + count3 + count4;
 		System.out.println(sum);
-		if(sum > 2500) {
+		if(sum > 2000) {
 			answer = -1;//終了
 		}
 		return String.valueOf(answer);

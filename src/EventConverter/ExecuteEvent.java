@@ -82,7 +82,7 @@ public class ExecuteEvent extends Execute{
 	    				System.out.println("      Spot command");
 	    				this.sc.send_command_original(5);
 	    				try {
-	    					Thread.sleep(80000);
+	    					Thread.sleep(70000);
 	    				} catch (InterruptedException e) {
 	    					e.printStackTrace();
 	    				}
