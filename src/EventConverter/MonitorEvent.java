@@ -23,10 +23,6 @@ public class MonitorEvent extends Monitor{
 		//internal eventがない場合, ボタン押待ち状態でボタンが押されるのを待つ
 		sc.resetButtonEvent();// reset button
 		while(true) {
-			//受信可能状態.
-			if(!this.sc.serialReaderThread.isAlive()) {
-				this.sc.serialReaderThread.start();
-			}
 			//受信モード on
 			this.sc.send_command_original(0);
 			int button_event = -1;
