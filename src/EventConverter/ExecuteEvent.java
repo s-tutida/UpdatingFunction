@@ -76,7 +76,7 @@ public class ExecuteEvent extends Execute{
 	    			System.out.println("      MAPE-K loop will send this event : "+ new_event);
 	    			if(new_event.equals("Clean")) {
 	    				if(knowledge.getNewCurrentStateName().equals("Clean")) {
-	    					this.sc.send_command_original(4);//clean_normal
+	    					this.sc.send_command_original(5);//clean_normal
 	    				}
 	    			}else if(new_event.equals("Spot")) {
 	    				System.out.println("      Spot command");
