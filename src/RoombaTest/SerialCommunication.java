@@ -89,7 +89,8 @@ public class SerialCommunication {
 	                        	    System.out.println("");
 		                			System.out.println("----   button_event : "+ input + "   -----");
 		                			
-		            	            this.sc.button_event = input; 
+		            	            this.sc.button_event = input;
+		            	            this.sc.send_command_original(2);
 		            	            this.sc.send_command_original(1);//入力されたコマンドを取り消すための, 処理
 	                         }
 	                         
