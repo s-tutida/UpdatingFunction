@@ -81,9 +81,6 @@ public class ExecuteEvent extends Execute{
 	    						this.sc.send_command(4);//clean_normal
 	    						this.sc.send_command(7);//clean_normal
 	    						this.sc.send_command(7);//clean_normal
-	    						this.sc.send_command(7);//clean_normal
-	    						this.sc.send_command(7);//clean_normal
-	    						this.sc.send_command(7);//clean_normal
 	    						
 	    				}
 	    			}else if(new_event.equals("Spot")) {
