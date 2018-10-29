@@ -78,11 +78,6 @@ public class ExecuteEvent extends Execute{
 	    				if(knowledge.getNewCurrentStateName().equals("Clean")) {
 	    					this.sc.send_command_original(4);//clean_normal
 	    				}
-	    				try {
-	    					Thread.sleep(1000);
-	    				} catch (InterruptedException e) {
-	    					e.printStackTrace();
-	    				}
 	    			}else if(new_event.equals("Spot")) {
 	    				System.out.println("      Spot command");
 	    				this.sc.send_command_original(5);
