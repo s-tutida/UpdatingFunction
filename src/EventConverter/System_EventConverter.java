@@ -13,10 +13,8 @@ public class System_EventConverter extends ComponentManager{
 		
 		System_EventConverter se = new System_EventConverter();
 			
-		// xml parser
 		Parser ps = new Parser();
 		
-		// Serial Controller
 	    SerialCommunication sc = null;
         try {
 	    	    sc = new SerialCommunication();
@@ -26,7 +24,6 @@ public class System_EventConverter extends ComponentManager{
 	        e.printStackTrace();
 	    }
         
-		//add MAPE-K components to system instance
 		se.addKnowledge(new KnowledgeState(se, "Knowledge", ps))
 		  .addMonitor(new MonitorEvent(se, "Monitor", sc))
 		  .addAnalysis(new AnalyzeState(se, "Analyze"))
@@ -35,5 +32,4 @@ public class System_EventConverter extends ComponentManager{
           .build()
           .start();
 	}
-
 }

@@ -19,6 +19,6 @@ public class SpotWait extends Thread{
 			e.printStackTrace();
 		}
 
-		knowledge.setEvent("tm(2s)");
+//		knowledge.setEvent("tm(2s)");
 	}
 }
