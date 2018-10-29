@@ -79,11 +79,11 @@ public class ExecuteEvent extends Execute{
 	    				if(knowledge.getNewCurrentStateName().equals("Clean")) {
 	    						this.sc.send_command(1);//clean_normal	
 	    						this.sc.send_command(4);//clean_normal
-	    						this.sc.send_command(6);//clean_normal
-	    						this.sc.send_command(6);//clean_normal
-	    						this.sc.send_command(6);//clean_normal
-	    						this.sc.send_command(6);//clean_normal
-	    						this.sc.send_command(6);//clean_normal
+	    						this.sc.send_command(7);//clean_normal
+	    						this.sc.send_command(7);//clean_normal
+	    						this.sc.send_command(7);//clean_normal
+	    						this.sc.send_command(7);//clean_normal
+	    						this.sc.send_command(7);//clean_normal
 	    						
 	    				}
 	    			}else if(new_event.equals("Spot")) {

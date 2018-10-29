@@ -163,6 +163,9 @@ public class SerialCommunication {
                 	    	case 6 : 
                 	    		drive(out, -160, 0);//forward_l, 第二引数は, mm/s
                 	    	    break;
+                	    	case 7 : 
+                	    		drive(out, -500, 0);//forward_l, 第二引数は, mm/s
+                	    	    break;
                 	    	case 141: // counter-clockwise_low 左回りが弱いので,
                 	    		driveDirect(out, 11, -11);
     	         		 	break;
