@@ -23,7 +23,6 @@ public class MonitorEvent extends Monitor{
 		//internal eventがない場合, ボタン押待ち状態でボタンが押されるのを待つ
 		sc.resetButtonEvent();
 		while(true) {
-			System.out.println("a");
 			this.sc.send_command_original(0);//受信モード
 			int button_event = -1;
 			if((button_event = sc.getButtonEvent()) != -1) {
