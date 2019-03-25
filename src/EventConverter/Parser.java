@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Arrays;
+import java.util.Iterator;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -16,17 +17,14 @@ import org.xml.sax.SAXException;
 
 public class Parser {
 	
-	private Element rootElement = null;//inputしたxmlのドキュメントオブジェクト
+	private Element rootElement = null;
 	
-	// 状態のリスト 例:[[状態], [番号],]
 	private Map<String, Integer> original_state_list = new HashMap();
 	private Map<String, Integer> new_state_list = new HashMap();
 	
-	// reference id, event_name のセット
 	private Map<String, String> original_event_refid_list = new HashMap();
 	private Map<String, String> new_event_refid_list = new HashMap();
 	
-	// 遷移のリスト 例:["event_refid"][[遷移元番号],[遷移先番号]]
 	private Map<String, Integer[]> original_event_list = new HashMap<String, Integer[]>();
 	private Map<String, Integer[]> new_event_list = new HashMap<String, Integer[]>();
 	
@@ -40,7 +38,6 @@ public class Parser {
 		
 		// ----- parse -----
 		parse();
-
 	}
 
 	// parser XML
@@ -65,12 +62,10 @@ public class Parser {
 	
 	}
 		
-	//orignial, new それぞれのnameとrefidのセットをMapで返す関数 / なければnull
 	private Map<String, String> getDiagramInfo() {
 		
 		Map<String, String> state_list = new HashMap();
 		
-		//astahプロジェクト内のoriginal, newのstate_machineの(name, refid)を獲得する.
 		NodeList state_machine_diagrams = this.rootElement.getElementsByTagName("JUDE:StateChartDiagram");
 		int i = 0;
 		while(state_machine_diagrams.item(i)!=null) {
@@ -91,7 +86,6 @@ public class Parser {
 			i++;
 		}
 		
-		//original, newの2つがあるかどうか確認する.
 		if(state_list.containsKey("new")||state_list.containsKey("original")) {
 			return state_list;
 		}
@@ -99,7 +93,6 @@ public class Parser {
 		return null;
 	}
 	
-	//get OriginalID to search and use original state machine.
 	private Integer getOriginalID(Map<String, String> map) {
 		
 		NodeList ownedElement = this.rootElement.getElementsByTagName("UML:Namespace.ownedElement");
@@ -146,8 +139,9 @@ public class Parser {
 	
 		//state
 		Element old_tmp = (Element) diagrams.item(i);
-		NodeList old_tmp_2 = old_tmp.getElementsByTagName("UML:CompositeState.subvertex");//状態が格納されている一層上まで, 移動.
-		Element old_tmp_3 = (Element)  old_tmp_2.item(0); //状態(state)が格納されている層まで, 移動.
+		NodeList old_tmp_2 = old_tmp.getElementsByTagName("UML:CompositeState.subvertex");
+		Element old_tmp_3 = (Element)  old_tmp_2.item(0);
+
 
 		Node m = old_tmp_3.getFirstChild();
 		
@@ -200,20 +194,18 @@ public class Parser {
 		//This is answer
 		Map<String, Integer[]> event_list = new HashMap<String, Integer[]>();
 		
-		// event_listのIDを埋める
 		for (String refid : event_refid_list.keySet()) {
 			Integer[] m = {-1, -1};
 			event_list.put(refid, m);
 		}
 		
-		//以下, マージ作業
 		NodeList ownedElement = this.rootElement.getElementsByTagName("UML:Namespace.ownedElement");
 		NodeList diagrams = ownedElement.item(0).getChildNodes();
 	
 		//state
 		Element old_tmp = (Element) diagrams.item(i);
-		NodeList old_tmp_2 = old_tmp.getElementsByTagName("UML:CompositeState.subvertex");//状態が格納されている一層上まで, 移動.
-		Element old_tmp_3 = (Element)  old_tmp_2.item(0); //状態(state)が格納されている層まで, 移動.
+		NodeList old_tmp_2 = old_tmp.getElementsByTagName("UML:CompositeState.subvertex");
+		Element old_tmp_3 = (Element)  old_tmp_2.item(0);
 		Node m = old_tmp_3.getFirstChild();
 		
 		while(m != null) {

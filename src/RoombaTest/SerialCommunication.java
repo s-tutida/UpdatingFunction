@@ -14,39 +14,34 @@ import gnu.io.SerialPort;
 
 public class SerialCommunication {
 
-        InputStream in = null;
-        OutputStream out = null;
+                InputStream in = null;
+                public OutputStream out = null;
+		// OutputStream out = null;
 		SerialPort sp = null;
 		public Integer button_event = -1;
 		public Thread serialReaderThread = null;
 
-		//シリアルポートとの接続を確立する関数
 	    public void connect(String portName) throws Exception {
 	    	
-	    	    //ポートを取得
 	        CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);
 	        
 	        if (portIdentifier.isCurrentlyOwned()) {
 	            System.out.println("Error: Port is currently in use");
 	        } else {
 	        	
-	        	    //ポートを開く, timeoutを2s秒に設定
 	            int timeout = 2000;
 	            CommPort commPort = portIdentifier.open(this.getClass().getName(),timeout);
 
 	            if (commPort instanceof SerialPort) {
 	            	
-	            	    //シリアルポートのインスタンスを作成
 	                SerialPort serialPort = (SerialPort) commPort;
 	                
-	                //ボーレート, データビット数, ストップビット数, パリティを設定
 	                serialPort.setSerialPortParams(
 	                		115200, 
 	                		SerialPort.DATABITS_8,
 	                		SerialPort.STOPBITS_1, 
 	                		SerialPort.PARITY_NONE
                 		);
-	                //フロー制御はしない
 	                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 	                
 	                this.in = serialPort.getInputStream();
@@ -82,14 +77,14 @@ public class SerialCommunication {
 	                while ( ( len = this.in.read(buffer)) > -1 )
 	                {
            			 
-	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1)) {//0じゃない, リセットされてない.
+	                		if(((buffer[0]&0xFF) != 0) && (sc.getButtonEvent()==-1)) {
 	                		
 	                			 
 	                			int input = buffer[0]&0xFF;
 	                			
 	                         if((input == 1) || (input == 2)){
 		            	            this.sc.send_command_original(2);
-		            	            this.sc.send_command_original(1);//入力されたコマンドを取り消すための, 処理
+		            	            this.sc.send_command_original(1);
 		            	            this.sc.button_event = input;
 	                         }
 	                         
@@ -114,8 +109,6 @@ public class SerialCommunication {
 	    
        public void send_command_original(int inputValue) {
             try {
-
-            		//Clean, Spot, EndSpotの3つのみ.
             	    switch(inputValue) {
             	    		case 0: write(out, 142, 18);
             	    			break;
@@ -158,12 +151,12 @@ public class SerialCommunication {
                 	    	case 5 : clean_spot(out);//Spot
                 	    	         break;
                 	    	case 6 : 
-                	    		drive(out, -160, 0);//forward_l, 第二引数は, mm/s
+                	    		drive(out, -160, 0);//forward_l, mm/s
                 	    	    break;
                 	    	case 7 : 
-                	    		drive(out, -500, 0);//forward_l, 第二引数は, mm/s
+                	    		drive(out, -500, 0);//forward_l, mm/s
                 	    	    break;
-                	    	case 141: // counter-clockwise_low 左回りが弱いので,
+                	    	case 141: // counter-clockwise_low 
                 	    		driveDirect(out, 11, -11);
     	         		 	break;
                    	case 142: // counter-clockwise_high
@@ -185,8 +178,8 @@ public class SerialCommunication {
             }
         }
 
-	    private static void write(OutputStream out, int... data) throws IOException {
-
+	    public static void write(OutputStream out, int... data) throws IOException {
+	    // private static void write(OutputStream out, int... data) throws IOException {
 	        byte[] output = new byte[data.length];
 	        for(int i = 0; i < data.length; i++) {
 	            output[i] = (byte)(data[i]);
